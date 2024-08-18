@@ -1,0 +1,144 @@
+---
+it:
+  decidim:
+    feeds:
+      admin:
+        feeds:
+          form:
+            title: Titolo
+            slug_help_html: 'Gli URL slugs vengono utilizzati per generare gli URL che puntano a questa assemblea. Accetta solo lettere, numeri e trattini e deve iniziare con una lettera. Esempio: %{url}'
+      content_blocks:
+        feeds:
+          name: Feed
+      posts:
+        hv:
+          status:
+            confirm: SI
+            cancel: Annulla
+            processing: In elaborazione
+            done: Fatto
+            dialogBodyMsg: Lo stato del messaggio è stato modificato e la funzione di commento è chiusa
+            dialogBodyResponse: Attendere, lo stato del messaggio viene modificato
+        create:
+          success: Post creato con successo
+          invalid: Creazione del post fallita
+        update:
+          success: Post aggiornato con successo
+          invalid: Aggiornamento del post fallito
+        destroy:
+          success: Post eliminato con successo
+          invalid: Eliminazione del post fallita
+        form:
+          question_too_short: La domanda è troppo corta
+        meeting_form:
+          address_help: 'Indirizzo: utilizzato da Geocoder per trovare la posizione'
+          available_slots_help: Lasciarlo a 0 se hai slot illimitati disponibili
+          create_as: Crea riunione come
+          disclaimer: 'Disclaimer: Utilizzando un sistema di registrazione esterno, sei consapevole che gli organizzatori di %{organization} non sono responsabili dei dati forniti dagli utenti al servizio esterno.'
+          iframe_embed_type_html: "Solo alcuni servizi consentono l'incorporamento in una riunione o evento dal vivo dai seguenti domini: %{domains}"
+          location_help: 'Posizione: messaggio diretto agli utenti che implica il punto di incontro'
+          location_hints_help: "Suggerimenti sulla posizione: informazioni aggiuntive. Esempio: il piano dell'edificio se si tratta di una riunione in presenza, o la password della riunione se si tratta di una riunione online con accesso limitato."
+          online_meeting_url_help: 'Link: consentire ai partecipanti di connettersi direttamente alla tua riunione'
+          registration_url_help: 'Link: consentire ai partecipanti di andare sul servizio esterno che stai utilizzando per le registrazioni'
+          select_a_category: Seleziona una categoria
+          select_a_meeting_type: Seleziona un tipo di riunione
+          select_a_registration_type: Seleziona un tipo di registrazione
+          select_an_iframe_access_level: Seleziona un livello di accesso all'iframe
+      survey:
+        participated: "%{count} risposte"
+    components:
+      feeds:
+        name: Feeds
+        settings:
+          global:
+            attachments_allowed?: Allegati consentiti
+          step:
+            endorsements_enabled: Abilita le approvazioni
+            endorsements_blocked: Approvazioni bloccate
+        content_blocks:
+          feeds:
+            title: Feed
+            name: Feed
+            description: Un feed di post, eventi e altri contenuti.
+          feeds_settings_form:
+            component: Feed to display
+        actions:
+          openMenu: Apri menu
+          edit: Modifica
+          translate: Traduci
+          delete: Elimina
+          deleteConfirmation: Sei sicuro di voler eliminare questo post?
+        newFeed:
+          title: Nuovo feed
+          text: Post
+          category: Scegli una categoria
+          highlighted: Evidenzia
+          fixed: Fissa in alto
+          action: Spedisci
+          login: Accedi per creare un nuovo post
+          loginLink: Accedi
+          newSurvey:
+            newQuestion: Nuova domanda
+            newQuestionResponse: È stata aggiunta una nuova domanda
+            questionTitle: Inserisci la domanda
+            questionType: Tipo di domanda
+            questionTypes:
+              multiple_choice: Scelta multipla
+              single_choice: Scelta singola
+            answerType: Tipo di risposta
+            multipleChoice: Scelta multipla
+            singleChoice: Scelta singola
+            newAnswer: Nuova risposta
+            newAnswerResponse: È stata aggiunta una nuova risposta
+            answerTitle: Inserisci risposta
+            deleteQuestion: Elimina domanda
+            deleteAnswer: Elimina risposta
+        filter:
+          all: Tutti
+          title: Filtro
+          menuAriaLabel: Filter feeds
+          post: Post
+          posts: Posts
+          sharecare: Share&Care
+          hv: HV
+          calendar: Calendario
+          survey: Questionario
+          help: Aiuto
+        calendar:
+          date_separator: fino al
+          start_time: Alle
+          end_time: Fino a
+    shared:
+      flag_modal:
+        report: Segnala
+    admin:
+      feeds:
+        new:
+          title: Nuovo feed
+          create: Crea feed
+        create:
+          success: Feed creato con successo
+          invalid: Creazione del feed fallita
+        edit:
+          title: Modifica feed
+          update: Aggiorna feed
+        update:
+          success: Feed aggiornato con successo
+          invalid: Aggiornamento del feed fallito
+      menu:
+        feeds: Feeds
+        feeds_submenu:
+          components: Componenti
+          info: Informazioni su questo feed
+          moderations: Moderazioni
+          see_feed: Vedi feed
+      titles:
+        feeds: Feeds
+      actions:
+        new_feed: Nuovo feed
+      models:
+        feed:
+          fields:
+            title: Titolo
+            created_at: Creato il
+            actions: Azioni
