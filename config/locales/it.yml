@@ -1,9 +1,9 @@
 ---
 it:
   decidim:
-    feeds:
+    posts:
       admin:
-        feeds:
+        posts:
           form:
             title: Titolo
             slug_help_html: 'Gli URL slugs vengono utilizzati per generare gli URL che puntano a questa assemblea. Accetta solo lettere, numeri e trattini e deve iniziare con una lettera. Esempio: %{url}'

@@ -1,9 +1,9 @@
 ---
 de:
   decidim:
-    feeds:
+    posts:
       admin:
-        feeds:
+        posts:
           form:
             title: Titel
             slug_help_html: 'URL-Slugs werden zum Generieren der URLs verwendet, die auf dieses Gremium verweisen. Akzeptiert werden nur Buchstaben, Zahlen und Bindestriche und es muss mit einem Buchstaben beginnen. Beispiel: %{url}'

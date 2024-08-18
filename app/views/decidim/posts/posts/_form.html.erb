@@ -23,7 +23,7 @@
           current_participatory_space: @controller.try(:current_participatory_space)
         }
       %>
-      <%= decidim_form_for(Decidim::Meetings::MeetingForm.from_params(params).with_context(context), url: Decidim::Posts::Engine.routes.url_helpers.meetings_path(assembly_slug: target_participatory_space.slug, component_id: target_participatory_space.components.find_by(manifest_name: "meetings").id), html: { class: "meetings_form new_meeting" }) do |form| %>
+      <%= decidim_form_for(Decidim::Meetings::MeetingForm.from_params(params).with_context(context), url: Decidim::EngineRouter.main_proxy(target_participatory_space.components.find_by(manifest_name: "meetings")).meetings_path(target_participatory_space.components.find_by(manifest_name: "meetings")), html: { class: "meetings_form new_meeting" }) do |form| %>
         <div class="form__wrapper p-0 gap-4">
           <%= render partial: "decidim/posts/posts/meeting_form", locals: { form: form } %>
         </div>
@@ -32,7 +32,7 @@
         </div>
       <% end %>
 
-      <%= decidim_form_for(Decidim::Posts::PostForm.from_params(params).with_context(context), url: Decidim::Posts::Engine.routes.url_helpers.posts_path(assembly_slug: target_participatory_space.slug, component_id: target_participatory_space.components.find_by(manifest_name: "posts").id), html: { class: "posts_form new_post" }) do |form| %>
+      <%= decidim_form_for(Decidim::Posts::PostForm.from_params(params).with_context(context), url: Decidim::EngineRouter.main_proxy(target_participatory_space.components.find_by(manifest_name: "posts")).posts_path, html: { class: "posts_form new_post" }) do |form| %>
         <div class="form__wrapper p-0">
           <%= render partial: "decidim/posts/posts/post_form", locals: { form: form } %>
         </div>
