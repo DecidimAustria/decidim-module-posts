@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Decidim
-  module Feeds
+  module FeedsSpace
     # This type represents a Feed.
     class FeedType < Decidim::Api::Types::BaseObject
       implements Decidim::Core::ParticipatorySpaceInterface
@@ -16,7 +16,7 @@ module Decidim
       field :created_at, Decidim::Core::DateTimeType, "The time this feed was created", null: false
       field :updated_at, Decidim::Core::DateTimeType, "The time this feed was updated", null: false
       
-      field :created_by, String, "The creator of this assembly", null: true
+      field :created_by, String, "The creator of this feed", null: true
       
       # def hero_image
       #   object.attached_uploader(:hero_image).path

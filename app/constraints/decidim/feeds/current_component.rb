@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Decidim
-  module Feeds
+  module FeedsSpace
     # This class infers the current component on a feed context
     # request parameters and injects it into the environment.
     class CurrentComponent
