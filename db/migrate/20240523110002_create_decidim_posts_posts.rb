@@ -1,4 +1,4 @@
-class CreateDecidimFeedsPosts < ActiveRecord::Migration[5.0]
+class CreateDecidimPostsPosts < ActiveRecord::Migration[5.0]
     def change
       create_table :decidim_posts_posts do |t|
         t.text :body, null: false

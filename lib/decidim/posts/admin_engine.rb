@@ -5,7 +5,7 @@ require "decidim/core"
 
 module Decidim
   module Posts
-    # This is the engine that runs on the public interface of `Feeds`.
+    # This is the engine that runs on the public interface of `Posts`.
     class AdminEngine < ::Rails::Engine
       isolate_namespace Decidim::Posts::Admin
 

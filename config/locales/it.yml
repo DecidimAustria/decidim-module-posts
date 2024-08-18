@@ -47,8 +47,8 @@ it:
       survey:
         participated: "%{count} risposte"
     components:
-      feeds:
-        name: Feeds
+      posts:
+        name: Posts
         settings:
           global:
             attachments_allowed?: Allegati consentiti

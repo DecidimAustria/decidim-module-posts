@@ -2,7 +2,7 @@
 
 require "decidim/components/namer"
 
-Decidim.register_component(:feeds) do |component|
+Decidim.register_component(:posts) do |component|
   component.engine = Decidim::Posts::Engine
   component.admin_engine = Decidim::Posts::AdminEngine
   component.icon = "decidim/posts/icon.svg"

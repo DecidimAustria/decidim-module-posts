@@ -47,8 +47,8 @@ en:
       survey:
         participated: "%{count} responses"
     components:
-      feeds:
-        name: Feeds
+      posts:
+        name: Posts
         settings:
           global:
             attachments_allowed?: Attachments allowed

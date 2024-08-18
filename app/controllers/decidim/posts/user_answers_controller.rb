@@ -11,17 +11,17 @@ module Decidim
 
         if checked
           if answer.question.single_choice?
-            UserAnswer.where(decidim_user_id: current_user.id, decidim_feeds_answer_id: answer.question.answers.pluck(:id)).destroy_all
+            UserAnswer.where(decidim_user_id: current_user.id, decidim_posts_answer_id: answer.question.answers.pluck(:id)).destroy_all
           end
-          UserAnswer.find_or_create_by(decidim_user_id: current_user.id, decidim_feeds_answer_id: answer_id)
+          UserAnswer.find_or_create_by(decidim_user_id: current_user.id, decidim_posts_answer_id: answer_id)
         else
-          UserAnswer.where(decidim_user_id: current_user.id, decidim_feeds_answer_id: answer_id).destroy_all
+          UserAnswer.where(decidim_user_id: current_user.id, decidim_posts_answer_id: answer_id).destroy_all
         end
 
         # get count of user_answers for all answers of the question
         user_answers_counts = {}
         answer.question.answers.each do |a|
-          user_answers_counts[a.id] = UserAnswer.where(decidim_feeds_answer_id: a.id).count
+          user_answers_counts[a.id] = UserAnswer.where(decidim_posts_answer_id: a.id).count
         end
         result = {
           user_answers: user_answers_counts,

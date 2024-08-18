@@ -14,7 +14,7 @@
         <button type="button" class="button button__sm button__transparent-primary" data-category="survey">Survey</button>
       </div>
 
-      <% target_participatory_space = Decidim::Component.find_by(manifest_name: "feeds").participatory_space %>
+      <% target_participatory_space = Decidim::Component.find_by(manifest_name: "posts").participatory_space %>
       <%
         context = {
           current_organization: @controller.try(:current_organization),
@@ -28,11 +28,11 @@
           <%= render partial: "decidim/posts/posts/meeting_form", locals: { form: form } %>
         </div>
         <div class="form__wrapper-block flex-col-reverse md:flex-row justify-between">
-          <%= form.submit "#{t("decidim.components.feeds.newFeed.action")} #{icon('send-plane-line')}".html_safe, class: "sndBtn button button__sm button__transparent-primary", data: { disable: true } %>
+          <%= form.submit "#{t("decidim.components.posts.newFeed.action")} #{icon('send-plane-line')}".html_safe, class: "sndBtn button button__sm button__transparent-primary", data: { disable: true } %>
         </div>
       <% end %>
 
-      <%= decidim_form_for(Decidim::Posts::PostForm.from_params(params).with_context(context), url: Decidim::Posts::Engine.routes.url_helpers.posts_path(assembly_slug: target_participatory_space.slug, component_id: target_participatory_space.components.find_by(manifest_name: "feeds").id), html: { class: "posts_form new_post" }) do |form| %>
+      <%= decidim_form_for(Decidim::Posts::PostForm.from_params(params).with_context(context), url: Decidim::Posts::Engine.routes.url_helpers.posts_path(assembly_slug: target_participatory_space.slug, component_id: target_participatory_space.components.find_by(manifest_name: "posts").id), html: { class: "posts_form new_post" }) do |form| %>
         <div class="form__wrapper p-0">
           <%= render partial: "decidim/posts/posts/post_form", locals: { form: form } %>
         </div>
@@ -42,16 +42,16 @@
         <%= render partial: "decidim/posts/posts/attachment.html", locals: { form: form } %>
         <%= render partial: "decidim/posts/posts/admin_options.html", locals: { form: form, participatory_space: target_participatory_space } %>
         <div class="form__wrapper-block flex-col-reverse md:flex-row justify-between">
-          <%= form.submit "#{t("decidim.components.feeds.newFeed.action")} #{icon('send-plane-line')}".html_safe, data: { disable: true }, class: "sndBtn button button__sm button__transparent-primary" %>
+          <%= form.submit "#{t("decidim.components.posts.newFeed.action")} #{icon('send-plane-line')}".html_safe, data: { disable: true }, class: "sndBtn button button__sm button__transparent-primary" %>
         </div>
       <% end %>
     <% else %>
       <div class="form__wrapper p-0">
         <div class="flex flex-col items-center">
           <p class="text-center">
-            <%= t("decidim.components.feeds.newFeed.login") %>
+            <%= t("decidim.components.posts.newFeed.login") %>
           </p>
-          <%= link_to t("decidim.components.feeds.newFeed.loginLink"), decidim.new_user_session_path, class: "button button__sm button__primary" %>
+          <%= link_to t("decidim.components.posts.newFeed.loginLink"), decidim.new_user_session_path, class: "button button__sm button__primary" %>
         </div>
       </div>
     <% end %>

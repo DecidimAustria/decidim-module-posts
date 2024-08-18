@@ -25,10 +25,10 @@ module Decidim
 
       # belongs_to :organization, class_name: "Decidim::Organization"
 
-      has_many :questions, class_name: "Decidim::Posts::Question", dependent: :destroy, foreign_key: "decidim_feeds_post_id"
+      has_many :questions, class_name: "Decidim::Posts::Question", dependent: :destroy, foreign_key: "decidim_posts_post_id"
       # accepts_nested_attributes_for :questions, reject_if: ->(attributes){ attributes['name'].blank? }, allow_destroy: true
 
-      component_manifest_name "feeds"
+      component_manifest_name "posts"
 
       translatable_fields :body
 
@@ -90,7 +90,7 @@ module Decidim
       def survey_responses_count
         # questions.includes(answers: :user_answers).map(&:answers).flatten.map(&:user_answers).flatten.pluck(:decidim_user_id).uniq.count
         answer_ids = questions.includes(:answers).map(&:answers).flatten.pluck(:id)
-        @survey_responses_count ||= UserAnswer.where(decidim_feeds_answer_id: answer_ids).distinct.count(:decidim_user_id)
+        @survey_responses_count ||= UserAnswer.where(decidim_posts_answer_id: answer_ids).distinct.count(:decidim_user_id)
       end
     end
   end

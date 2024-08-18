@@ -4,8 +4,8 @@ module Decidim
       include Decidim::TranslatableResource
       include Decidim::TranslatableAttributes
 
-      belongs_to :post, class_name: "Decidim::Posts::Post", foreign_key: "decidim_feeds_post_id"
-      has_many :answers, class_name: "Decidim::Posts::Answer", dependent: :destroy, foreign_key: "decidim_feeds_question_id"
+      belongs_to :post, class_name: "Decidim::Posts::Post", foreign_key: "decidim_posts_post_id"
+      has_many :answers, class_name: "Decidim::Posts::Answer", dependent: :destroy, foreign_key: "decidim_posts_question_id"
       # accepts_nested_attributes_for :answers, allow_destroy: true
 
       enum question_type: { single_choice: 0, multiple_choice: 1 }
