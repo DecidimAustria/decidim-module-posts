@@ -1,4 +1,4 @@
-import 'src/decidim/feeds/feeds.js';
+import 'src/decidim/posts/feeds.js';
 
 require.context('../images', true);
 

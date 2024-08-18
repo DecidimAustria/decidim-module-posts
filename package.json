@@ -1,5 +1,5 @@
 {
-  "name": "decidim-feeds",
+  "name": "decidim-posts",
   "version": "0.0.1",
   "description": "Feeds component for Decidim",
   "private": true,

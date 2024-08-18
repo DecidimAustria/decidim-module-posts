@@ -2,10 +2,10 @@
 
 $LOAD_PATH.push File.expand_path("lib", __dir__)
 
-require "decidim/feeds/version"
+require "decidim/posts/version"
 
 Gem::Specification.new do |s|
-  s.version = Decidim::Feeds.version
+  s.version = Decidim::Posts.version
   s.authors = ["Alexander Rusa", "Piero Chiussi"]
   s.email = ["alex@rusa.at", "info@webchroma.de"]
   s.license = "AGPL-3.0"
@@ -19,11 +19,11 @@ Gem::Specification.new do |s|
   }
   s.required_ruby_version = ">= 3.1"
 
-  s.name = "decidim-feeds"
-  s.summary = "A decidim feeds module"
-  s.description = "Feeds component for Decidim."
+  s.name = "decidim-posts"
+  s.summary = "A decidim posts module"
+  s.description = "Posts component for Decidim."
 
   s.files = Dir["{app,config,lib}/**/*", "LICENSE-AGPLv3.txt", "Rakefile", "README.md"]
 
-  s.add_dependency "decidim-core", "~> #{Decidim::Feeds.version}"
+  s.add_dependency "decidim-core", "~> #{Decidim::Posts.version}"
 end

@@ -1,4 +1,4 @@
-# Decidim::Feeds component (under development)
+# Decidim::Posts component (under development)
 
 This Feeds component adds social posts functionality to Decidim.
 
@@ -14,7 +14,7 @@ Space.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "decidim-feeds"
+gem "decidim-posts"
 ```
 
 And then execute:
