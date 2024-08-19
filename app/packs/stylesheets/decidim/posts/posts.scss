@@ -4,7 +4,7 @@
 
 .feeds__feed_newElement_modal {
 	position: fixed; /* Fixed to the viewport */
-  top: 0;
+  top: 5rem;
   left: 0;
   width: 100vw;
   height: 100vh;
@@ -13,6 +13,7 @@
   justify-content: center;
   align-items: center;
   z-index: 40; /* High z-index to appear on top */
+	overflow: auto; /* Ensure the modal itself can scroll if content exceeds viewport */
 }
 
 .feeds__feed_newElement_modal_content {
@@ -24,6 +25,8 @@
   max-width: 500px;
   width: 100%;
   box-sizing: border-box;
+	max-height: 70vh; /* Limit the height to 80% of the viewport height */
+  overflow-y: auto; /* Enable vertical scrolling if content overflows */
 }
 
 div#feeds__feed_newElement {
