@@ -11,6 +11,10 @@ module Decidim
       include ::Decidim::EndorsableHelper
       include ::Decidim::FollowableHelper
       include Decidim::Comments::CommentsHelper
+
+      def posts_component_for_meeting(meeting)
+        meeting.component.participatory_space.components.find_by(manifest_name: "posts")
+      end
     end
   end
 end

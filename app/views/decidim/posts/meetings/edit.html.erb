@@ -1,4 +1,4 @@
-<%= decidim_form_for(@form, url: Decidim::EngineRouter.main_proxy(@meeting.component).meeting_path(@meeting), html: { class: "meetings_form new_meeting" }) do |form| %>
+<%= decidim_form_for(@form, url: Decidim::EngineRouter.main_proxy(posts_component_for_meeting(@meeting)).meeting_path(@meeting), html: { class: "meetings_form new_meeting" }) do |form| %>
   <div class="form__wrapper p-0 gap-4">
     <%= render partial: "decidim/posts/posts/meeting_form", locals: { form: form } %>
   </div>
