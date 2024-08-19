@@ -1,4 +1,4 @@
-<%= decidim_form_for(@form, url: Decidim::EngineRouter.main_proxy(post.component).post_path(post), method: :patch, html: { class: "posts_form new_post" }) do |form| %>
+<%= decidim_form_for(@form, url: Decidim::EngineRouter.main_proxy(@post.component).post_path(@post), method: :patch, html: { class: "posts_form new_post" }) do |form| %>
   <div class="form__wrapper p-0">
     <%= render partial: "decidim/posts/posts/post_form", locals: { form: form } %>
   </div>
