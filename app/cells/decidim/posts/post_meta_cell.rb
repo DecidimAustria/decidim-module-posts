@@ -47,6 +47,14 @@ module Decidim
         end
       end
 
+      def post_deleteable_by?(user)
+        if post.component.manifest_name == "meetings"
+          false
+        else
+          post.deleteable_by?(current_user)
+        end
+      end
+
       private
 
       def posts_component_for_meeting(meeting)

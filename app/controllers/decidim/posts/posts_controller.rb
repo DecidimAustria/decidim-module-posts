@@ -94,7 +94,7 @@ module Decidim
 
       def destroy
         @post = Post.find(params[:id])
-        enforce_permission_to :edit, :post, post: @post
+        enforce_permission_to :delete, :post, post: @post
 
         DestroyPost.call(@post, current_user) do
           on(:ok) do

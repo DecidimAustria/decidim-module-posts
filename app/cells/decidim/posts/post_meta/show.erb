@@ -35,6 +35,8 @@
               <span><%= t('decidim.components.posts.actions.edit') %></span>
             <% end %>
           </li>
+        <% end %>
+        <% if post_deleteable_by?(current_user) %>
           <li class="text-right py-2 text-feeds-sidebar">
             <%= button_to delete_post_path, method: delete_method, class: "hover:text-black dropdown__item", data: { confirm: t('decidim.components.posts.actions.deleteConfirmation') } do %>
               <%= icon "delete-bin-line" %>

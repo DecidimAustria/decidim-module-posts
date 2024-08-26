@@ -13,6 +13,8 @@ module Decidim
               allow! if can_create_posts?
             when :edit
               allow! if can_update_post?
+            when :delete
+              allow! if can_delete_post?
             when :read
               allow! if can_access?
             when :change_post_status
@@ -54,6 +56,10 @@ module Decidim
 
       def can_update_post?
         post.authored_by?(user)
+      end
+
+      def can_delete_post?
+        post.authored_by?(user) || user.admin?
       end
 
       def change_post_status?

@@ -9,7 +9,7 @@ module Decidim
       end
 
       def call
-        return broadcast(:invalid) unless @post.authored_by?(@current_user)
+        return broadcast(:invalid) unless @post.authored_by?(@current_user) || @current_user.admin?
 
         @post.destroy!
 

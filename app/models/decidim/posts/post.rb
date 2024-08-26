@@ -72,6 +72,10 @@ module Decidim
         user == author
       end
 
+      def deleteable_by?(user)
+        user == author || user.admin?
+      end
+
       # Public: Overrides the `reported_content_url` Reportable concern method.
       def reported_content_url
         ResourceLocatorPresenter.new(self).url
