@@ -6,10 +6,11 @@ module Decidim
       # This controller allows admins to manage posts in a participatory space.
       class PostsController < Admin::ApplicationController
         include Decidim::ApplicationHelper
+        include Decidim::Posts::Admin::Filterable
 
         helper Feeds::ApplicationHelper
         # helper Decidim::Messaging::ConversationHelper
-        # helper_method :posts, :query, :form_presenter, :post, :post_ids
+        helper_method :posts, :query, :form_presenter, :post, :post_ids, :present
         
         def index
         end
@@ -67,11 +68,12 @@ module Decidim
         private
 
         def collection
-          @collection ||= Post.where(component: current_component).not_hidden.published
+          @collection ||= Post.where(component: current_component)#.not_hidden
         end
 
         def posts
-          @posts ||= filtered_collection
+          # @posts ||= filtered_collection
+          @posts ||= collection
         end
 
         def post

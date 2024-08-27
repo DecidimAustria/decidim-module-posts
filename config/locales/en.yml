@@ -4,12 +4,20 @@ en:
     posts:
       admin:
         posts:
+          index:
+            title: Posts
+            selected: Selected
           form:
             title: Title
             slug_help_html: 'URL slugs are used to generate the URLs that point to this feed. Only accepts letters, numbers and dashes, and must start with a letter. Example: %{url}'
+        actions:
+          preview: Preview
       content_blocks:
         feeds:
           name: Feed
+      actions:
+        title: Actions
+        edit_post: Edit post
       posts:
         hv:
           status:
@@ -28,6 +36,7 @@ en:
         destroy:
           success: Post deleted successfully
           invalid: Post deletion failed
+        back_to_feed: Back to feed
         form:
           question_too_short: The question is too short
         meeting_form:
@@ -46,6 +55,15 @@ en:
           select_an_iframe_access_level: Please select an iframe access level
       survey:
         participated: "%{count} responses"
+      models:
+        post:
+          fields:
+            title: Title
+            created_at: Created at
+            actions: Actions
+            endorsements: Likes
+            comments: Comments
+            status: Status
     components:
       posts:
         name: Posts
@@ -136,9 +154,3 @@ en:
         feeds: Feeds
       actions:
         new_feed: New Feed
-      models:
-        feed:
-          fields:
-            title: Title
-            created_at: Created at
-            actions: Actions

@@ -1,0 +1,54 @@
+<% add_decidim_page_title(t(".title")) %>
+<div class="card">
+  <div class="item_show__header">
+    <h1 class="item_show__header-title">
+      <div>
+        <%= t(".title") %>
+        <span id="js-selected-posts-count" class="component-counter component-counter--inline" title="<%= t("decidim.posts.admin.posts.index.selected") %>"></span>
+      </div>
+        <%#= render partial: "bulk-actions" %>
+        <%#= render partial: "decidim/admin/components/resource_action" %>
+    </h1>
+  </div>
+  <%#= admin_filter_selector(:posts) %>
+  <div class="table-scroll mt-16">
+    <table class="table-list">
+      <thead>
+        <tr>
+          <th>
+            <%#= check_box_tag "posts_bulk", "all", false, class: "js-check-all" %>
+          </th>
+          <th class="!text-left">
+            <%= t("models.post.fields.title", scope: "decidim.posts") %>
+          </th>
+          <th>
+            <%= t("models.post.fields.created_at", scope: "decidim.posts") %>
+          </th>
+
+          <th>
+            <%= t("models.post.fields.endorsements", scope: "decidim.posts") %>
+          </th>
+
+          <th>
+            <%= t("models.post.fields.comments", scope: "decidim.posts") %>
+          </th>
+
+          <th>
+            <%= t("models.post.fields.status", scope: "decidim.posts") %>
+          </th>
+
+          <th class="actions"><%= t("actions.title", scope: "decidim.posts") %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% posts.each do |post| %>
+          <%= render partial: "post-tr", locals: { post: } %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<%#= decidim_paginate posts %>
+
+<%#= append_javascript_pack_tag "decidim_posts_admin" %>

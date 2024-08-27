@@ -1,0 +1,45 @@
+<tr data-id="<%= post.id %>">
+  <td>
+    <%= check_box_tag "post_ids_s[]", post.id, false, class: "js-check-all-post js-post-list-check  js-post-id-#{post.id}" %><br>
+  </td>
+  <td class="!text-left">
+    <% if allowed_to? :edit, :post, post: post %>
+      <%= link_to present(post).title(html_escape: true), post_path(post) %><br>
+    <% else %>
+      <%= present(post).title(html_escape: true) %><br>
+    <% end %>
+    <div class="flex items-center gap-x-1 mt-2">
+      <%= icon "price-tag-3-line", class: "fill-gray w-4 h-4" %>
+      <%= post.category %>
+    </div>
+  </td>
+  <td class="table-list__date">
+    <%= l post.created_at, format: :decidim_short %>
+  </td>
+
+  <td>
+    <%= post.endorsements_count %>
+  </td>
+
+  <td>
+    <%= post.comments_count %>
+  </td>
+
+  <td>
+    <%= post.status %>
+  </td>
+
+  <td class="table-list__actions">
+    <% if allowed_to? :edit, :post, post: post %>
+      <%= icon_link_to "pencil-line", edit_post_path(post), t("actions.edit_post", scope: "decidim.posts"), class: "action-icon--edit-post" %>
+    <% else %>
+      <span class="action-space icon"></span>
+    <% end %>
+
+    <%#= icon_with_link_to_post(post) %>
+
+    <%= icon_link_to "eye-line", resource_locator(post).path, t("actions.preview", scope: "decidim.posts.admin"), class: "action-icon--preview", target: :blank, data: { "external-link": false } %>
+
+    <%= resource_permissions_link(post) %>
+  </td>
+</tr>

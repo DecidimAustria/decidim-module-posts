@@ -4,12 +4,20 @@ it:
     posts:
       admin:
         posts:
+          index:
+            title: Posts
+            selected: Selected
           form:
             title: Titolo
             slug_help_html: 'Gli URL slugs vengono utilizzati per generare gli URL che puntano a questa assemblea. Accetta solo lettere, numeri e trattini e deve iniziare con una lettera. Esempio: %{url}'
+        actions:
+          preview: Anteprima
       content_blocks:
         feeds:
           name: Feed
+      actions:
+        title: Azioni
+        edit_post: Modifica post
       posts:
         hv:
           status:
@@ -28,6 +36,7 @@ it:
         destroy:
           success: Post eliminato con successo
           invalid: Eliminazione del post fallita
+        back_to_feed: Torna al feed
         form:
           question_too_short: La domanda è troppo corta
         meeting_form:
@@ -46,6 +55,15 @@ it:
           select_an_iframe_access_level: Seleziona un livello di accesso all'iframe
       survey:
         participated: "%{count} risposte"
+      models:
+        feed:
+          fields:
+            title: Titolo
+            created_at: Creato il
+            actions: Azioni
+            endorsements: Mi piace
+            comments: Commenti
+            status: Stato
     components:
       posts:
         name: Posts
@@ -136,9 +154,3 @@ it:
         feeds: Feeds
       actions:
         new_feed: Nuovo feed
-      models:
-        feed:
-          fields:
-            title: Titolo
-            created_at: Creato il
-            actions: Azioni

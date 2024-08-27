@@ -1,1 +1,12 @@
-Post <%= @post.body %>
+<main class="feeds__container">
+  <div class="feeds__body">
+    <div class="card__grid-home w-full lg:grid-cols-8 xl:grid-cols-12">
+      <%= link_to Decidim::EngineRouter.main_proxy(@post.component).posts_path, class: "btn btn--secondary btn--sm" do %>
+        <%= icon "arrow-left-line" %>
+        <%= t("decidim.posts.posts.back_to_feed") %>
+      <% end %>
+      
+      <%= render partial: "post", locals: { post: @post } %>
+    </div>
+  </div>
+</main>

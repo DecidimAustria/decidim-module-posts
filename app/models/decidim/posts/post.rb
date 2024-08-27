@@ -12,6 +12,7 @@ module Decidim
       include Decidim::TranslatableAttributes
       include Decidim::Fingerprintable
       include Decidim::HasComponent
+      include Decidim::FilterableResource
       # include Decidim::Loggable
       # include Decidim::DownloadYourData
       # include Decidim::Randomable
@@ -21,7 +22,6 @@ module Decidim
       # include Decidim::Followable
       # include Decidim::Traceable
       # include Decidim::NewsletterParticipant
-      # include Decidim::FilterableResource
 
       # belongs_to :organization, class_name: "Decidim::Organization"
 

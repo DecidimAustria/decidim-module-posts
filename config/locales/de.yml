@@ -4,12 +4,20 @@ de:
     posts:
       admin:
         posts:
+          index:
+            title: Beiträge
+            selected: Ausgewählt
           form:
             title: Titel
             slug_help_html: 'URL-Slugs werden zum Generieren der URLs verwendet, die auf dieses Gremium verweisen. Akzeptiert werden nur Buchstaben, Zahlen und Bindestriche und es muss mit einem Buchstaben beginnen. Beispiel: %{url}'
+        actions:
+          preview: Vorschau
       content_blocks:
         feeds:
           name: Feed
+      actions:
+        title: Aktionen
+        edit_post: Beitrag bearbeiten
       posts:
         hv:
           status:
@@ -28,6 +36,7 @@ de:
         destroy:
           success: Beitrag erfolgreich gelöscht
           invalid: Löschen des Beitrags fehlgeschlagen
+        back_to_feed: Zurück zum Feed
         form:
           question_too_short: Die Frage ist zu kurz
         meeting_form:
@@ -46,6 +55,15 @@ de:
           select_an_iframe_access_level: Bitte wählen Sie eine iFrame-Zugriffsebene aus
       survey:
         participated: "%{count} Antworten"
+      models:
+        feed:
+          fields:
+            title: Titel
+            created_at: Erstellt am
+            actions: Aktionen
+            endorsements: Likes
+            comments: Kommentare
+            status: Status
     components:
       posts:
         name: Posts
@@ -138,9 +156,3 @@ de:
         feeds: Feeds
       actions:
         new_feed: Neuer Feed
-      models:
-        feed:
-          fields:
-            title: Titel
-            created_at: Erstellt am
-            actions: Aktionen

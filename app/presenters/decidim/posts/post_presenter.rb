@@ -18,6 +18,12 @@ module Decidim
         Decidim::ResourceLocatorPresenter.new(post).path
       end
 
+      def title(links: false, extras: true, html_escape: false, all_locales: false)
+        return unless post
+
+        super post.title, links, html_escape, all_locales, extras:
+      end
+
       def body(links: false, extras: true, strip_tags: false, all_locales: false)
         return unless post
 
