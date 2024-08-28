@@ -4,9 +4,9 @@
   <% if official_post %>
     <%= icon "home-gear-line", class: 'hv-icon' %>
   <% end %>
-  
-  <%= cell("decidim/posts/post_attachments", post) %>
 <% end %>
+
+<%= cell("decidim/posts/post_attachments", post) %>
 <div class="card__grid-text">
   <%= post_body %>
 </div>

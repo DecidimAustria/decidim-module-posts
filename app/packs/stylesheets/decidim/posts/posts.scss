@@ -2,46 +2,15 @@
 
 @import '_variables.scss';
 
-.feeds__feed_newElement_modal {
-	position: fixed; /* Fixed to the viewport */
-  top: 5rem;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-  display: none; /* Hidden by default */
-  justify-content: center;
-  align-items: center;
-  z-index: 40; /* High z-index to appear on top */
-	overflow: auto; /* Ensure the modal itself can scroll if content exceeds viewport */
-}
-
-.feeds__feed_newElement_modal_content {
-	background-color: white;
-  margin: 10px auto;
-	padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3); /* Shadow for depth */
-  max-width: 500px;
-  width: 100%;
-  box-sizing: border-box;
-	max-height: 70vh; /* Limit the height to 80% of the viewport height */
-  overflow-y: auto; /* Enable vertical scrolling if content overflows */
-}
-
-div#feeds__feed_newElement {
+#feeds__feed_newElement {
 	--tw-ring-color: theme('colors.white');
-	@apply gap-4;
+	@apply p-4 gap-2 w-full shadow-feedBox rounded lg:max-w-screen-md;
 	&.open {
-		display: block;
 		--tw-ring-color: theme('colors.feeds.sidebar');
 		.circle {
 			svg {
 				@apply rotate-0 motion-safe:transition-transform;
 			}
-		}
-		.category-selection {
-			@apply flex gap-1 flex-wrap justify-center opacity-100 scale-100 motion-safe:transition-transform motion-safe:transition-opacity;
 		}
 	}
 	.circle {
@@ -50,10 +19,51 @@ div#feeds__feed_newElement {
 			@apply w-[36px] h-[36px] fill-feeds-sidebar rotate-45 motion-safe:transition-transform;
 		}
 	}
+	.feeds__feed_newElement_modal_content {
+		@apply flex flex-col gap-2;
+	}
 	.category-selection {
-		@apply hidden opacity-0 scale-0;
-		button.active {
-			@apply bg-primary text-white focus:outline-primary;
+		@apply flex gap-2 flex-wrap justify-center;
+		button {
+			@apply border-2 hover:bg-white hover:text-black;
+			&:hover {
+				background: white;
+			}
+			&[data-category='post'] {
+				@apply border-feeds-post focus:outline-feeds-post;
+				&:hover,
+				&.active {
+					@apply outline outline-offset-2 outline-feeds-post;
+				}
+			}
+			&[data-category='hv'] {
+				@apply border-feeds-hv focus:outline-feeds-hv;
+				&:hover,
+				&.active {
+					@apply outline outline-offset-2 outline-feeds-hv;
+				}
+			}
+			&[data-category='sharecare'] {
+				@apply border-feeds-sharecare focus:outline-feeds-sharecare;
+				&:hover,
+				&.active {
+					@apply outline outline-offset-2 outline-feeds-sharecare;
+				}
+			}
+			&[data-category='survey'] {
+				@apply border-feeds-survey focus:outline-feeds-survey;
+				&:hover,
+				&.active {
+					@apply outline outline-offset-2 outline-feeds-survey;
+				}
+			}
+			&[data-category='calendar'] {
+				@apply border-feeds-calendar focus:outline-feeds-calendar;
+				&:hover,
+				&.active {
+					@apply outline outline-offset-2 outline-feeds-calendar;
+				}
+			}
 		}
 	}
 	form {
@@ -148,17 +158,14 @@ div#feeds__feed_newElement {
 				--tw-ring-color: theme('colors.feeds.survey');
 				.feeds__feed_survey {
 					@apply flex flex-col gap-2 text-sm font-bold;
-					.feeds__feed_survey-questions {
-						@apply flex flex-col gap-4 text-md;
-						.feeds__feed_survey-question {
-							@apply flex flex-col p-2 gap-2 rounded bg-feeds-bg;
-							.feeds__feed_survey-question-answer {
-								@apply font-medium flex flex-col px-2;
-								.feeds__feed_survey-question-answerInput {
-									@apply flex py-1 justify-between gap-2;
-									span {
-										@apply text-sm shrink-0;
-									}
+					.feeds__feed_survey-question {
+						@apply flex flex-col p-2 gap-2 rounded bg-feeds-bg;
+						.feeds__feed_survey-question-answer {
+							@apply font-medium flex flex-col px-2;
+							.feeds__feed_survey-question-answerInput {
+								@apply flex py-1 gap-2;
+								span {
+									@apply text-sm shrink-0;
 								}
 							}
 						}
@@ -272,87 +279,18 @@ div#feeds__feed_newElement {
 			&.feeds__feed_newElement {
 				--tw-ring-color: theme('colors.white');
 				@apply gap-4;
-				&.open {
-					--tw-ring-color: theme('colors.feeds.sidebar');
-					.circle {
-						svg {
-							@apply rotate-0 motion-safe:transition-transform;
-						}
-					}
-					.category-selection {
-						@apply flex gap-1 flex-wrap justify-center opacity-100 scale-100 motion-safe:transition-transform motion-safe:transition-opacity;
-					}
-				}
+
 				.circle {
 					@apply w-[52px] h-[52px] p-2 bg-white rounded-[52px] shadow-feedMenu justify-center items-center inline-flex text-black;
 					svg {
 						@apply w-[36px] h-[36px] fill-feeds-sidebar rotate-45 motion-safe:transition-transform;
 					}
 				}
-				.category-selection {
-					@apply hidden opacity-0 scale-0;
-					button.active {
-						@apply bg-primary text-white focus:outline-primary;
-					}
-				}
-				form {
-					@apply hidden opacity-0 scale-0 motion-safe:transition-transform motion-safe:transition-opacity;
-					&.open {
-						@apply flex flex-col gap-4 opacity-100 scale-100 motion-safe:transition-transform motion-safe:transition-opacity;
-					}
-					label {
-						font-size: 1rem;
-					}
-					input,
-					textarea {
-						margin-block-start: 0;
-					}
-					.feeds__feed_newElement_Body {
-						@apply border-0 bg-feeds-formBody;
-					}
-					.postType {
-						@apply flex gap-2 flex-wrap justify-center;
-
-						input[type='radio']:checked + label {
-							@apply bg-primary text-white focus:outline-primary;
-						}
-					}
-					.feeds__feed_newElement_Xtra {
-						@apply relative hidden opacity-0 scale-0 motion-safe:transition-transform motion-safe:transition-opacity;
-						&.open {
-							@apply block opacity-100 scale-100 motion-safe:transition-transform motion-safe:transition-opacity;
-						}
-						&.feeds__feed_newSurvey {
-							.feeds__feed_newSurvey-btn {
-								@apply flex justify-center items-center gap-2 text-black font-medium p-4 bg-feeds-bg w-full rounded;
-							}
-							#newQuestion {
-								--tw-ring-color: theme('colors.feeds.sidebar');
-								@apply top-0 left-0 w-full h-full bg-white p-4 ring-1 rounded;
-							}
-						}
-					}
-					.feeds__feed_newElement_Media {
-						@apply px-2 pb-2 pt-0;
-						svg {
-							@apply w-[24px] h-auto;
-						}
-						.active-uploads {
-							@apply mt-0 pb-2;
-						}
-						button {
-							@apply mt-0;
-						}
-					}
-					.sndBtn {
-						@apply self-end;
-					}
-				}
 			}
 		}
 	}
 	.feeds__aside {
-		@apply max-w-max;
+		@apply max-w-max min-w-24;
 		ul {
 			@apply flex flex-col space-y-4;
 			a {
@@ -412,4 +350,9 @@ div#feeds__feed_newElement {
 			@apply border-black bg-white text-black;
 		}
 	}
+}
+
+// fix bottom menu overlapping content on desktops
+#content {
+	@apply lg:mb-28;
 }

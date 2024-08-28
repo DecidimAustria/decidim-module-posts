@@ -22,38 +22,28 @@ document.addEventListener('DOMContentLoaded', function () {
 			opener.setAttribute('aria-expanded', !isExpanded);
 			newFeed.classList.toggle('open');
 			if (!isExpanded) {
-				// newFeed.showModal(); // Open newFeed as a dialog
+				newFeed.showModal(); // Open newFeed as a dialog
 			} else {
-				// newFeed.close(); // Close the dialog if it's already open
+				newFeed.close(); // Close the dialog if it's already open
 			}
-
-			// this always closed the dialog instantly after opening it
-			// document.addEventListener('click', function (event) {
-			// 	if (
-			// 		!newFeed.contains(event.target) &&
-			// 		newFeed.classList.contains('open')
-			// 	) {
-			// 		newFeed.close();
-			// 		// Remove event listener after closing the dialog
-			// 		document.removeEventListener('click', this);
-			// 	}
-			// });
 		});
 	});
 
 	function closeDialog() {
-		// newFeed.close();
+		newFeed.close();
 		newFeedOpener.forEach(function (opener) {
 			opener.setAttribute('aria-expanded', 'false');
 			newFeed.classList.remove('open');
 		});
 	}
 
-	document.querySelectorAll('#feeds__feed_newElement .close-button button').forEach(function (closeBtn) {
-		closeBtn.addEventListener('click', function () {
-			closeDialog();
+	document
+		.querySelectorAll('#feeds__feed_newElement .close-button button')
+		.forEach(function (closeBtn) {
+			closeBtn.addEventListener('click', function () {
+				closeDialog();
+			});
 		});
-	});
 
 	const categoryButtons = document.querySelectorAll(
 		'.category-selection button'
@@ -93,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		});
 	});
 
-	activateCategory(categoryButtons[1]);
+	activateCategory(categoryButtons[0]);
 
 	document
 		.querySelectorAll('.feeds__feed_actions_submenu > button')
@@ -136,16 +126,20 @@ document.addEventListener('DOMContentLoaded', function () {
 			const commentsDivId = `comments-for-Post-${postId}-threads`;
 			const showCommentBtn = document.getElementById(showCommentBtnId);
 
-			const wasExpanded = newCommentBtn.getAttribute('aria-expanded') === 'true';
-			const showCommentsWasExpanded = showCommentBtn.getAttribute('aria-expanded') === 'true';
-			const controlledDivIds = newCommentBtn.getAttribute('aria-controls').split(' ');
+			const wasExpanded =
+				newCommentBtn.getAttribute('aria-expanded') === 'true';
+			const showCommentsWasExpanded =
+				showCommentBtn.getAttribute('aria-expanded') === 'true';
+			const controlledDivIds = newCommentBtn
+				.getAttribute('aria-controls')
+				.split(' ');
 
 			const controlledDiv = document.getElementById(controlledDivId);
 			newCommentBtn.setAttribute('aria-expanded', !wasExpanded);
 			showCommentBtn.setAttribute('aria-expanded', !showCommentsWasExpanded);
 
 			toggleCommentsVisibility(controlledDivId);
-			
+
 			if (!wasExpanded) {
 				showDiv(commentsDivId);
 				controlledDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -157,9 +151,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	showCommentsBtns.forEach((showCommentsBtn) => {
 		showCommentsBtn.addEventListener('click', function () {
-			const controlledDivIds = showCommentsBtn.getAttribute('aria-controls').split(' ');
+			const controlledDivIds = showCommentsBtn
+				.getAttribute('aria-controls')
+				.split(' ');
 			controlledDivIds.forEach((controlledDivId) => {
-				const isExpanded = showCommentsBtn.getAttribute('aria-expanded') === 'true';
+				const isExpanded =
+					showCommentsBtn.getAttribute('aria-expanded') === 'true';
 				showCommentsBtn.setAttribute('aria-expanded', !isExpanded);
 				toggleCommentsVisibility(controlledDivId);
 			});
@@ -168,7 +165,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	function toggleCommentsVisibility(controlledDivId) {
 		const controlledDiv = document.getElementById(controlledDivId);
-		
+
 		if (controlledDiv.style.visibility === 'visible') {
 			hideDiv(controlledDivId);
 		} else {
