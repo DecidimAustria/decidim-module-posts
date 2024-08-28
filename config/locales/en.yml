@@ -54,7 +54,7 @@ en:
           select_a_registration_type: Please select a registration type
           select_an_iframe_access_level: Please select an iframe access level
       survey:
-        participated: "%{count} responses"
+        participated: '%{count} responses'
       models:
         post:
           fields:
@@ -115,12 +115,17 @@ en:
           all: All
           title: Filter
           menuAriaLabel: Filter feeds
-          post: Post
+          post: Posts
           posts: Posts
-          sharecare: Share&Care
+          post_singular: Post
+          sharecare: Share & Care
+          sharecare_singular: Share & Care
           hv: HV
-          calendar: Calendar
-          survey: Survey
+          hv_singular: HV
+          calendar: Meetings
+          calendar_singular: Meeting
+          survey: Surveys
+          survey_singular: Survey
           help: Help
         calendar:
           date_separator: to

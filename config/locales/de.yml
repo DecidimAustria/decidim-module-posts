@@ -54,7 +54,7 @@ de:
           select_a_registration_type: Bitte wählen Sie eine Registrierungsart aus
           select_an_iframe_access_level: Bitte wählen Sie eine iFrame-Zugriffsebene aus
       survey:
-        participated: "%{count} Antworten"
+        participated: '%{count} Antworten'
       models:
         feed:
           fields:
@@ -115,12 +115,17 @@ de:
           all: Alle
           title: Filter
           menuAriaLabel: Feeds filtern
-          post: Beitrag
+          post: Beiträge
           posts: Beiträge
+          post_singular: Beitrag
           sharecare: Share & Care
+          sharecare_singular: Share & Care
           hv: HV
-          calendar: Kalender
-          survey: Umfrage
+          hv_singular: HV
+          calendar: Meetings
+          calendar_singular: Meeting
+          survey: Umfragen
+          survey_singular: Umfrage
           help: Hilfe
         calendar:
           date_separator: bis
