@@ -139,7 +139,7 @@
 			&[data-content='hv'] {
 				--tw-ring-color: theme('colors.feeds.hv');
 				&.hv-highlight {
-					@apply bg-alert font-medium;
+					@apply bg-feeds-hv font-medium;
 					.card__grid-text {
 						@apply text-white;
 					}
@@ -151,7 +151,7 @@
 					@apply border-t-8 border-success;
 				}
 				.hv-icon {
-					@apply absolute -right-2 -top-2 bg-white fill-alert;
+					@apply absolute -right-2 -top-2 bg-white fill-feeds-hv;
 				}
 			}
 			&[data-content='survey'] {
