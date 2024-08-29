@@ -19,8 +19,8 @@
     <div class="card__grid-text p-0">
       <h2 class="h3"><%= meeting_title %></h2>
       <p><%= meeting_description %></p>
-      <div class="flex gap-4 mt-auto flex-wrap">
-        <div class="bg-background p-2 rounded-md font-bold w-fit">
+      <div class="flex flex-col gap-4 mt-auto flex-wrap">
+        <div class="bg-background p-2 rounded-md font-bold shrink">
           <time datetime="<%= meeting.start_time.iso8601 %>">
             <%= l(meeting.start_time, format: "%H:%M") %>
           </time>
@@ -33,7 +33,7 @@
           <% end %>
         </div>
         <% if meeting_location != '' %>
-          <div class="bg-background p-2 rounded-md font-bold w-fit">
+          <div class="bg-background p-2 rounded-md font-bold shrink">
             <%= meeting_location%>
           </div>
         <% end %>
