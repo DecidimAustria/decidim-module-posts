@@ -120,10 +120,10 @@ document.addEventListener('DOMContentLoaded', function () {
 	newCommentBtns.forEach((newCommentBtn) => {
 		newCommentBtn.addEventListener('click', function () {
 			const postId = newCommentBtn.getAttribute('data-post-id');
-			const showCommentBtnId = `comments-for-Post-${postId}`;
 			const modelType = newCommentBtn.getAttribute('data-model-type');
+			const showCommentBtnId = `comments-for-${modelType}-${postId}`;
 			const controlledDivId = `new_comment_for_${modelType}_${postId}`;
-			const commentsDivId = `comments-for-Post-${postId}-threads`;
+			const commentsDivId = `comments-for-${modelType}-${postId}-threads`;
 			const showCommentBtn = document.getElementById(showCommentBtnId);
 
 			const wasExpanded =
