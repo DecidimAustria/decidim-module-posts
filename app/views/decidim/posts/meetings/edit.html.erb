@@ -1,10 +1,17 @@
-<main class="max-w-screen-2xl mx-auto mb-8 p-4 lg:p-16">
-  <%= decidim_form_for(@form, url: Decidim::EngineRouter.main_proxy(posts_component_for_meeting(@meeting)).meeting_path(@meeting), html: { class: "meetings_form new_meeting" }) do |form| %>
-    <div class="form__wrapper p-0 gap-4">
-      <%= render partial: "decidim/posts/posts/meeting_form", locals: { form: form } %>
+<main class="feeds__container mb-8">
+  <div class="feeds__body">
+    <div class="card__grid-home w-full lg:grid-cols-8 xl:grid-cols-12">
+      <div class="card__grid feeds__feed" data-content="calendar">
+        <%= decidim_form_for(@form, url: Decidim::EngineRouter.main_proxy(posts_component_for_meeting(@meeting)).meeting_path(@meeting), html: { class: "meetings_form new_meeting" }) do |form| %>
+            <div class="form__wrapper p-0 gap-4">
+              <%= render partial: "decidim/posts/posts/meeting_form", locals: { form: form } %>
+            </div>
+            <div class="form__wrapper-block flex-col-reverse md:flex-row justify-between">
+              <%= form.submit "#{t("decidim.components.posts.newFeed.action")} #{icon('send-plane-line')}".html_safe, class: "sndBtn button button__sm button__transparent-primary", data: { disable: true } %>
+            </div>
+          <% end %>
+      </div>
     </div>
-    <div class="form__wrapper-block flex-col-reverse md:flex-row justify-between">
-      <%= form.submit "#{t("decidim.components.posts.newFeed.action")} #{icon('send-plane-line')}".html_safe, class: "sndBtn button button__sm button__transparent-primary", data: { disable: true } %>
-    </div>
-  <% end %>
+  </div>
+  <%= render partial: "decidim/posts/posts/sidebar.html" %>
 </main>
