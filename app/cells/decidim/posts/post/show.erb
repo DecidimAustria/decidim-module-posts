@@ -1,12 +1,9 @@
 <%= cell("decidim/posts/post_meta", post) %>
 <%= cell("decidim/posts/post_attachments", post) %>
-
 <div class="card__grid-text">
   <%= post_body %>
 </div>
-
 <% if post_category == 'survey' %>
   <%= render :survey %>
 <% end %>
-
 <%= cell("decidim/posts/post_comment", post) %>
