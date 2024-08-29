@@ -233,7 +233,7 @@
 				}
 			}
 			.feeds__feed_comments {
-				@apply px-1 pt-4 pb-2;
+				@apply pt-4 pb-2;
 				#comments {
 					.comments__header {
 						@apply flex-row justify-end h-8 items-center mb-0;
@@ -290,7 +290,7 @@
 		}
 	}
 	.feeds__aside {
-		@apply max-w-max min-w-24;
+		@apply shrink-0;
 		ul {
 			@apply flex flex-col space-y-4;
 			a {
