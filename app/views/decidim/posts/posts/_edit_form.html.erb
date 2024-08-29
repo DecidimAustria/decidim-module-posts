@@ -5,6 +5,7 @@
   <%= render partial: "decidim/posts/posts/attachment.html", locals: { form: form } %>
   <%= render partial: "decidim/posts/posts/admin_options.html", locals: { form: form, participatory_space: @post.component.participatory_space } %>
   <div class="form__wrapper-block flex-col-reverse md:flex-row justify-between">
+    <%= link_to t("decidim.components.posts.newFeed.cancel"), '/', class: "button button__sm button__transparent-secondary" %>
     <%= form.submit "#{t("decidim.components.posts.newFeed.action")} #{icon('send-plane-line')}".html_safe, data: { disable: true }, class: "sndBtn button button__sm button__transparent-primary" %>
   </div>
 <% end %>

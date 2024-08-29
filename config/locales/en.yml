@@ -93,6 +93,7 @@ en:
           highlighted: Highlight
           fixed: Fix on top
           action: Submit
+          cancel: Cancel
           login: Please sign in to create a new post
           loginLink: Sign in
           newSurvey:

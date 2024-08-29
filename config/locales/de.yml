@@ -93,6 +93,7 @@ de:
           highlighted: Hervorheben
           fixed: Oben Fixieren
           action: Senden
+          cancel: Abbrechen
           login: Bitte melden Sie sich an, um einen neuen Beitrag zu erstellen
           loginLink: Anmelden
           newSurvey:

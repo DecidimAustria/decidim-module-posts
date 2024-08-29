@@ -93,6 +93,7 @@ it:
           highlighted: Evidenzia
           fixed: Fissa in alto
           action: Spedisci
+          cancel: Annulla
           login: Accedi per creare un nuovo post
           loginLink: Accedi
           newSurvey:
