@@ -1,0 +1,162 @@
+---
+tr:
+  decidim:
+    posts:
+      admin:
+        posts:
+          index:
+            title: Posts
+            selected: seçilmiş
+          form:
+            title: Başlık
+            slug_help_html: 'URL slugları, bu feedi işaret eden URL''leri oluşturmak için kullanılır. Sadece harfleri, rakamları ve tireleri kabul eder ve bir harfle başlamalıdır. Örnek: %{url}'
+        actions:
+          preview: Önizleme
+      content_blocks:
+        feeds:
+          name: Feed
+      actions:
+        title: Eylemler
+        edit_post: Gönderiyi düzenle
+      posts:
+        hv:
+          status:
+            confirm: Evet
+            cancel: İptal
+            processing: İşleniyor
+            done: Tamamlandı
+            dialogBodyMsg: Mesajın durumu değiştirildi ve yorum işlevi kapatıldı
+            dialogBodyResponse: Lütfen bekleyin, mesajın durumu değiştiriliyor
+        create:
+          success: Gönderi başarıyla oluşturuldu
+          invalid: Gönderi oluşturma başarısız oldu
+        update:
+          success: Gönderi başarıyla güncellendi
+          invalid: Gönderi güncelleme başarısız oldu
+        destroy:
+          success: Gönderi başarıyla silindi
+          invalid: Gönderi silme başarısız oldu
+        back_to_feed: Feed'e geri dön
+        form:
+          question_too_short: Soru çok kısa
+        meeting_form:
+          address_help: 'Adres: Geocoder tarafından konumu bulmak için kullanılır'
+          available_slots_help: Sınırsız alanınız varsa bunu 0 olarak bırakın
+          create_as: Toplantı oluştur
+          location_help: 'Konum: kullanıcılara buluşulacak yeri ima eden mesaj'
+          location_hints_help: 'Konum ipuçları: ek bilgi. Örnek: Yüz yüze bir toplantıysa binanın katı veya kısıtlı erişime sahip çevrimiçi bir toplantıysa toplantı parolası.'
+          online_meeting_url_help: 'Bağlantı: katılımcıların toplantınıza doğrudan bağlanmasına izin verin'
+          registration_url_help: 'Bağlantı: katılımcıların kayıtlar için kullandığınız harici hizmete girmesine izin verin'
+          select_a_category: Lütfen bir kategori seçin
+          select_a_meeting_type: Lütfen bir toplantı türü seçin
+          select_a_registration_type: Lütfen bir kayıt türü seçin
+          disclaimer: 'Dikkat: Harici bir kayıt sistemi kullanarak, %{organization} organizatörlerinin kullanıcılardan harici hizmete sağlanan verilerden sorumlu olmadığını biliyorsunuz.'
+          iframe_embed_type_html: 'Yalnızca birkaç hizmet, aşağıdaki alanlardan toplantıya veya canlı etkinliğe gömülmesine izin verir: %{domains}'
+          select_an_iframe_access_level: Lütfen bir iframe erişim seviyesi seçin
+      survey:
+        participated: '%{count} yanıt'
+      models:
+        post:
+          fields:
+            title: Başlık
+            created_at: Oluşturulma tarihi
+            actions: Eylemler
+            endorsements: Beğeniler
+            comments: Yorumlar
+            status: Durum
+    components:
+      posts:
+        name: Gönderiler
+        settings:
+          global:
+            attachments_allowed?: Ekler izin verildi
+          step:
+            endorsements_enabled: Beğenileri etkinleştir
+            endorsements_blocked: Beğenileri engelle
+        content_blocks:
+          feeds:
+            title: Feed
+            name: Feed
+            description: Gönderiler, etkinlikler ve diğer içeriklerin bir beslemesi.
+          feeds_settings_form:
+            component: Gösterilecek feed
+        actions:
+          openMenu: Menüyü aç
+          edit: Düzenle
+          translate: Çevir
+          delete: Sil
+          deleteConfirmation: Bu gönderiyi silmek istediğinizden emin misiniz?
+        newFeed:
+          title: Yeni Feed
+          text: Gönderi
+          category: Kategori
+          highlighted: Vurgulanan
+          fixed: Üstte sabit
+          action: Gönder
+          cancel: İptal
+          login: Yeni bir gönderi oluşturmak için lütfen giriş yapın
+          loginLink: Giriş yap
+          newSurvey:
+            newQuestion: Yeni Soru
+            newQuestionResponse: Yeni bir soru eklendi
+            questionTitle: Soru girin
+            questionType: Soru tipi
+            questionTypes:
+              multiple_choice: Çoktan seçmeli
+              single_choice: Tek seçim
+            answerType: Cevap türü
+            multipleChoice: Çoktan seçmeli
+            singleChoice: Tek seçim
+            newAnswer: Yeni cevap
+            newAnswerResponse: Yeni bir cevap eklendi
+            answerTitle: Cevap girin
+            deleteQuestion: Soruyu sil
+            deleteAnswer: Cevabı sil
+        filter:
+          all: Hepsi
+          title: Filtre
+          menuAriaLabel: Feedleri filtrele
+          post: Gönderi
+          posts: Gönderiler
+          post_singular: Gönderi
+          sharecare: Share & Care
+          sharecare_singular: Share & Care
+          hv: HV
+          hv_singular: HV
+          calendar: Toplantılar
+          calendar_singular: Toplantı
+          survey: Anketler
+          survey_singular: Anket
+          help: Yardım
+        calendar:
+          date_separator: "arası"
+          start_time: Saat
+          end_time: Bitiş
+    shared:
+      flag_modal:
+        report: Rapor
+    admin:
+      feeds:
+        new:
+          title: Yeni Feed
+          create: Feed Oluştur
+        create:
+          success: Feed başarıyla oluşturuldu
+          invalid: Feed oluşturma başarısız oldu
+        edit:
+          title: Feed Düzenle
+          update: Feed Güncelle
+        update:
+          success: Feed başarıyla güncellendi
+          invalid: Feed güncelleme başarısız oldu
+      menu:
+        feeds: Feedler
+        feeds_submenu:
+          components: Bileşenler
+          info: Bu feed hakkında
+          moderations: Moderasyonlar
+          see_feed: Feed'i gör
+      titles:
+        feeds: Feedler
+      actions:
+        new_feed: Yeni Feed
