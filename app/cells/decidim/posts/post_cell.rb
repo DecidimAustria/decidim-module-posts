@@ -15,7 +15,12 @@ module Decidim
       end
 
       def post_body
-        translated_attribute model.body
+        post_presenter.body
+        # translated_attribute model.body
+      end
+
+      def post_presenter
+        @post_presenter ||= present(model)
       end
 
       def post_category

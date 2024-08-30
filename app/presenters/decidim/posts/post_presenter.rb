@@ -24,7 +24,7 @@ module Decidim
         super post.title, links, html_escape, all_locales, extras:
       end
 
-      def body(links: false, extras: true, strip_tags: false, all_locales: false)
+      def body(links: true, extras: true, strip_tags: false, all_locales: false)
         return unless post
 
         content_handle_locale(post.body, all_locales, extras, links, strip_tags)

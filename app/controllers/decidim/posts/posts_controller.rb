@@ -5,9 +5,12 @@
 module Decidim
   module Posts
     class PostsController < Decidim::Posts::ApplicationController
+      include Decidim::ApplicationHelper
       include FormFactory
       include Flaggable
       include Decidim::AttachmentsHelper
+      
+      helper_method :post_presenter, :form_presenter
 
       def index
         enforce_permission_to :read, :post
@@ -123,6 +126,14 @@ module Decidim
       end
 
       private
+
+      def post_presenter
+        @post_presenter ||= present(@post)
+      end
+
+      def form_presenter
+        @form_presenter ||= present(@form, presenter_class: Decidim::Posts::PostPresenter)
+      end
 
       def post_creation_params
         params[:post]
