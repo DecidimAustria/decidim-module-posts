@@ -42,121 +42,121 @@ sr:
         meeting_form:
           address_help: 'Adresa: koristi je Geocoder da pronađe lokaciju'
           available_slots_help: Ostavite na 0 ako imate neograničen broj slotova
-          create_as: Create meeting as
-          disclaimer: 'Disclaimer: By using an external registration system, you are aware that the organizers of %{organization} are not responsible for the data provided by the users to the external service.'
-          iframe_embed_type_html: 'Only a few services allow embedding in meeting or live event from the following domains: %{domains}'
-          location_help: 'Location: message directed to the users implying the spot to meet at'
-          location_hints_help: 'Location hints: additional info. Example: the floor of the building if it is an in-person meeting, or the meeting password if it is an online meeting with restricted access.'
-          online_meeting_url_help: 'Link: allow participants to connect directly to your meeting'
-          registration_url_help: 'Link: allow participants to go on the external service you are using for registrations'
-          select_a_category: Please select a category
-          select_a_meeting_type: Please select a meeting type
-          select_a_registration_type: Please select a registration type
-          select_an_iframe_access_level: Please select an iframe access level
+          create_as: Kreiraj sastanak kao
+          disclaimer: 'Odricanje: Korišćenjem spoljnog sistema za registraciju, svesni ste da organizatori %{organization} nisu odgovorni za podatke koje korisnici pružaju spoljnoj usluzi.'
+          iframe_embed_type_html: 'Samo nekoliko usluga omogućava ugrađivanje u sastanak ili događaj uživo sa sledećih domena: %{domains}'
+          location_help: 'Lokacija: poruka upućena korisnicima koja implicira mesto sastanka'
+          location_hints_help: 'Lokacione napomene: dodatne informacije. Primer: sprat zgrade ako je sastanak uživo, ili lozinka za sastanak ako je online sastanak sa ograničenim pristupom.'
+          online_meeting_url_help: 'Link: omogućite učesnicima da se direktno povežu na vaš sastanak'
+          registration_url_help: 'Link: omogućite učesnicima da odu na spoljnu uslugu koju koristite za registracije'
+          select_a_category: Molimo izaberite kategoriju
+          select_a_meeting_type: Molimo izaberite tip sastanka
+          select_a_registration_type: Molimo izaberite tip registracije
+          select_an_iframe_access_level: Molimo izaberite nivo pristupa iframe-u
       survey:
-        participated: '%{count} responses'
+        participated: '%{count} odgovora'
       models:
         post:
           fields:
-            title: Title
-            created_at: Created at
-            actions: Actions
-            endorsements: Likes
-            comments: Comments
+            title: Naslov
+            created_at: Kreirano
+            actions: Akcije
+            endorsements: Sviđanja
+            comments: Komentari
             status: Status
     components:
       posts:
-        name: Posts
+        name: Postovi
         settings:
           global:
-            attachments_allowed?: Attachments allowed
+            attachments_allowed?: Dozvoljeni prilozi
           step:
-            endorsements_enabled: Enable endorsements
-            endorsements_blocked: Endorsements blocked
+            endorsements_enabled: Omogući sviđanja
+            endorsements_blocked: Blokirana sviđanja
         content_blocks:
           feeds:
             title: Feed
             name: Feed
-            description: A feed of posts, events, and other content.
+            description: Feed postova, događaja i drugog sadržaja.
           feeds_settings_form:
-            component: Feed to display
+            component: Feed za prikaz
         actions:
-          openMenu: Open menu
-          edit: Edit
-          translate: Translate
-          delete: Delete
-          deleteConfirmation: Are you sure you want to delete this post?
+          openMenu: Otvori meni
+          edit: Uredi
+          translate: Prevedi
+          delete: Obriši
+          deleteConfirmation: Da li ste sigurni da želite da obrišete ovaj post?
         newFeed:
-          title: New Feed
+          title: Novi Feed
           text: Post
-          category: Choose a category
-          highlighted: Highlight
-          fixed: Fix on top
-          action: Submit
-          cancel: Cancel
-          login: Please sign in to create a new post
-          loginLink: Sign in
+          category: Izaberite kategoriju
+          highlighted: Istakni
+          fixed: Fiksiraj na vrhu
+          action: Pošalji
+          cancel: Otkaži
+          login: Molimo prijavite se da kreirate novi post
+          loginLink: Prijavite se
           newSurvey:
-            newQuestion: New Question
-            newQuestionResponse: A new question has been added
-            questionTitle: Enter question
-            questionType: Question typello
+            newQuestion: Novo pitanje
+            newQuestionResponse: Dodato je novo pitanje
+            questionTitle: Unesite pitanje
+            questionType: Tip pitanja
             questionTypes:
-              multiple_choice: Multiple choice
-              single_choice: Single choice
-            answerType: Answer type
-            multipleChoice: Multiple choice
-            singleChoice: Single choice
-            newAnswer: New answer
-            newAnswerResponse: A new answer has been added
-            answerTitle: Enter answer
-            deleteQuestion: Delete question
-            deleteAnswer: Delete answer
+              multiple_choice: Višestruki izbor
+              single_choice: Jedan izbor
+            answerType: Tip odgovora
+            multipleChoice: Višestruki izbor
+            singleChoice: Jedan izbor
+            newAnswer: Novi odgovor
+            newAnswerResponse: Dodan je novi odgovor
+            answerTitle: Unesite odgovor
+            deleteQuestion: Obriši pitanje
+            deleteAnswer: Obriši odgovor
         filter:
-          all: All
+          all: Sve
           title: Filter
-          menuAriaLabel: Filter feeds
-          post: Posts
-          posts: Posts
+          menuAriaLabel: Filter feedova
+          post: Postovi
+          posts: Postovi
           post_singular: Post
-          sharecare: Share & Care
-          sharecare_singular: Share & Care
+          sharecare: Podeli & Brini
+          sharecare_singular: Podeli & Brini
           hv: HV
           hv_singular: HV
-          calendar: Meetings
-          calendar_singular: Meeting
-          survey: Surveys
-          survey_singular: Survey
-          help: Help
+          calendar: Sastanci
+          calendar_singular: Sastanak
+          survey: Ankete
+          survey_singular: Anketa
+          help: Pomoć
         calendar:
-          date_separator: to
-          start_time: At
-          end_time: Until
+          date_separator: do
+          start_time: U
+          end_time: Do
     shared:
       flag_modal:
-        report: Report
+        report: Prijavi
     admin:
       feeds:
         new:
-          title: New Feed
-          create: Create Feed
+          title: Novi Feed
+          create: Kreiraj Feed
         create:
-          success: Feed created successfully
-          invalid: Feed creation failed
+          success: Feed uspešno kreiran
+          invalid: Kreiranje feeda nije uspelo
         edit:
-          title: Edit Feed
-          update: Update Feed
+          title: Uredi Feed
+          update: Ažuriraj Feed
         update:
-          success: Feed updated successfully
-          invalid: Feed update failed
+          success: Feed uspešno ažuriran
+          invalid: Ažuriranje feeda nije uspelo
       menu:
-        feeds: Feeds
+        feeds: Feedovi
         feeds_submenu:
-          components: Components
-          info: About this feed
-          moderations: Moderations
-          see_feed: See feed
+          components: Komponente
+          info: O ovom feedu
+          moderations: Moderacije
+          see_feed: Pogledaj feed
       titles:
-        feeds: Feeds
+        feeds: Feedovi
       actions:
-        new_feed: New Feed
+        new_feed: Novi Feed
