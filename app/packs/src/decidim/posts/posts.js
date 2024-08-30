@@ -21,16 +21,16 @@ document.addEventListener('DOMContentLoaded', function () {
 			let isExpanded = opener.getAttribute('aria-expanded') === 'true';
 			opener.setAttribute('aria-expanded', !isExpanded);
 			newFeed.classList.toggle('open');
-			if (!isExpanded) {
-				newFeed.showModal(); // Open newFeed as a dialog
-			} else {
-				newFeed.close(); // Close the dialog if it's already open
-			}
+			// if (!isExpanded) {
+			// 	newFeed.showModal(); // Open newFeed as a dialog
+			// } else {
+			// 	newFeed.close(); // Close the dialog if it's already open
+			// }
 		});
 	});
 
 	function closeDialog() {
-		newFeed.close();
+		// newFeed.close();
 		newFeedOpener.forEach(function (opener) {
 			opener.setAttribute('aria-expanded', 'false');
 			newFeed.classList.remove('open');

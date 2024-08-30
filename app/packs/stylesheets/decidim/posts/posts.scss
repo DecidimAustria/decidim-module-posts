@@ -4,9 +4,10 @@
 
 #feeds__feed_newElement {
 	--tw-ring-color: theme('colors.white');
-	@apply p-4 gap-2 w-full shadow-feedBox rounded lg:max-w-screen-md;
+	@apply p-4 gap-2 w-full shadow-feedBox rounded lg:max-w-screen-md hidden;
 	&.open {
 		--tw-ring-color: theme('colors.feeds.sidebar');
+		@apply block;
 		.circle {
 			svg {
 				@apply rotate-0 motion-safe:transition-transform;

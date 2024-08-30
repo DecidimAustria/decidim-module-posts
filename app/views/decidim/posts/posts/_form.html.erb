@@ -1,5 +1,11 @@
 <% if Decidim::Component.find_by(manifest_name: "posts") %>
-  <dialog id="feeds__feed_newElement" class="feeds__feed_newElement_modal">
+  <div id="feeds__feed_newElement" class="feeds__feed_newElement_modal" role="dialog" Showing /workspace/decidim-module-posts/app/views/decidim/posts/posts/_post.html.erb where line #6 raised:
+
+undefined method `html_safe' for ["Et impedit voluptates. Ex modi eaque. Occaecati vero eveniet.", "Dolorem blanditiis fugiat. Id qui incidunt. Quia neque vero.", "Eligendi debitis explicabo. Et rerum sed. Voluptas et iusto."]:Array
+
+        content = renderer.render(links:, extras:).html_safe
+                                                  ^^^^^^^^^^
+Did you mean?  html_safe?>
     <div class="feeds__feed_newElement_modal_content">
       <div class="close-button flex justify-end pb-2">
         <button class="btn circle feeds__feed_newElement-opener" aria-expanded="false" aria-controls="newElementForm" type="button">
@@ -64,5 +70,5 @@
         </div>
       <% end %>
     </div>
-  </dialog>
+  </div>
 <% end %>
