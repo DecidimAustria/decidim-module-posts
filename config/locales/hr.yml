@@ -18,6 +18,8 @@ hr:
       actions:
         title: Akcije
         edit_post: Uredi post
+      post_comment:
+        comment: Komentar
       posts:
         host:
           status:
@@ -132,6 +134,10 @@ hr:
           date_separator: do
           start_time: U
           end_time: Do
+      add_comment_form:
+        form:
+          submit_root_comment: Pošalji komentar
+          submit_reply: Pošalji odgovor
     shared:
       flag_modal:
         report: Prijavi

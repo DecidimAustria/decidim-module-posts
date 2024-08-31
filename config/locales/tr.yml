@@ -18,6 +18,8 @@ tr:
       actions:
         title: Eylemler
         edit_post: Gönderiyi düzenle
+      post_comment:
+        comment: Yorum
       posts:
         host:
           status:
@@ -132,6 +134,10 @@ tr:
           date_separator: "arası"
           start_time: Saat
           end_time: Bitiş
+      add_comment_form:
+        form:
+          submit_root_comment: Yorumu gönder
+          submit_reply: Yanıtı gönder
     shared:
       flag_modal:
         report: Rapor

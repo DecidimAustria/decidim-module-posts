@@ -18,6 +18,8 @@ de:
       actions:
         title: Aktionen
         edit_post: Beitrag bearbeiten
+      post_comment:
+        comment: Kommentieren
       posts:
         host:
           status:

@@ -18,6 +18,8 @@ bs:
       actions:
         title: Akcije
         edit_post: Uredi post
+      post_comment:
+        comment: Komentar
       posts:
         host:
           status:
