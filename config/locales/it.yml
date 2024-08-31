@@ -19,7 +19,7 @@ it:
         title: Azioni
         edit_post: Modifica post
       posts:
-        hv:
+        host:
           status:
             confirm: SI
             cancel: Annulla
@@ -121,8 +121,8 @@ it:
           post_singular: Post
           sharecare: Share & Care
           sharecare_singular: Share & Care
-          hv: HV
-          hv_singular: HV
+          host: Host
+          host_singular: Host
           calendar: Incontri
           calendar_singular: Incontro
           survey: Questionario

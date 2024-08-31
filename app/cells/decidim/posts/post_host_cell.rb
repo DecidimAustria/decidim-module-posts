@@ -2,7 +2,7 @@
 
 module Decidim
   module Posts
-    class PostHvCell < Decidim::ViewModel
+    class PostHostCell < Decidim::ViewModel
       include Cell::ViewModel::Partial
       include ActiveModel::Conversion
       include PostCellsHelper
@@ -25,7 +25,7 @@ module Decidim
         model.category
       end
 
-      # post status / for HV post
+      # post status / for host post
       # 0 default
       # 1 bearbeitung
       # 2 erledigt
@@ -50,9 +50,9 @@ module Decidim
       def post_status_text
         case post_status
           when 1
-            I18n.t('decidim.posts.posts.hv.status.processing')
+            I18n.t('decidim.posts.posts.host.status.processing')
           when 2
-            I18n.t('decidim.posts.posts.hv.status.done')
+            I18n.t('decidim.posts.posts.host.status.done')
           end
       end
 

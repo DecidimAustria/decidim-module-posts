@@ -118,7 +118,7 @@ module Decidim
         #enforce_permission_to :change_post_status, post: @post
 
         if @post.update(status: params[:status], enable_comments: false)
-          render json: { message: 'Status updated successfully', new_content: cell("decidim/posts/post_hv", @post).call(:show) }, status: :ok
+          render json: { message: 'Status updated successfully', new_content: cell("decidim/posts/post_host", @post).call(:show) }, status: :ok
         else
           render json: { error: 'Failed to update status' }, status: :unprocessable_entity
         end

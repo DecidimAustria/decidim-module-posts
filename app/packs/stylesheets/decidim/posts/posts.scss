@@ -37,11 +37,11 @@
 					@apply outline outline-offset-2 outline-feeds-post;
 				}
 			}
-			&[data-category='hv'] {
-				@apply border-feeds-hv focus:outline-feeds-hv;
+			&[data-category='host'] {
+				@apply border-feeds-host focus:outline-feeds-host;
 				&:hover,
 				&.active {
-					@apply outline outline-offset-2 outline-feeds-hv;
+					@apply outline outline-offset-2 outline-feeds-host;
 				}
 			}
 			&[data-category='sharecare'] {
@@ -137,22 +137,22 @@
 			&[data-content='sharecare'] {
 				--tw-ring-color: theme('colors.feeds.sharecare');
 			}
-			&[data-content='hv'] {
-				--tw-ring-color: theme('colors.feeds.hv');
-				&.hv-highlight {
-					@apply bg-feeds-hv font-medium;
+			&[data-content='host'] {
+				--tw-ring-color: theme('colors.feeds.host');
+				&.host-highlight {
+					@apply bg-feeds-host font-medium;
 					.card__grid-text {
 						@apply text-white;
 					}
 				}
-				&.feeds__feed_hv-handling {
+				&.feeds__feed_host-handling {
 					@apply border-t-8 border-warning;
 				}
-				&.feeds__feed_hv-complete {
+				&.feeds__feed_host-complete {
 					@apply border-t-8 border-success;
 				}
-				.hv-icon {
-					@apply absolute -right-2 -top-2 bg-white fill-feeds-hv;
+				.host-icon {
+					@apply absolute -right-2 -top-2 bg-white fill-feeds-host;
 				}
 			}
 			&[data-content='survey'] {
@@ -310,9 +310,9 @@
 							@apply fill-feeds-sharecare;
 						}
 					}
-					&[data-filter='hv'] {
+					&[data-filter='host'] {
 						svg {
-							@apply fill-feeds-hv;
+							@apply fill-feeds-host;
 						}
 					}
 					&[data-filter='survey'] {
@@ -326,7 +326,7 @@
 						}
 					}
 				}
-				&[data-filter='hv'] {
+				&[data-filter='host'] {
 					@apply mt-8;
 				}
 			}

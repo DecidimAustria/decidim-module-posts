@@ -1,6 +1,6 @@
 import { initSurvey } from './survey.js';
 import carousel from './carousel.js';
-import { hv_status } from './hv_status.js';
+import { host_status } from './host_status.js';
 
 document.addEventListener('DOMContentLoaded', function () {
 	console.log('js loaded');
@@ -189,5 +189,5 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	initSurvey();
 	carousel.init();
-	hv_status();
+	host_status();
 });

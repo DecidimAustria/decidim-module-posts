@@ -19,7 +19,7 @@ sr:
         title: Akcije
         edit_post: Uredi post
       posts:
-        hv:
+        host:
           status:
             confirm: Da
             cancel: Otkaži
@@ -121,8 +121,8 @@ sr:
           post_singular: Post
           sharecare: Podeli & Brini
           sharecare_singular: Podeli & Brini
-          hv: HV
-          hv_singular: HV
+          host: Domaćin
+          host_singular: Domaćin
           calendar: Sastanci
           calendar_singular: Sastanak
           survey: Ankete

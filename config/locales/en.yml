@@ -19,7 +19,7 @@ en:
         title: Actions
         edit_post: Edit post
       posts:
-        hv:
+        host:
           status:
             confirm: Yes
             cancel: Cancel
@@ -121,8 +121,8 @@ en:
           post_singular: Post
           sharecare: Share & Care
           sharecare_singular: Share & Care
-          hv: HV
-          hv_singular: HV
+          host: Host
+          host_singular: Host
           calendar: Meetings
           calendar_singular: Meeting
           survey: Surveys

@@ -1,4 +1,4 @@
-export function hv_status() {
+export function host_status() {
   const changeStatusButtons = document.querySelectorAll('.changeStatusButton');
 	changeStatusButtons.forEach(function (button) {
 		button.addEventListener('click', function () {
@@ -40,7 +40,7 @@ export function hv_status() {
 							window.translations.dialog.dialogBodyMsg;
 						const postElement = document.getElementById(`feeds_post-${postId}`);
 						postElement.innerHTML = response.new_content;
-            hv_status();
+            host_status();
 					},
 					error: function (error) {
 						console.error('Error changing status:', error);

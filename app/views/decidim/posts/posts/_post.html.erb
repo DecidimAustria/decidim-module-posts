@@ -1,7 +1,7 @@
 <% if post.is_a?(Decidim::Posts::Post) %>
-  <div id="feeds_post-<%= post.id %>" class="card__grid feeds__feed <%= 'hv-highlight' if post.highlighted %>" data-content="<%=post.category%>" <%= 'aria-live="polite"' if post.category == 'hv' %>>
-    <% if post.category == 'hv' %>
-      <%= cell("decidim/posts/post_hv", post) %>
+  <div id="feeds_post-<%= post.id %>" class="card__grid feeds__feed <%= 'host-highlight' if post.highlighted %>" data-content="<%= post.category %>" <%= 'aria-live="polite"' if post.category == 'host' %>>
+    <% if post.category == 'host' %>
+      <%= cell("decidim/posts/post_host", post) %>
     <% else %>
       <%= cell("decidim/posts/post", post) %>
     <% end %>

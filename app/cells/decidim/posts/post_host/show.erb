@@ -2,7 +2,7 @@
 
 <% unless post_highlighted %>
   <% if official_post %>
-    <%= icon "home-gear-line", class: 'hv-icon' %>
+    <%= icon "home-gear-line", class: 'host-icon' %>
   <% end %>
 <% end %>
 
@@ -32,12 +32,12 @@
     <div class="flex flex-col py-4 px-2 justify-center items-center gap-4">
       <% if post_status != 1 %>
         <button class="button button__sm button__transparent-primary changeStatusButton" data-post-status="1" data-post-id="<%= post.id %>" aria-controls="confirmationModal" aria-haspopup="dialog">
-          <%= t('decidim.posts.posts.hv.status.processing') %>
+          <%= t('decidim.posts.posts.host.status.processing') %>
           <%= icon('arrow-right-line') %>
         </button>
       <% end %>
       <button class="button button__sm button__transparent-primary changeStatusButton" data-post-status="2" data-post-id="<%= post.id %>" aria-controls="confirmationModal" aria-haspopup="dialog">
-        <%= t('decidim.posts.posts.hv.status.done') %>
+        <%= t('decidim.posts.posts.host.status.done') %>
         <%= icon('arrow-right-line') %>
       </button>
     </div>

@@ -19,7 +19,7 @@ tr:
         title: Eylemler
         edit_post: Gönderiyi düzenle
       posts:
-        hv:
+        host:
           status:
             confirm: Evet
             cancel: İptal
@@ -121,8 +121,8 @@ tr:
           post_singular: Gönderi
           sharecare: Share & Care
           sharecare_singular: Share & Care
-          hv: HV
-          hv_singular: HV
+          host: Ev sahibi
+          host_singular: Ev sahibi
           calendar: Toplantılar
           calendar_singular: Toplantı
           survey: Anketler
