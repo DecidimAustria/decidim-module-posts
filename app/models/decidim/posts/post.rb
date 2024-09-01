@@ -59,10 +59,12 @@ module Decidim
           if locale == "machine_translations"
             truncated_body[locale] = {}
             translations.each do |key, value|
-              truncated_body[locale][key] = value.first.truncate_words(4)
+              next if value.class != String
+              truncated_body[locale][key] = value.truncate_words(4)
             end
           else
-            truncated_body[locale] = translations.first.truncate_words(4)
+            next if translations.class != String
+            truncated_body[locale] = translations.truncate_words(4)
           end
         end
         truncated_body
