@@ -96,6 +96,10 @@ module Decidim
         answer_ids = questions.includes(:answers).map(&:answers).flatten.pluck(:id)
         @survey_responses_count ||= UserAnswer.where(decidim_posts_answer_id: answer_ids).distinct.count(:decidim_user_id)
       end
+
+      def users_to_notify_on_comment_created
+        [author]
+      end
     end
   end
 end
