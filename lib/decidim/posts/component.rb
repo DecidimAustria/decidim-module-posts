@@ -46,7 +46,7 @@ Decidim.register_component(:posts) do |component|
     # resource.card = "decidim/posts/posts"
     # resource.reported_content_cell = "decidim/posts/reported_content"
     # resource.actions = %w(endorse vote amend comment vote_comment)
-    # resource.searchable = true
+    resource.searchable = true
   end
 
   # component.register_stat :some_stat do |context, start_at, end_at|
