@@ -20,7 +20,7 @@ module Decidim
                  .filter_category(params[:filter_post_category])
                  .order(created_at: :desc)
                  .includes(:attachments)
-                 .limit(10)
+                 .limit(20)
 
         # @form = form(Decidim::Posts::PostForm).from_params(params, extra_context)
         # @meeting_form = meeting_form
