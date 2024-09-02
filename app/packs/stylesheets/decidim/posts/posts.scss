@@ -4,7 +4,7 @@
 
 #feeds__feed_newElement {
 	--tw-ring-color: theme('colors.white');
-	@apply p-4 gap-2 w-full shadow-feedBox rounded lg:max-w-screen-md hidden fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 bg-white w-[calc(100%-2rem)];
+	@apply p-4 gap-2 w-full shadow-feedBox rounded lg:max-w-screen-md hidden fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 bg-white w-[calc(100%-2rem)] h-[calc(100%-2rem)] overflow-auto;
 	&.open {
 		--tw-ring-color: theme('colors.feeds.sidebar');
 		@apply block;
@@ -128,6 +128,11 @@
 		@apply flex-grow flex flex-wrap gap-4 items-start;
 		.feeds__feed {
 			@apply p-2 gap-2 ring-1 hover:cursor-default md:col-start-1 md:col-end-4 lg:col-start-2 lg:col-end-8 xl:col-start-2 xl:col-end-10;
+			.card__grid-text {
+				a {
+					@apply break-words break-all;
+				}
+			}
 			&[data-content] {
 				@apply shadow-feedBox;
 			}
