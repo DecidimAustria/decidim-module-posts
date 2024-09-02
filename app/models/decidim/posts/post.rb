@@ -46,11 +46,7 @@ module Decidim
         index_on_update: true
       )
 
-      def self.filter_category(category)
-        return self if category.blank?
-
-        where(category:)
-      end
+      scope :filter_category, ->(category) { where(category: category) if category.present? }
 
       # Posts don't have a title, but Commentable requires it, so let's extract the first words of each translation of the body
       def title
