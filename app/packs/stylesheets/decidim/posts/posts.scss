@@ -4,7 +4,7 @@
 
 #feeds__feed_newElement {
 	--tw-ring-color: theme('colors.white');
-	@apply p-4 gap-2 w-full shadow-feedBox rounded lg:max-w-screen-md hidden fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 bg-white w-[calc(100%-2rem)] h-[calc(100%-2rem)] overflow-auto;
+	@apply p-4 gap-2 w-full shadow-feedBox rounded lg:max-w-screen-md hidden fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 bg-white w-[calc(100%-2rem)] h-[calc(100%-2rem)] max-h-[600px] overflow-auto;
 	&.open {
 		--tw-ring-color: theme('colors.feeds.sidebar');
 		@apply block;
