@@ -130,7 +130,7 @@
 			@apply p-2 gap-2 ring-1 hover:cursor-default md:col-start-1 md:col-end-4 lg:col-start-2 lg:col-end-8 xl:col-start-2 xl:col-end-10;
 			.card__grid-text {
 				a {
-					@apply break-words break-all;
+					@apply break-words break-all underline motion-safe:transition-colors hover:text-feeds-notification hover:no-underline;
 				}
 			}
 			&[data-content] {
@@ -305,6 +305,9 @@
 					@apply w-[24px] h-auto fill-feeds-sidebar;
 				}
 				&.active {
+					span{
+						@apply font-bold;
+					}
 					&[data-filter='post'] {
 						svg {
 							@apply fill-feeds-post;

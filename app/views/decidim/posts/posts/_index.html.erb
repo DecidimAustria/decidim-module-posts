@@ -2,11 +2,28 @@
   <div class="feeds__body">
     <div class="card__grid-home w-full lg:grid-cols-8 xl:grid-cols-12">
       <% if current_user %>
-        <div class="card__grid feeds__feed feeds__feed_newElement">
+        <div class="card__grid feeds__feed feeds__feed_newElement flex-row justify-between">
           <button class="btn circle feeds__feed_newElement-opener" aria-expanded="false" aria-controls="newElementForm" type="button">
             <%= icon "close-circle-line" %>
             <span class="sr-only"><%= t("decidim.components.posts.newFeed.title") %></span>
           </button>
+          <% if params[:filter_post_category] %>
+            <% filters = [
+              { filter: 'post', icon: 'home-5-line' },
+              { filter: 'sharecare', icon: 'shake-hands-line' },
+              { filter: 'calendar', icon: 'calendar-line' },
+              { filter: 'survey', icon: 'draft-line' },
+              { filter: 'host', icon: 'home-gear-line' }
+            ] %>
+            <% selected_filter = filters.find { |f| f[:filter] == params[:filter_post_category] } %>
+            <% if selected_filter %>
+              <div class="flex gap-1 items-center hidden">
+                Sie sehen: 
+                <%= icon selected_filter[:icon] %>
+                <%= t("decidim.components.posts.filter.#{selected_filter[:filter]}") %>
+              </div>
+            <% end %>
+          <% end %>
         </div>
       <% end %>
       <%= render partial: "decidim/posts/posts/feed.html" %>
