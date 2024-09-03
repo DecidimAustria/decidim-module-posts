@@ -162,3 +162,7 @@ en:
         feeds: Feeds
       actions:
         new_feed: New Feed
+  layouts:
+    decidim:
+      announcements:
+        view_more: View more

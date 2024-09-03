@@ -162,3 +162,7 @@ bs:
         feeds: Feedovi
       actions:
         new_feed: Novi Feed
+  layouts:
+    decidim:
+      announcements:
+        view_more: Pogledaj više

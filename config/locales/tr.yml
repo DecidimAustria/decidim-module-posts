@@ -9,7 +9,7 @@ tr:
             selected: seçilmiş
           form:
             title: Başlık
-            slug_help_html: 'URL slugları, bu feedi işaret eden URL''leri oluşturmak için kullanılır. Sadece harfleri, rakamları ve tireleri kabul eder ve bir harfle başlamalıdır. Örnek: %{url}'
+            slug_help_html: "URL slugları, bu feedi işaret eden URL'leri oluşturmak için kullanılır. Sadece harfleri, rakamları ve tireleri kabul eder ve bir harfle başlamalıdır. Örnek: %{url}"
         actions:
           preview: Önizleme
       content_blocks:
@@ -131,7 +131,7 @@ tr:
           survey_singular: Anket
           help: Yardım
         calendar:
-          date_separator: "arası"
+          date_separator: 'arası'
           start_time: Saat
           end_time: Bitiş
       add_comment_form:
@@ -166,3 +166,7 @@ tr:
         feeds: Feedler
       actions:
         new_feed: Yeni Feed
+  layouts:
+    decidim:
+      announcements:
+        view_more: Daha fazla gör
