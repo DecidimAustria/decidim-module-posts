@@ -146,7 +146,7 @@
 				--tw-ring-color: theme('colors.feeds.host');
 				&.host-highlight {
 					@apply bg-feeds-host font-medium;
-					.card__grid-text {
+					.content-block__description {
 						@apply text-white;
 					}
 				}
