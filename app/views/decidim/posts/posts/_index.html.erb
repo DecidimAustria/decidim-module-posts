@@ -17,11 +17,12 @@
             ] %>
             <% selected_filter = filters.find { |f| f[:filter] == params[:filter_post_category] } %>
             <% if selected_filter %>
-              <div class="flex gap-1 items-center hidden">
+              <!--<div class="flex gap-1 items-center hidden">
                 Sie sehen: 
                 <%= icon selected_filter[:icon] %>
                 <%= t("decidim.components.posts.filter.#{selected_filter[:filter]}") %>
               </div>
+              <-->
             <% end %>
           <% end %>
         </div>
