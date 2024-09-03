@@ -52,7 +52,7 @@ module Decidim
           current_user: @controller.try(:current_user),
           current_participatory_space: @controller.try(:current_participatory_space)
         }
-        @feeds_component = Decidim::Component.find_by(manifest_name: "posts")
+        @feeds_component = current_component.participatory_space.components.find_by(manifest_name: "posts")
         @target_participatory_space = @feeds_component.participatory_space
         @form = meeting_form.from_model(meeting).with_context(@context)
       end

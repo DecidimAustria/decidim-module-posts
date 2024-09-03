@@ -1,4 +1,4 @@
-<% if Decidim::Component.find_by(manifest_name: "posts") %>
+<% if posts_component = Decidim::Component.where(manifest_name: "posts").select {|c| c.organization == current_organization }.first %>
   <div id="feeds__feed_newElement" class="feeds__feed_newElement_modal" role="dialog" aria-label="<%= t("decidim.components.posts.newFeed.title") %>">
     <div class="feeds__feed_newElement_modal_content">
       <div class="close-button flex justify-end pb-2">
@@ -21,7 +21,7 @@
           <% end %>
         </div>
 
-        <% target_participatory_space = Decidim::Component.find_by(manifest_name: "posts").participatory_space %>
+        <% target_participatory_space = posts_component.participatory_space %>
         <%
           context = {
             current_organization: @controller.try(:current_organization),
@@ -30,7 +30,7 @@
             current_participatory_space: @controller.try(:current_participatory_space)
           }
         %>
-        <%= decidim_form_for(Decidim::Meetings::MeetingForm.from_params(params).with_context(context), url: Decidim::EngineRouter.main_proxy(Decidim::Component.find_by(manifest_name: "posts")).meetings_path, html: { class: "meetings_form new_meeting" }) do |form| %>
+        <%= decidim_form_for(Decidim::Meetings::MeetingForm.from_params(params).with_context(context), url: Decidim::EngineRouter.main_proxy(posts_component).meetings_path, html: { class: "meetings_form new_meeting" }) do |form| %>
           <div class="form__wrapper p-0 gap-4">
             <%= render partial: "decidim/posts/posts/meeting_form", locals: { form: form } %>
           </div>
@@ -39,7 +39,7 @@
           </div>
         <% end %>
 
-        <%= decidim_form_for(Decidim::Posts::PostForm.from_params(params).with_context(context), url: Decidim::EngineRouter.main_proxy(target_participatory_space.components.find_by(manifest_name: "posts")).posts_path, html: { class: "posts_form new_post" }) do |form| %>
+        <%= decidim_form_for(Decidim::Posts::PostForm.from_params(params).with_context(context), url: Decidim::EngineRouter.main_proxy(posts_component).posts_path, html: { class: "posts_form new_post" }) do |form| %>
           <div class="form__wrapper p-0">
             <%= render partial: "decidim/posts/posts/post_form", locals: { form: form } %>
           </div>
