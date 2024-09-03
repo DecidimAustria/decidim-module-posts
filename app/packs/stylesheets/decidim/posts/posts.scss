@@ -305,7 +305,7 @@
 					@apply w-[24px] h-auto fill-feeds-sidebar;
 				}
 				&.active {
-					span{
+					span {
 						@apply font-bold;
 					}
 					&[data-filter='post'] {
@@ -364,4 +364,16 @@
 // fix bottom menu overlapping content on desktops
 #content {
 	@apply lg:mb-28;
+}
+
+// long text cut off
+.content-block__description[data-component='accordion']
+	[id*='panel'][aria-hidden='true']::after,
+.content-block__description[data-component='accordion']
+	[id*='panel'][aria-hidden='true']::before {
+	content: none;
+}
+
+.content-block__description[data-component='accordion'] button {
+	margin-block-start: 1rem;
 }
