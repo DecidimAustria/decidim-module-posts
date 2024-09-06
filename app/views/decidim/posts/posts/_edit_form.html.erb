@@ -1,6 +1,11 @@
 <%= decidim_form_for(@form, url: Decidim::EngineRouter.main_proxy(@post.component).post_path(@post), method: :patch, html: { class: "posts_form new_post" }) do |form| %>
   <div class="form__wrapper p-0">
-    <%= render partial: "decidim/posts/posts/post_form", locals: { form: form } %>
+    <%#= render partial: "decidim/posts/posts/post_form", locals: { form: form } %>
+    <%= form.hidden_field :category, id: "post_edit_category" %>
+    <%= form.label :body do %>
+      <span><%= t("decidim.components.posts.newFeed.text") %></span>
+      <%= form.text_area :body, rows: 4, 'aria-required': true, label: false %>
+    <% end %>
   </div>
   <%= render partial: "decidim/posts/posts/attachment.html", locals: { form: form } %>
   <%= render partial: "decidim/posts/posts/admin_options.html", locals: { form: form, participatory_space: @post.component.participatory_space } %>
