@@ -148,6 +148,12 @@
 					@apply bg-feeds-host font-medium;
 					.content-block__description {
 						@apply text-white;
+						button {
+							@apply text-white;
+						}
+					}
+					button.openButton {
+						@apply text-white;
 					}
 				}
 				&.feeds__feed_host-handling {
