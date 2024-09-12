@@ -15,7 +15,7 @@ module Decidim
       end
 
       def post_body
-        post_presenter.body
+        simple_format(post_presenter.body)
         # translated_attribute model.body
       end
 
