@@ -49,7 +49,7 @@ module Decidim
 
       def post_deleteable_by?(user)
         if post.component.manifest_name == "meetings"
-          false
+          post.withdrawable_by?(user)
         else
           post.deleteable_by?(current_user)
         end
