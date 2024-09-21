@@ -55,6 +55,7 @@ de:
           select_a_meeting_type: Bitte eine Meeting-Art auswählen
           select_a_registration_type: Bitte wählen Sie eine Registrierungsart aus
           select_an_iframe_access_level: Bitte wählen Sie eine iFrame-Zugriffsebene aus
+        load_more: Mehr laden
       survey:
         participated: '%{count} Antworten'
       models:

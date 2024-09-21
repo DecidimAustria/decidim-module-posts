@@ -23,7 +23,9 @@ module Decidim
         # 
   
         root to: "posts#index"
-        resources :posts
+        resources :posts do
+          get :load_more, on: :collection
+        end
         resources :meetings do
           member do
             put :withdraw

@@ -18,7 +18,7 @@
             <% selected_filter = filters.find { |f| f[:filter] == params[:filter_post_category] } %>
             <% if selected_filter %>
               <!--<div class="flex gap-1 items-center hidden">
-                Sie sehen: 
+                Sie sehen:
                 <%= icon selected_filter[:icon] %>
                 <%= t("decidim.components.posts.filter.#{selected_filter[:filter]}") %>
               </div>
@@ -27,8 +27,12 @@
           <% end %>
         </div>
       <% end %>
-      <%= render partial: "decidim/posts/posts/feed.html" %>
+
+      <%= render partial: "decidim/posts/posts/feed", locals: { objects: @fixed_posts } %>
+      <%= render partial: "decidim/posts/posts/feed", locals: { objects: @non_fixed_objects } %>
+
+      <span class="border-success border-warning bg-success bg-warning hidden"></span>
     </div>
   </div>
-  <%= render partial: "decidim/posts/posts/sidebar.html" %>
+  <%= render partial: "decidim/posts/posts/sidebar" %>
 </main>

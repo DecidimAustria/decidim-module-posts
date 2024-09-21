@@ -3,7 +3,64 @@ import carousel from './carousel.js';
 import { host_status } from './host_status.js';
 
 document.addEventListener('DOMContentLoaded', function () {
-	console.log('js loaded');
+	const spinner = "<span class='loading-spinner'></span>";
+
+	// Implement infinite scroll
+	const observer = new IntersectionObserver((entries) => {
+		if(entries[0].isIntersecting) {
+			loadMore(entries[0].target);
+		}
+	});
+
+	observer.observe(document.getElementById('loadMoreBtn'));
+
+	function loadMoreButtonClicked(event) {
+		event.preventDefault();
+
+		loadMore(event.target);
+	}
+
+	function loadMore(loadMoreBtn) {
+		// remove event listener to prevent multiple clicks
+		loadMoreBtn.removeEventListener('click', loadMoreButtonClicked);
+		const oldBtn = loadMoreBtn.innerHTML;
+		loadMoreBtn.innerHTML = spinner;
+
+	  // get url from data-url attribute
+		const url = loadMoreBtn.getAttribute('data-url');
+
+		// get html from url and add page as query parameter
+		fetch(url)
+			.then((response) => {
+				if (!response.ok) {
+					// enable the button again
+					loadMoreBtn.addEventListener('click', loadMoreButtonClicked);
+					// reset the button text
+					loadMoreBtn.innerHTML = oldBtn;
+					throw new Error('Network response was not ok');
+				}
+				return response.text();
+			})
+			.then((html) => {
+				// replace the loadMoreBtn with the new html
+				loadMoreBtn.outerHTML = html;
+				// add event listener to new loadMoreBtn
+				const newButton = document.getElementById('loadMoreBtn')
+				if(newButton){
+				  newButton.addEventListener('click', loadMoreButtonClicked);
+					observer.observe(document.getElementById('loadMoreBtn'));
+				}
+			})
+			.catch((error) => {
+				// enable the button again
+				loadMoreBtn.addEventListener('click', loadMoreButtonClicked);
+				// reset the button text
+				loadMoreBtn.innerHTML = oldBtn;
+				console.error('Error:', error);
+			});
+	}
+
+	document.getElementById('loadMoreBtn').addEventListener('click', loadMoreButtonClicked);
 
 	const newFeed = document.getElementById('feeds__feed_newElement');
 	const newFeedOpener = document.querySelectorAll(

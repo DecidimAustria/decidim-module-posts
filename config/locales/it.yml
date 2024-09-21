@@ -55,6 +55,7 @@ it:
           select_a_meeting_type: Seleziona un tipo di riunione
           select_a_registration_type: Seleziona un tipo di registrazione
           select_an_iframe_access_level: Seleziona un livello di accesso all'iframe
+        load_more: Carica altro
       survey:
         participated: '%{count} risposte'
       models:

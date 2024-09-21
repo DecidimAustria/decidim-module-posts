@@ -15,25 +15,26 @@ module Decidim
       def index
         enforce_permission_to :read, :post
 
-        @posts = Decidim::Posts::Post
-                 .where(decidim_component_id: current_component.id)
-                 .filter_category(params[:filter_post_category])
-                 .order(created_at: :desc)
-                 .includes(:attachments)
-                 .limit(20)
+        @posts = posts(params[:filter_post_category]).where(fixed: false)
+        @fixed_posts = posts.where(fixed: true).order(created_at: :desc)
 
-        # @form = form(Decidim::Posts::PostForm).from_params(params, extra_context)
-        # @meeting_form = meeting_form
+        @meetings = meetings(params[:filter_post_category])
 
-        @meetings = if params[:filter_post_category].blank? || params[:filter_post_category] == 'calendar'
-                meetings_component.blank? ? [] : Decidim::Meetings::Meeting.where(component: meetings_component).except_withdrawn
-              else
-                []
-              end
+        @non_fixed_objects = (@posts + @meetings).sort_by(&:created_at).reverse
+        @non_fixed_objects = Kaminari.paginate_array(@non_fixed_objects).page(params[:page]).per(20)
+      end
 
-        @fixed_objects = @posts.select(&:fixed).sort_by(&:created_at).reverse
-        @non_fixed_posts = @posts.reject(&:fixed)
-        @non_fixed_objects = (@non_fixed_posts + @meetings).sort_by(&:created_at).reverse
+      # action to load more posts and meetings on the index page via ajax
+      def load_more
+        enforce_permission_to :read, :post
+
+        @posts = posts(params[:filter_post_category]).where(fixed: false)
+        @meetings = meetings(params[:filter_post_category])
+
+        @non_fixed_objects = (@posts + @meetings).sort_by(&:created_at).reverse
+        @non_fixed_objects = Kaminari.paginate_array(@non_fixed_objects).page(params[:page]).per(20)
+
+        render partial: "decidim/posts/posts/feed", locals: { objects: @non_fixed_objects }
       end
 
       def show
@@ -126,6 +127,22 @@ module Decidim
       end
 
       private
+
+      def posts(filter_category=nil)
+        Decidim::Posts::Post
+                 .where(decidim_component_id: current_component.id)
+                 .filter_category(filter_category)
+                 .order(created_at: :desc)
+                 .includes(:attachments)
+      end
+
+      def meetings(filter_category=nil)
+        if filter_category.blank? || filter_category == 'calendar'
+          meetings_component.blank? ? [] : Decidim::Meetings::Meeting.where(component: meetings_component).except_withdrawn
+        else
+          []
+        end
+      end
 
       def post_presenter
         @post_presenter ||= present(@post)
