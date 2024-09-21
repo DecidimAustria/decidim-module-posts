@@ -1,10 +1,12 @@
 <div class="feeds__feed_newElement_Media">
-  <%= form.upload :add_documents,
+  <%= form.upload :documents,
                   titled: true,
                   label: false,
                   button_label: t("decidim.forms.upload.labels.add_file"),
                   button_edit_label: I18n.t("decidim.forms.upload.labels.replace"),
                   multiple: true,
+                  # modal_only: false,
+                  # show_current: true,
                   #label: false,
                   # id: field_id,
                   # disabled:,

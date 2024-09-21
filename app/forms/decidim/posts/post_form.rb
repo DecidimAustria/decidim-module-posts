@@ -85,11 +85,11 @@ module Decidim
       # end
 
       def has_attachments?
-        post.has_attachments? && errors[:add_documents].empty? && add_documents.present?
+        post.has_attachments? && errors[:documents].empty? && documents.present?
       end
 
       def has_error_in_attachments?
-        errors[:add_documents].present?
+        errors[:documents].present?
       end
 
       private
@@ -100,11 +100,11 @@ module Decidim
       #   errors.add(:body, :cant_be_equal_to_template) if body.presence == body_template.presence
       # end
 
-      # This method will add an error to the "add_documents" field only if there is any error
+      # This method will add an error to the "documents" field only if there is any error
       # in any other field. This is needed because when the form has an error, the attachment
       # is lost, so we need a way to inform the user of this problem.
       def notify_missing_attachment_if_errored
-        errors.add(:add_documents, :needs_to_be_reattached) if errors.any? && add_documents.present?
+        errors.add(:documents, :needs_to_be_reattached) if errors.any? && documents.present?
       end
 
       def questions_validator

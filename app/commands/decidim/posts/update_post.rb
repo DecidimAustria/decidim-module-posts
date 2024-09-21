@@ -22,7 +22,7 @@ module Decidim
           #Decidim.traceability.perform_action!("update_feeds_post", Post, form.current_user) do
           update_post
           #end
-          #document_cleanup!(include_all_attachments: true)
+          document_cleanup!(include_all_attachments: true)
           create_attachments if process_attachments?
         end
 
