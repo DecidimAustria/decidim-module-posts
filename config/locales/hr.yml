@@ -55,6 +55,7 @@ hr:
           select_a_meeting_type: Molimo odaberite vrstu sastanka
           select_a_registration_type: Molimo odaberite vrstu registracije
           select_an_iframe_access_level: Molimo odaberite razinu pristupa iframe-u
+        load_more: Učitaj više
       survey:
         participated: '%{count} odgovora'
       models:

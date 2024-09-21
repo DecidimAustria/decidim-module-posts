@@ -55,6 +55,7 @@ tr:
           disclaimer: 'Dikkat: Harici bir kayıt sistemi kullanarak, %{organization} organizatörlerinin kullanıcılardan harici hizmete sağlanan verilerden sorumlu olmadığını biliyorsunuz.'
           iframe_embed_type_html: 'Yalnızca birkaç hizmet, aşağıdaki alanlardan toplantıya veya canlı etkinliğe gömülmesine izin verir: %{domains}'
           select_an_iframe_access_level: Lütfen bir iframe erişim seviyesi seçin
+        load_more: Daha fazla yükle
       survey:
         participated: '%{count} yanıt'
       models:
