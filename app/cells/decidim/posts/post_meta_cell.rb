@@ -43,6 +43,8 @@ module Decidim
         if post.component.manifest_name == "meetings"
           post.authored_by?(user)
         else
+          # Don't allow editing of survey posts
+          return false if post.category == "survey"
           post.editable_by?(current_user)
         end
       end
