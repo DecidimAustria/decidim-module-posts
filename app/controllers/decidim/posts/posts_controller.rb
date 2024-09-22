@@ -138,7 +138,7 @@ module Decidim
 
       def meetings(filter_category=nil)
         if filter_category.blank? || filter_category == 'calendar'
-          meetings_component.blank? ? [] : Decidim::Meetings::Meeting.where(component: meetings_component).except_withdrawn
+          meetings_component.blank? ? [] : Decidim::Meetings::Meeting.where(component: meetings_component).published.except_withdrawn
         else
           []
         end
