@@ -2,7 +2,11 @@
   <% if post.is_a?(Decidim::Posts::Post) && post.highlighted %>
     <div></div>
   <% else %>
-    <%= cell "decidim/author", Decidim::UserPresenter.new(post.author), layout: :compact %>
+    <% if post.author.is_a? Decidim::User %>
+      <%= cell("decidim/author", Decidim::UserPresenter.new(post.author), layout: :compact) %>
+    <% else %>
+      <%= cell("decidim/author", Decidim::Meetings::OfficialAuthorPresenter.new, layout: :compact) %>
+    <% end %>
   <% end %>
   <div class="feeds__feed_actions">
     <% if post.is_a?(Decidim::Posts::Post) && !post.highlighted %>
