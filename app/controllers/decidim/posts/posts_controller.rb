@@ -15,7 +15,7 @@ module Decidim
       def index
         enforce_permission_to :read, :post
 
-        @posts = posts(params[:filter_post_category]).where(fixed: false)
+        @posts = posts(params[:filter_post_category]).where(fixed: [false, nil])
         @fixed_posts = posts.where(fixed: true).order(created_at: :desc)
 
         @meetings = meetings(params[:filter_post_category])
