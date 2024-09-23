@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
 				const newButton = document.getElementById('loadMoreBtn')
 				if(newButton){
 				  newButton.addEventListener('click', loadMoreButtonClicked);
-					observer.observe(document.getElementById('loadMoreBtn'));
+					observer.observe(newButton);
 				}
 			})
 			.catch((error) => {
@@ -60,8 +60,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	const loadMoreBtn = document.getElementById('loadMoreBtn');
 	if(loadMoreBtn) {
-		observer.observe(document.getElementById('loadMoreBtn'));
 		loadMoreBtn.addEventListener('click', loadMoreButtonClicked);
+		observer.observe(loadMoreBtn);
 	}
 
 	const newFeed = document.getElementById('feeds__feed_newElement');
