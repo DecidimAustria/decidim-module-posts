@@ -12,11 +12,6 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 	});
 
-	const loadMoreBtn = document.getElementById('loadMoreBtn');
-	if(loadMoreBtn) {
-		observer.observe(document.getElementById('loadMoreBtn'));
-	}
-
 	function loadMoreButtonClicked(event) {
 		event.preventDefault();
 
@@ -63,7 +58,11 @@ document.addEventListener('DOMContentLoaded', function () {
 			});
 	}
 
-	loadMoreBtn.addEventListener('click', loadMoreButtonClicked);
+	const loadMoreBtn = document.getElementById('loadMoreBtn');
+	if(loadMoreBtn) {
+		observer.observe(document.getElementById('loadMoreBtn'));
+		loadMoreBtn.addEventListener('click', loadMoreButtonClicked);
+	}
 
 	const newFeed = document.getElementById('feeds__feed_newElement');
 	const newFeedOpener = document.querySelectorAll(
