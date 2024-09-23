@@ -12,7 +12,10 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 	});
 
-	observer.observe(document.getElementById('loadMoreBtn'));
+	const loadMoreBtn = document.getElementById('loadMoreBtn');
+	if(loadMoreBtn) {
+		observer.observe(document.getElementById('loadMoreBtn'));
+	}
 
 	function loadMoreButtonClicked(event) {
 		event.preventDefault();
@@ -20,31 +23,31 @@ document.addEventListener('DOMContentLoaded', function () {
 		loadMore(event.target);
 	}
 
-	function loadMore(loadMoreBtn) {
+	function loadMore(button) {
 		// remove event listener to prevent multiple clicks
-		loadMoreBtn.removeEventListener('click', loadMoreButtonClicked);
-		const oldBtn = loadMoreBtn.innerHTML;
-		loadMoreBtn.innerHTML = spinner;
+		button.removeEventListener('click', loadMoreButtonClicked);
+		const oldBtn = button.innerHTML;
+		button.innerHTML = spinner;
 
 	  // get url from data-url attribute
-		const url = loadMoreBtn.getAttribute('data-url');
+		const url = button.getAttribute('data-url');
 
 		// get html from url and add page as query parameter
 		fetch(url)
 			.then((response) => {
 				if (!response.ok) {
 					// enable the button again
-					loadMoreBtn.addEventListener('click', loadMoreButtonClicked);
+					button.addEventListener('click', loadMoreButtonClicked);
 					// reset the button text
-					loadMoreBtn.innerHTML = oldBtn;
+					button.innerHTML = oldBtn;
 					throw new Error('Network response was not ok');
 				}
 				return response.text();
 			})
 			.then((html) => {
-				// replace the loadMoreBtn with the new html
-				loadMoreBtn.outerHTML = html;
-				// add event listener to new loadMoreBtn
+				// replace the button with the new html
+				button.outerHTML = html;
+				// add event listener to new button
 				const newButton = document.getElementById('loadMoreBtn')
 				if(newButton){
 				  newButton.addEventListener('click', loadMoreButtonClicked);
@@ -53,14 +56,14 @@ document.addEventListener('DOMContentLoaded', function () {
 			})
 			.catch((error) => {
 				// enable the button again
-				loadMoreBtn.addEventListener('click', loadMoreButtonClicked);
+				button.addEventListener('click', loadMoreButtonClicked);
 				// reset the button text
-				loadMoreBtn.innerHTML = oldBtn;
+				button.innerHTML = oldBtn;
 				console.error('Error:', error);
 			});
 	}
 
-	document.getElementById('loadMoreBtn').addEventListener('click', loadMoreButtonClicked);
+	loadMoreBtn.addEventListener('click', loadMoreButtonClicked);
 
 	const newFeed = document.getElementById('feeds__feed_newElement');
 	const newFeedOpener = document.querySelectorAll(
