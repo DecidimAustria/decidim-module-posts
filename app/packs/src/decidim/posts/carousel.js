@@ -44,9 +44,14 @@ const carousel = (() => {
 
 		gallery.addEventListener('touchend', (e) => {
 			const endX = e.changedTouches[0].clientX;
-			if (startX - endX > 50) {
+			const galleryItems = document.querySelectorAll(`#${galleryId} li`);
+			const currentIndex = Array.from(galleryItems).findIndex((item) =>
+				item.classList.contains('active')
+			);
+
+			if (startX - endX > 50 && currentIndex < galleryItems.length - 1) {
 				setActiveItem(galleryId, null, 'left');
-			} else if (startX - endX < -50) {
+			} else if (startX - endX < -50 && currentIndex > 0) {
 				setActiveItem(galleryId, null, 'right');
 			}
 		});
