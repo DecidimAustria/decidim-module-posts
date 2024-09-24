@@ -190,7 +190,7 @@
 			.card__grid-metadata {
 				@apply gap-2 items-center flex-nowrap text-black;
 				.author {
-					@apply mr-auto;
+					@apply mr-auto shrink;
 				}
 				.feeds__feed_actions {
 					@apply flex gap-4;
@@ -211,10 +211,9 @@
 						}
 					}
 					.feeds__feed_actions_submenu {
-						@apply relative self-start;
 						button.openButton {
 							span {
-								@apply leading-[0];
+								@apply leading-[0] text-2xl;
 							}
 						}
 					}
@@ -306,7 +305,7 @@
 		ul {
 			@apply flex flex-col space-y-4;
 			a {
-				@apply flex flex-col items-center font-medium text-xs md:text-md text-feeds-sidebar;
+				@apply flex flex-col items-center font-medium text-sm md:text-md text-feeds-sidebar;
 				svg {
 					@apply w-[24px] h-auto fill-feeds-sidebar;
 				}
