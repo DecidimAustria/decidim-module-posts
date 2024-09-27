@@ -123,7 +123,7 @@
 }
 
 .feeds__container {
-	@apply flex gap-4 justify-between flex-nowrap w-full max-w-screen-2xl mx-auto p-4 lg:p-16;
+	@apply pr-[91px] md:pr-[101px] lg:pr-0;
 	.feeds__body {
 		@apply flex-grow flex flex-wrap gap-4 items-start;
 		.feeds__feed {
@@ -300,48 +300,49 @@
 			}
 		}
 	}
-	.feeds__aside {
-		@apply shrink-0;
-		ul {
-			@apply flex flex-col space-y-4;
-			a {
-				@apply flex flex-col items-center font-medium text-sm md:text-md text-feeds-sidebar;
-				svg {
-					@apply w-[24px] h-auto fill-feeds-sidebar;
+}
+
+.feeds__aside {
+	@apply shrink-0 max-lg:right-[16px] max-lg:top-[88px] max-lg:fixed;
+	ul {
+		@apply flex flex-col space-y-4;
+		a {
+			@apply flex flex-col items-center font-medium text-sm md:text-md text-feeds-sidebar;
+			svg {
+				@apply w-[24px] h-auto fill-feeds-sidebar;
+			}
+			&.active {
+				span {
+					@apply font-bold;
 				}
-				&.active {
-					span {
-						@apply font-bold;
+				&[data-filter='post'] {
+					svg {
+						@apply fill-feeds-post;
 					}
-					&[data-filter='post'] {
-						svg {
-							@apply fill-feeds-post;
-						}
-					}
-					&[data-filter='sharecare'] {
-						svg {
-							@apply fill-feeds-sharecare;
-						}
-					}
-					&[data-filter='host'] {
-						svg {
-							@apply fill-feeds-host;
-						}
-					}
-					&[data-filter='survey'] {
-						svg {
-							@apply fill-feeds-survey;
-						}
-					}
-					&[data-filter='calendar'] {
-						svg {
-							@apply fill-feeds-calendar;
-						}
+				}
+				&[data-filter='sharecare'] {
+					svg {
+						@apply fill-feeds-sharecare;
 					}
 				}
 				&[data-filter='host'] {
-					@apply mt-8;
+					svg {
+						@apply fill-feeds-host;
+					}
 				}
+				&[data-filter='survey'] {
+					svg {
+						@apply fill-feeds-survey;
+					}
+				}
+				&[data-filter='calendar'] {
+					svg {
+						@apply fill-feeds-calendar;
+					}
+				}
+			}
+			&[data-filter='host'] {
+				@apply mt-8;
 			}
 		}
 	}
