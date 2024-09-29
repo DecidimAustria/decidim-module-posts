@@ -28,6 +28,9 @@ module Decidim
       def create
         enforce_permission_to :create, :meeting
 
+        # Duplicate location to address field
+        params[:meeting][:address] = params[:meeting][:location] if params[:meeting][:address].blank?
+
         @form = meeting_form.from_params(params, current_component: meetings_component)
 
         Decidim::Meetings::CreateMeeting.call(@form) do
