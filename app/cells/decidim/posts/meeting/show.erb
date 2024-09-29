@@ -17,7 +17,7 @@
       <% end %>
     </div>
     <div class="card__grid-text p-0">
-      <h2 class="h3"><%= meeting_title %></h2>
+      <h2 class="h3"><%= link_to meeting_title, Decidim::EngineRouter.main_proxy(meeting.component).meeting_path(meeting) %></h2>
       <% should_truncate = strip_tags(meeting_description).length > 300 %>
       <div class="content-block__description editor-content" <%= "data-component='accordion'" if should_truncate %>>
         <% if should_truncate %>
@@ -54,12 +54,11 @@
         </div>
         <% if meeting_location != '' %>
           <div class="bg-background p-2 rounded-md font-bold shrink">
-            <%= meeting_location%>
+            <%= meeting_location %>
           </div>
         <% end %>
       </div>
     </div>
-    
   </div>
   <%= cell("decidim/posts/post_comment", meeting) %>
 </article>
