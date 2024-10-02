@@ -90,7 +90,7 @@ it:
           delete: Elimina
           deleteConfirmation: Sei sicuro di voler eliminare questo post?
         newFeed:
-          title: Nuovo feed
+          title: Crea un nuovo post
           text: Post
           category: Scegli una categoria
           highlighted: Evidenzia
@@ -99,6 +99,8 @@ it:
           cancel: Annulla
           login: Accedi per creare un nuovo post
           loginLink: Accedi
+          openButton: Apri il form per creare un nuovo post
+          close: Chiudi il form
           newSurvey:
             newQuestion: Nuova domanda
             newQuestionResponse: È stata aggiunta una nuova domanda

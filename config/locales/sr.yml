@@ -90,7 +90,7 @@ sr:
           delete: Obriši
           deleteConfirmation: Da li ste sigurni da želite da obrišete ovaj post?
         newFeed:
-          title: Novi Feed
+          title: Kreiraj novu objavu
           text: Post
           category: Izaberite kategoriju
           highlighted: Istakni
@@ -99,6 +99,8 @@ sr:
           cancel: Otkaži
           login: Molimo prijavite se da kreirate novi post
           loginLink: Prijavite se
+          openButton: Otvori dijalog za kreiranje novog posta
+          close: Zatvori dijalog
           newSurvey:
             newQuestion: Novo pitanje
             newQuestionResponse: Dodato je novo pitanje

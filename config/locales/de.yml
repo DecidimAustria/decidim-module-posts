@@ -90,7 +90,7 @@ de:
           delete: Löschen
           deleteConfirmation: Möchten Sie diesen Beitrag wirklich löschen?
         newFeed:
-          title: Neuer Beitrag
+          title: Neuen Beitrag erstellen
           text: Beitrag
           category: Wähle eine Kategorie
           highlighted: Hervorheben
@@ -99,6 +99,8 @@ de:
           cancel: Abbrechen
           login: Bitte melden Sie sich an, um einen neuen Beitrag zu erstellen
           loginLink: Anmelden
+          openButton: Dialog öffnen, um neuen Beitrag zu erstellen
+          close: Dialog schließen
           newSurvey:
             newQuestion: Neue Frage
             newQuestionResponse: Eine neue Frage wurde hinzugefügt

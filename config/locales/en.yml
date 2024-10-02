@@ -90,7 +90,7 @@ en:
           delete: Delete
           deleteConfirmation: Are you sure you want to delete this post?
         newFeed:
-          title: New Feed
+          title: Create a new post
           text: Post
           category: Choose a category
           highlighted: Highlight
@@ -99,6 +99,8 @@ en:
           cancel: Cancel
           login: Please sign in to create a new post
           loginLink: Sign in
+          openButton: Open dialog to create new post
+          close: Close dialog
           newSurvey:
             newQuestion: New Question
             newQuestionResponse: A new question has been added

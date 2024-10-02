@@ -1,12 +1,14 @@
 <main class="feeds__main home">
+  <!-- This is the sidebar that appears on the right side of the page -->
+  <%= render partial: "decidim/posts/posts/sidebar" %> 
   <div class="feeds__container">
     <div class="feeds__body">
       <div class="card__grid-home w-full lg:grid-cols-8 xl:grid-cols-12">
         <% if current_user %>
           <div class="card__grid feeds__feed feeds__feed_newElement flex-row justify-between">
-            <button class="btn circle feeds__feed_newElement-opener" aria-expanded="false" aria-controls="newElementForm" type="button">
+            <button class="btn circle feeds__feed_newElement-opener" aria-expanded="false" aria-controls="feeds__feed_newElement" aria-haspopup="feeds__feed_newElement" type="button">
               <%= icon "close-circle-line" %>
-              <span class="sr-only"><%= t("decidim.components.posts.newFeed.title") %></span>
+              <span class="sr-only"><%= t("decidim.components.posts.newFeed.openButton") %></span>
             </button>
           </div>
         <% end %>
@@ -36,25 +38,7 @@
 
     <% unless defined?(Decidim::FeedsUi) %>
       <%= render partial: "decidim/posts/posts/form.html" %>
-      <script>
-        window.translations = {
-          newSurvey: {
-            questionTitle       : "<%= t('decidim.components.posts.newFeed.newSurvey.questionTitle') %>",
-            answerType          : "<%= t('decidim.components.posts.newFeed.newSurvey.answerType') %>",
-            multipleChoice      : "<%= t('decidim.components.posts.newFeed.newSurvey.multipleChoice') %>",
-            singleChoice        : "<%= t('decidim.components.posts.newFeed.newSurvey.singleChoice') %>",
-            newAnswer           : "<%= t('decidim.components.posts.newFeed.newSurvey.newAnswer') %>",
-            newQuestionResponse : "<%= t('decidim.components.posts.newFeed.newSurvey.newQuestionResponse') %>",
-            newAnswerResponse   : "<%= t('decidim.components.posts.newFeed.newSurvey.newAnswerResponse') %>",
-          },
-          dialog: {
-            dialogBodyMsg       : '<%= t('decidim.posts.posts.host.status.dialogBodyMsg') %>',
-            dialogBodyResponse  : '<%= t('decidim.posts.posts.host.status.dialogBodyResponse') %>',
-          }
-        };
-      </script>
       <%= append_javascript_pack_tag "decidim_feeds" %>
     <% end %>
   </div>
-  <%= render partial: "decidim/posts/posts/sidebar" %>
 </main>

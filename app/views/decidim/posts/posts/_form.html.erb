@@ -1,67 +1,99 @@
 <% if posts_component = Decidim::Component.where(manifest_name: "posts").select {|c| c.organization == current_organization }.first %>
-  <div id="feeds__feed_newElement" class="feeds__feed_newElement_modal" role="dialog" aria-label="<%= t("decidim.components.posts.newFeed.title") %>">
-    <div class="feeds__feed_newElement_modal_content">
-      <div class="close-button flex justify-end pb-2">
-        <button class="btn circle feeds__feed_newElement-opener" aria-expanded="false" aria-controls="newElementForm" type="button">
-          <%= icon "close-circle-line" %>
-          <span class="sr-only"><%= t("decidim.components.posts.newFeed.title") %></span>
-        </button>
-      </div>
-      <% if current_user %>
-        <div class="category-selection">
-          <% filters = [
-            { filter: 'post', icon: 'home-5-line' },
-            { filter: 'sharecare', icon: 'shake-hands-line' },
-            { filter: 'host', icon: 'home-gear-line' },
-            { filter: 'calendar', icon: 'calendar-line' },
-            { filter: 'survey', icon: 'draft-line' },
-          ] %>
-          <% filters.each do |filter| %>
-            <button type="button" class="button button__sm button__transparent-primary" data-category="<%= filter[:filter] %>"><%= t("decidim.components.posts.filter.#{filter[:filter]}_singular") %></button>
-          <% end %>
+  <div id="feeds__feed_newElement" class="feeds__feed_newElement_modal" role="dialog" aria-modal="true" aria-label="<%= t("decidim.components.posts.newFeed.title") %>">
+    <div class="feeds__feed_newElement_modal_frame">
+      <div class="feeds__feed_newElement_modal_content">
+        <div class="close-button flex justify-end pb-2">
+          <button class="btn circle feeds__feed_newElement-closer" type="button">
+            <%= icon "close-circle-line" %>
+            <span class="sr-only"><%= t("decidim.components.posts.newFeed.close") %></span>
+          </button>
         </div>
-
-        <% target_participatory_space = posts_component.participatory_space %>
-        <%
-          context = {
-            current_organization: @controller.try(:current_organization),
-            current_component: @controller.try(:current_component),
-            current_user: @controller.try(:current_user),
-            current_participatory_space: @controller.try(:current_participatory_space)
-          }
-        %>
-        <%= decidim_form_for(Decidim::Meetings::MeetingForm.from_params(params).with_context(context), url: Decidim::EngineRouter.main_proxy(posts_component).meetings_path, html: { class: "meetings_form new_meeting" }) do |form| %>
-          <div class="form__wrapper p-0 gap-4">
-            <%= render partial: "decidim/posts/posts/meeting_form", locals: { form: form } %>
+        <% if current_user %>
+          <div class="category-selection">
+            <% filters = [
+              { filter: 'post', icon: 'home-5-line' },
+              { filter: 'sharecare', icon: 'shake-hands-line' },
+              { filter: 'host', icon: 'home-gear-line' },
+              { filter: 'calendar', icon: 'calendar-line' },
+              { filter: 'survey', icon: 'draft-line' },
+            ] %>
+            <% filters.each do |filter| %>
+              <button type="button" class="button button__sm button__transparent-primary" data-category="<%= filter[:filter] %>" aria-pressed="false"><%= t("decidim.components.posts.filter.#{filter[:filter]}_singular") %></button>
+            <% end %>
           </div>
-          <div class="form__wrapper-block flex-col-reverse md:flex-row justify-between">
-            <%= form.submit "#{t("decidim.components.posts.newFeed.action")} #{icon('send-plane-line')}".html_safe, class: "sndBtn button button__sm button__transparent-primary", data: { disable: true } %>
-          </div>
-        <% end %>
 
-        <%= decidim_form_for(Decidim::Posts::PostForm.from_params(params).with_context(context), url: Decidim::EngineRouter.main_proxy(posts_component).posts_path, html: { class: "posts_form new_post" }) do |form| %>
+          <% target_participatory_space = posts_component.participatory_space %>
+          <%
+            context = {
+              current_organization: @controller.try(:current_organization),
+              current_component: @controller.try(:current_component),
+              current_user: @controller.try(:current_user),
+              current_participatory_space: @controller.try(:current_participatory_space)
+            }
+          %>
+          <div id="feeds__feed_newElement_Form-LiveRegion" class="sr-only" aria-live="polite"></div>
+          <div id="feeds__feed_newElement_Meeting" aria-live="polite">
+            <%= decidim_form_for(Decidim::Meetings::MeetingForm.from_params(params).with_context(context), url: Decidim::EngineRouter.main_proxy(posts_component).meetings_path, html: { class: "meetings_form new_meeting" }) do |form| %>
+              <div class="form__wrapper p-0 gap-4">
+                <%= render partial: "decidim/posts/posts/meeting_form", locals: { form: form } %>
+              </div>
+              <div class="form__wrapper-block flex-col-reverse md:flex-row justify-between">
+                <%= form.submit "#{t("decidim.components.posts.newFeed.action")} #{icon('send-plane-line')}".html_safe, class: "sndBtn button button__sm button__transparent-primary", data: { disable: true } %>
+              </div>
+            <% end %>
+          </div>
+          
+          <div id="feeds__feed_newElement_Post" aria-live="polite">
+            <%= decidim_form_for(Decidim::Posts::PostForm.from_params(params).with_context(context), url: Decidim::EngineRouter.main_proxy(posts_component).posts_path, html: { class: "posts_form new_post" }) do |form| %>
+              <div class="form__wrapper p-0">
+                <%= render partial: "decidim/posts/posts/post_form", locals: { form: form } %>
+              </div>
+              <div id="extraFieldsForSurvey" class="feeds__feed_newElement_Xtra feeds__feed_newSurvey">
+                <%= render partial: 'decidim/posts/posts/new_survey.html', locals: { form: form } %>
+              </div>
+              <%= render partial: "decidim/posts/posts/attachment.html", locals: { form: form } %>
+              <%= render partial: "decidim/posts/posts/admin_options.html", locals: { form: form, participatory_space: target_participatory_space } %>
+              <div class="form__wrapper-block flex-col-reverse md:flex-row justify-between">
+                <%= form.submit "#{t("decidim.components.posts.newFeed.action")} #{icon('send-plane-line')}".html_safe, data: { disable: true }, class: "sndBtn button button__sm button__transparent-primary" %>
+              </div>
+            <% end %>
+          </div>
+        <% else %>
           <div class="form__wrapper p-0">
-            <%= render partial: "decidim/posts/posts/post_form", locals: { form: form } %>
-          </div>
-          <div id="extraFieldsForSurvey" class="feeds__feed_newElement_Xtra feeds__feed_newSurvey">
-            <%= render partial: 'decidim/posts/posts/new_survey.html', locals: { form: form } %>
-          </div>
-          <%= render partial: "decidim/posts/posts/attachment.html", locals: { form: form } %>
-          <%= render partial: "decidim/posts/posts/admin_options.html", locals: { form: form, participatory_space: target_participatory_space } %>
-          <div class="form__wrapper-block flex-col-reverse md:flex-row justify-between">
-            <%= form.submit "#{t("decidim.components.posts.newFeed.action")} #{icon('send-plane-line')}".html_safe, data: { disable: true }, class: "sndBtn button button__sm button__transparent-primary" %>
+            <div class="flex flex-col items-center">
+              <p class="text-center">
+                <%= t("decidim.components.posts.newFeed.login") %>
+              </p>
+              <%= link_to t("decidim.components.posts.newFeed.loginLink"), decidim.new_user_session_path, class: "button button__sm button__primary" %>
+            </div>
           </div>
         <% end %>
-      <% else %>
-        <div class="form__wrapper p-0">
-          <div class="flex flex-col items-center">
-            <p class="text-center">
-              <%= t("decidim.components.posts.newFeed.login") %>
-            </p>
-            <%= link_to t("decidim.components.posts.newFeed.loginLink"), decidim.new_user_session_path, class: "button button__sm button__primary" %>
-          </div>
-        </div>
-      <% end %>
+      </div>
     </div>
   </div>
 <% end %>
+
+<script>
+  window.translations = {
+    newSurvey: {
+      questionTitle       : "<%= t('decidim.components.posts.newFeed.newSurvey.questionTitle') %>",
+      answerType          : "<%= t('decidim.components.posts.newFeed.newSurvey.answerType') %>",
+      multipleChoice      : "<%= t('decidim.components.posts.newFeed.newSurvey.multipleChoice') %>",
+      singleChoice        : "<%= t('decidim.components.posts.newFeed.newSurvey.singleChoice') %>",
+      newAnswer           : "<%= t('decidim.components.posts.newFeed.newSurvey.newAnswer') %>",
+      newQuestionResponse : "<%= t('decidim.components.posts.newFeed.newSurvey.newQuestionResponse') %>",
+      newAnswerResponse   : "<%= t('decidim.components.posts.newFeed.newSurvey.newAnswerResponse') %>",
+    },
+    newFeedLiveRegion: {
+      calendar      : "calendario",
+      post          : "post",
+      survey        : "survey",
+      sharecare     : "sharecare",
+      host          : "host",
+    },
+    dialog: {
+      dialogBodyMsg       : '<%= t('decidim.posts.posts.host.status.dialogBodyMsg') %>',
+      dialogBodyResponse  : '<%= t('decidim.posts.posts.host.status.dialogBodyResponse') %>',
+    }
+  };
+</script>

@@ -90,7 +90,7 @@ tr:
           delete: Sil
           deleteConfirmation: Bu gönderiyi silmek istediğinizden emin misiniz?
         newFeed:
-          title: Yeni Feed
+          title: Yeni bir gönderi oluştur
           text: Gönderi
           category: Kategori
           highlighted: Vurgulanan
@@ -99,6 +99,8 @@ tr:
           cancel: İptal
           login: Yeni bir gönderi oluşturmak için lütfen giriş yapın
           loginLink: Giriş yap
+          openButton: Yeni bir gönderi oluşturmak için formu aç
+          close: Formu kapat
           newSurvey:
             newQuestion: Yeni Soru
             newQuestionResponse: Yeni bir soru eklendi

@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	// Implement infinite scroll
 	const observer = new IntersectionObserver((entries) => {
-		if(entries[0].isIntersecting) {
+		if (entries[0].isIntersecting) {
 			loadMore(entries[0].target);
 		}
 	});
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		const oldBtn = button.innerHTML;
 		button.innerHTML = spinner;
 
-	  // get url from data-url attribute
+		// get url from data-url attribute
 		const url = button.getAttribute('data-url');
 
 		// get html from url and add page as query parameter
@@ -43,9 +43,9 @@ document.addEventListener('DOMContentLoaded', function () {
 				// replace the button with the new html
 				button.outerHTML = html;
 				// add event listener to new button
-				const newButton = document.getElementById('loadMoreBtn')
-				if(newButton){
-				  newButton.addEventListener('click', loadMoreButtonClicked);
+				const newButton = document.getElementById('loadMoreBtn');
+				if (newButton) {
+					newButton.addEventListener('click', loadMoreButtonClicked);
 					observer.observe(newButton);
 				}
 			})
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	}
 
 	const loadMoreBtn = document.getElementById('loadMoreBtn');
-	if(loadMoreBtn) {
+	if (loadMoreBtn) {
 		loadMoreBtn.addEventListener('click', loadMoreButtonClicked);
 		observer.observe(loadMoreBtn);
 	}
@@ -68,23 +68,18 @@ document.addEventListener('DOMContentLoaded', function () {
 	const newFeedOpener = document.querySelectorAll(
 		'.feeds__feed_newElement-opener'
 	);
+	const newFeedCloser = newFeed.querySelector('.feeds__feed_newElement-closer');
+	let lastFocusedButton = null;
 
 	newFeedOpener.forEach(function (opener) {
 		opener.addEventListener('click', function () {
-			// Scroll to the top if not already at the top and the feed is not already open
-			if (window.scrollY > 0) {
-				window.scrollTo({
-					top: 0,
-				});
-			}
 			let isExpanded = opener.getAttribute('aria-expanded') === 'true';
 			opener.setAttribute('aria-expanded', !isExpanded);
+			activateCategory(categoryButtons[0]);
 			newFeed.classList.toggle('open');
-			// if (!isExpanded) {
-			// 	newFeed.showModal(); // Open newFeed as a dialog
-			// } else {
-			// 	newFeed.close(); // Close the dialog if it's already open
-			// }
+			lastFocusedButton = this;
+			categoryButtons[0].focus();
+			document.body.style.overflow = 'hidden';
 		});
 	});
 
@@ -93,16 +88,26 @@ document.addEventListener('DOMContentLoaded', function () {
 		newFeedOpener.forEach(function (opener) {
 			opener.setAttribute('aria-expanded', 'false');
 			newFeed.classList.remove('open');
+			lastFocusedButton.focus();
+			document.body.style.overflow = 'auto';
 		});
 	}
 
-	document
-		.querySelectorAll('#feeds__feed_newElement .close-button button')
-		.forEach(function (closeBtn) {
-			closeBtn.addEventListener('click', function () {
-				closeDialog();
-			});
-		});
+	// Close the dialog when clicking outside the content
+	newFeed.addEventListener('click', function (event) {
+		if (event.target === newFeed) {
+			closeDialog();
+		}
+	});
+
+	newFeedCloser.addEventListener('click', closeDialog);
+
+	// Close the dialog when pressing ESC
+	document.addEventListener('keydown', function (event) {
+		if (event.key === 'Escape') {
+			closeDialog();
+		}
+	});
 
 	const categoryButtons = document.querySelectorAll(
 		'.category-selection button'
@@ -110,19 +115,28 @@ document.addEventListener('DOMContentLoaded', function () {
 	const meetingForm = document.querySelector('.meetings_form');
 	const postForm = document.querySelector('.posts_form');
 	const surveyDiv = document.getElementById('extraFieldsForSurvey');
+	const newFeedLiveRegion = document.getElementById(
+		'feeds__feed_newElement_Form-LiveRegion'
+	);
 
 	function hideAllForms() {
 		meetingForm.classList.remove('open');
 		postForm.classList.remove('open');
 		surveyDiv.classList.remove('open');
-		categoryButtons.forEach((button) => button.classList.remove('active'));
+		newFeedLiveRegion.innerHTML = '';
+		categoryButtons.forEach(function (button) {
+			button.classList.remove('active');
+			button.setAttribute('aria-pressed', 'false');
+		});
 	}
 
 	function activateCategory(button) {
 		hideAllForms(); // Clear active states before setting the new one
 		button.classList.add('active'); // Mark the clicked button as active
-
+		button.setAttribute('aria-pressed', 'true');
 		const category = button.getAttribute('data-category');
+		newFeedLiveRegion.innerHTML =
+			window.translations.newFeedLiveRegion[category];
 
 		if (category === 'calendar') {
 			meetingForm.classList.add('open');
@@ -141,8 +155,6 @@ document.addEventListener('DOMContentLoaded', function () {
 			activateCategory(this);
 		});
 	});
-
-	activateCategory(categoryButtons[0]);
 
 	document
 		.querySelectorAll('.feeds__feed_actions_submenu > button')
