@@ -1,0 +1,20 @@
+<% filters = [
+  { filter: 'post', icon: 'home-5-line' },
+  { filter: 'sharecare', icon: 'shake-hands-line' },
+  { filter: 'calendar', icon: 'calendar-line' },
+  { filter: 'survey', icon: 'draft-line' },
+  { filter: 'host', icon: 'home-gear-line' }
+] %>
+
+<% current_filter = filters.find { |f| f[:filter] == post.category } %>
+
+<div class="flex justify-between">
+  <time><%= @time_since_update %></time>
+  <div>
+    <%= icon @category_info[:icon] %>
+    <span class="sr-only"><%= @category_info[:label] %></span>
+  </div>
+</div>
+
+
+
