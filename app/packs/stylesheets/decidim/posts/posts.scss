@@ -3,7 +3,7 @@
 @import '_variables.scss';
 
 #feeds__feed_newElement {
-	@apply fixed left-0 top-0 right-0 bottom-0 w-full h-full bg-white bg-opacity-50 z-50 justify-center items-center hidden;
+	@apply fixed left-0 top-0 right-0 bottom-0 w-full h-full bg-white bg-opacity-60 z-50 justify-center items-start pt-[72px] hidden;
 	&.open {
 		--tw-ring-color: theme('colors.feeds.sidebar');
 		@apply flex;
@@ -289,11 +289,9 @@
 					}
 				}
 			}
-
 			&.feeds__feed_newElement {
 				--tw-ring-color: theme('colors.white');
 				@apply gap-4;
-
 				.circle {
 					@apply w-[52px] h-[52px] p-2 bg-white rounded-[52px] shadow-feedMenu justify-center items-center inline-flex text-black;
 					svg {

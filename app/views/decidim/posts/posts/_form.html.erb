@@ -14,8 +14,8 @@
               { filter: 'post', icon: 'home-5-line' },
               { filter: 'sharecare', icon: 'shake-hands-line' },
               { filter: 'host', icon: 'home-gear-line' },
-              { filter: 'calendar', icon: 'calendar-line' },
               { filter: 'survey', icon: 'draft-line' },
+              { filter: 'calendar', icon: 'calendar-line' }
             ] %>
             <% filters.each do |filter| %>
               <button type="button" class="button button__sm button__transparent-primary" data-category="<%= filter[:filter] %>" aria-pressed="false"><%= t("decidim.components.posts.filter.#{filter[:filter]}_singular") %></button>
