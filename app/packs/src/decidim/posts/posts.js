@@ -70,7 +70,6 @@ document.addEventListener('DOMContentLoaded', function () {
 	);
 	const newFeedCloser = newFeed.querySelector('.feeds__feed_newElement-closer');
 	let lastFocusedButton = null;
-
 	newFeedOpener.forEach(function (opener) {
 		opener.addEventListener('click', function () {
 			let isExpanded = opener.getAttribute('aria-expanded') === 'true';
@@ -78,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			activateCategory(categoryButtons[0]);
 			newFeed.classList.toggle('open');
 			lastFocusedButton = this;
-			categoryButtons[0].focus();
+			document.getElementById('post_body').focus();
 			document.body.style.overflow = 'hidden';
 		});
 	});
@@ -138,15 +137,20 @@ document.addEventListener('DOMContentLoaded', function () {
 		newFeedLiveRegion.innerHTML =
 			window.translations.newFeedLiveRegion[category];
 
+		const postBody = document.getElementById('post_body');
+		const meetingTitle = document.getElementById('meeting_title');
 		if (category === 'calendar') {
 			meetingForm.classList.add('open');
-		} else if (category === 'survey') {
-			postForm.classList.add('open');
-			surveyDiv.classList.add('open');
-			document.getElementById('post_category').value = category;
+			meetingForm.querySelector('.form-error').classList.remove('is-visible');
+			meetingTitle.classList.remove('is-invalid-input');
+			document.getElementById('meeting_title').focus();
 		} else {
 			postForm.classList.add('open');
+			postForm.querySelector('.form-error').classList.remove('is-visible');
+			postBody.classList.remove('is-invalid-input');
+			postBody.focus();
 			document.getElementById('post_category').value = category;
+			if (category === 'survey') surveyDiv.classList.add('open');
 		}
 	}
 
@@ -163,7 +167,6 @@ document.addEventListener('DOMContentLoaded', function () {
 				var submenuId = this.getAttribute('aria-controls');
 				var submenu = document.getElementById(submenuId);
 				var isHidden = submenu.classList.contains('hidden');
-
 				submenu.classList.toggle('hidden', !isHidden);
 				this.setAttribute('aria-expanded', !isHidden);
 			});

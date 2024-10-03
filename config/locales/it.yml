@@ -101,6 +101,12 @@ it:
           loginLink: Accedi
           openButton: Apri il form per creare un nuovo post
           close: Chiudi il form
+          aria-live:
+            post: Hai selezionato "Post". Si prega di prestare attenzione ai campi corrispondenti
+            sharecare: Hai selezionato "Condividi & Prenditi cura". Si prega di prestare attenzione ai campi corrispondenti
+            host: Hai selezionato "Host". Si prega di prestare attenzione ai campi corrispondenti
+            calendar: Hai selezionato "Incontri". Si prega di prestare attenzione ai campi corrispondenti
+            survey: Hai selezionato "Questionari". Si prega di prestare attenzione ai campi corrispondenti
           newSurvey:
             newQuestion: Nuova domanda
             newQuestionResponse: È stata aggiunta una nuova domanda

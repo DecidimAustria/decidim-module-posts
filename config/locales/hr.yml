@@ -101,6 +101,12 @@ hr:
           loginLink: Prijavite se
           openButton: Otvori dijalog za kreiranje novog posta
           close: Zatvori dijalog
+          aria-live:
+            post: Odabrali ste "Postovi". Molimo obratite pažnju na odgovarajuća polja
+            sharecare: Odabrali ste "Podijeli & Brini". Molimo obratite pažnju na odgovarajuća polja
+            host: Odabrali ste "Domaćin". Molimo obratite pažnju na odgovarajuća polja
+            calendar: Odabrali ste "Sastanci". Molimo obratite pažnju na odgovarajuća polja
+            survey: Odabrali ste "Ankete". Molimo obratite pažnju na odgovarajuća polja
           newSurvey:
             newQuestion: Novo pitanje
             newQuestionResponse: Dodano je novo pitanje

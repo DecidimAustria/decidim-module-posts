@@ -48,7 +48,7 @@
               <div class="form__wrapper p-0">
                 <%= render partial: "decidim/posts/posts/post_form", locals: { form: form } %>
               </div>
-              <div id="extraFieldsForSurvey" class="feeds__feed_newElement_Xtra feeds__feed_newSurvey">
+              <div id="extraFieldsForSurvey" class="feeds__feed_newElement_Xtra feeds__feed_newSurvey" aria-live="polite">
                 <%= render partial: 'decidim/posts/posts/new_survey.html', locals: { form: form } %>
               </div>
               <%= render partial: "decidim/posts/posts/attachment.html", locals: { form: form } %>
@@ -85,11 +85,11 @@
       newAnswerResponse   : "<%= t('decidim.components.posts.newFeed.newSurvey.newAnswerResponse') %>",
     },
     newFeedLiveRegion: {
-      calendar      : "calendario",
-      post          : "post",
-      survey        : "survey",
-      sharecare     : "sharecare",
-      host          : "host",
+      calendar      : "<%= t('decidim.components.posts.newFeed.aria-live.calendar') %>",
+      post          : "<%= t('decidim.components.posts.newFeed.aria-live.post') %>",
+      survey        : "<%= t('decidim.components.posts.newFeed.aria-live.survey') %>",
+      sharecare     : "<%= t('decidim.components.posts.newFeed.aria-live.sharecare') %>",
+      host          : "<%= t('decidim.components.posts.newFeed.aria-live.host') %>",
     },
     dialog: {
       dialogBodyMsg       : '<%= t('decidim.posts.posts.host.status.dialogBodyMsg') %>',

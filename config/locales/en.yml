@@ -101,6 +101,12 @@ en:
           loginLink: Sign in
           openButton: Open dialog to create new post
           close: Close dialog
+          aria-live:
+            post: You have selected "Posts". Please pay attention to the corresponding fields
+            sharecare: You have selected "Share & Care". Please pay attention to the corresponding fields
+            host: You have selected "Host". Please pay attention to the corresponding fields
+            calendar: You have selected "Meetings". Please pay attention to the corresponding fields
+            survey: You have selected "Surveys". Please pay attention to the corresponding fields
           newSurvey:
             newQuestion: New Question
             newQuestionResponse: A new question has been added

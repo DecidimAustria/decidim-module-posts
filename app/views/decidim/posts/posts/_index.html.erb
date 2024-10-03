@@ -1,6 +1,6 @@
 <main class="feeds__main home">
   <!-- This is the sidebar that appears on the right side of the page -->
-  <%= render partial: "decidim/posts/posts/sidebar" %> 
+  <%= render partial: "decidim/posts/posts/sidebar" %>
   <div class="feeds__container">
     <div class="feeds__body">
       <div class="card__grid-home w-full lg:grid-cols-8 xl:grid-cols-12">
@@ -19,7 +19,7 @@
         <span class="border-success border-warning bg-success bg-warning hidden"></span>
       </div>
     </div>
-    <dialog id="confirmationModal" class="p-4 shadow-md rounded-md ring-1 ring-feeds-host" aria-labelledby="confirmationModal__Label" aria-modal="true">
+    <dialog id="confirmationModal" class="p-4 shadow-md rounded-md ring-1 ring-feeds-host" aria-labelledby="confirmationModal__Label">
       <div class="flex flex-col gap-4">
         <h2 id="confirmationModal__Label" class="text-center text-lg font-bold">Meldungsstatus ändern</h2>
         <p class="confirmationModal__response" aria-live="assertive">Das Status der Meldung wird geändert und die Kommentarfunktion geschlossen.</p>
@@ -35,7 +35,7 @@
         </div>
       </div>
     </dialog>
-
+    <!-- In case the Module Decidim FeedsUi is present, the form will be installed in the footer of the application -->
     <% unless defined?(Decidim::FeedsUi) %>
       <%= render partial: "decidim/posts/posts/form.html" %>
       <%= append_javascript_pack_tag "decidim_feeds" %>

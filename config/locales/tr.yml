@@ -101,6 +101,12 @@ tr:
           loginLink: Giriş yap
           openButton: Yeni bir gönderi oluşturmak için formu aç
           close: Formu kapat
+          aria-live:
+            post: 'Gönderileri seçtiniz. Lütfen ilgili giriş alanlarına dikkat edin'
+            sharecare: 'Paylaş ve Bakımı seçtiniz. Lütfen ilgili giriş alanlarına dikkat edin'
+            host: 'Ev sahibini seçtiniz. Lütfen ilgili giriş alanlarına dikkat edin'
+            calendar: 'Toplantıları seçtiniz. Lütfen ilgili giriş alanlarına dikkat edin'
+            survey: 'Anketleri seçtiniz. Lütfen ilgili giriş alanlarına dikkat edin'
           newSurvey:
             newQuestion: Yeni Soru
             newQuestionResponse: Yeni bir soru eklendi

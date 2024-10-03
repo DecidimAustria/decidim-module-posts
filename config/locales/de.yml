@@ -101,6 +101,12 @@ de:
           loginLink: Anmelden
           openButton: Dialog öffnen, um neuen Beitrag zu erstellen
           close: Dialog schließen
+          aria-live:
+            post: Sie haben "Beitrag" ausgewählt. Bitte beachten Sie die entsprechenden Eingabefelder
+            sharecare: Sie haben "Share & Care" ausgewählt. Bitte beachten Sie die entsprechenden Eingabefelder
+            host: Sie haben "Host" ausgewählt. Bitte beachten Sie die entsprechenden Eingabefelder
+            calendar: Sie haben "Meetings" ausgewählt. Bitte beachten Sie die entsprechenden Eingabefelder
+            survey: Sie haben "Umfragen" ausgewählt. Bitte beachten Sie die entsprechenden Eingabefelder
           newSurvey:
             newQuestion: Neue Frage
             newQuestionResponse: Eine neue Frage wurde hinzugefügt
