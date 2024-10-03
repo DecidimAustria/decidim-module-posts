@@ -3,7 +3,7 @@
   <%= render partial: "decidim/posts/posts/sidebar" %>
   <div class="feeds__container">
     <div class="feeds__body">
-      <div class="card__grid-home w-full lg:grid-cols-8 xl:grid-cols-12">
+      <div class="card__grid-home w-full lg:grid-cols-8 xl:grid-cols-12 gap-6">
         <% if current_user %>
           <div class="card__grid feeds__feed feeds__feed_newElement flex-row justify-between">
             <button class="btn circle feeds__feed_newElement-opener" aria-expanded="false" aria-controls="feeds__feed_newElement" aria-haspopup="feeds__feed_newElement" type="button">

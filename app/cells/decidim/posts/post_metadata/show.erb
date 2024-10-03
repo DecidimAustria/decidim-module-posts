@@ -1,20 +1,12 @@
-<% filters = [
-  { filter: 'post', icon: 'home-5-line' },
-  { filter: 'sharecare', icon: 'shake-hands-line' },
-  { filter: 'calendar', icon: 'calendar-line' },
-  { filter: 'survey', icon: 'draft-line' },
-  { filter: 'host', icon: 'home-gear-line' }
-] %>
-
-<% current_filter = filters.find { |f| f[:filter] == post.category } %>
-
-<div class="flex justify-between">
-  <time><%= @time_since_update %></time>
-  <div>
-    <%= icon @category_info[:icon] %>
-    <span class="sr-only"><%= @category_info[:label] %></span>
+<div class="feeds__feed_metadata px-2 py-1 bg-feeds-<%=category%> bg-opacity-25 rounded-t-md text-sm divide-y divide-feeds-<%=category%>">
+  <div class="pb-1">
+    haben gefallen dran!
+  </div>
+  <div class="flex justify-between items-center pt-1">
+    <time><%= @time_since_update %></time>
+    <div class="text-lg">
+      <%= icon @category_info[:icon] %>
+      <span class="sr-only bg-feeds-calendar divide-feeds-calendar bg-feeds-sharecare divide-feeds-sharecare bg-feeds-survey divide-feeds-survey bg-feeds-host divide-feeds-host bg-feeds-post divide-feeds-post"><%= @category_info[:label] %></span>
+    </div>
   </div>
 </div>
-
-
-

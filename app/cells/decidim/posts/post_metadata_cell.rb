@@ -47,11 +47,19 @@ module Decidim
           { filter: 'host', icon: 'home-gear-line' }
         ]
 
-        current_filter = filters.find { |f| f[:filter] == post.category }
+        current_filter = filters.find { |f| f[:filter] == category }
         {
           icon: current_filter[:icon],
           label: t("decidim.components.posts.filter.#{current_filter[:filter]}")
         }
+      end
+
+      def category
+        if post.is_a?(Decidim::Meetings::Meeting)
+          'calendar'
+        else
+          post.category
+        end
       end
 
     end

@@ -1,6 +1,7 @@
 import { initSurvey } from './survey.js';
 import carousel from './carousel.js';
 import { host_status } from './host_status.js';
+import { closeDialog, activateCategory, hideAllForms } from './newFeeds.js';
 
 document.addEventListener('DOMContentLoaded', function () {
 	const spinner = "<span class='loading-spinner'></span>";
@@ -64,102 +65,6 @@ document.addEventListener('DOMContentLoaded', function () {
 		observer.observe(loadMoreBtn);
 	}
 
-	const newFeed = document.getElementById('feeds__feed_newElement');
-	const newFeedOpener = document.querySelectorAll(
-		'.feeds__feed_newElement-opener'
-	);
-	const newFeedCloser = newFeed.querySelector('.feeds__feed_newElement-closer');
-	let lastFocusedButton = null;
-	newFeedOpener.forEach(function (opener) {
-		opener.addEventListener('click', function () {
-			let isExpanded = opener.getAttribute('aria-expanded') === 'true';
-			opener.setAttribute('aria-expanded', !isExpanded);
-			activateCategory(categoryButtons[0]);
-			newFeed.classList.toggle('open');
-			lastFocusedButton = this;
-			document.getElementById('post_body').focus();
-			document.body.style.overflow = 'hidden';
-		});
-	});
-
-	function closeDialog() {
-		// newFeed.close();
-		newFeedOpener.forEach(function (opener) {
-			opener.setAttribute('aria-expanded', 'false');
-			newFeed.classList.remove('open');
-			lastFocusedButton.focus();
-			document.body.style.overflow = 'auto';
-		});
-	}
-
-	// Close the dialog when clicking outside the content
-	newFeed.addEventListener('click', function (event) {
-		if (event.target === newFeed) {
-			closeDialog();
-		}
-	});
-
-	newFeedCloser.addEventListener('click', closeDialog);
-
-	// Close the dialog when pressing ESC
-	document.addEventListener('keydown', function (event) {
-		if (event.key === 'Escape') {
-			closeDialog();
-		}
-	});
-
-	const categoryButtons = document.querySelectorAll(
-		'.category-selection button'
-	);
-	const meetingForm = document.querySelector('.meetings_form');
-	const postForm = document.querySelector('.posts_form');
-	const surveyDiv = document.getElementById('extraFieldsForSurvey');
-	const newFeedLiveRegion = document.getElementById(
-		'feeds__feed_newElement_Form-LiveRegion'
-	);
-
-	function hideAllForms() {
-		meetingForm.classList.remove('open');
-		postForm.classList.remove('open');
-		surveyDiv.classList.remove('open');
-		newFeedLiveRegion.innerHTML = '';
-		categoryButtons.forEach(function (button) {
-			button.classList.remove('active');
-			button.setAttribute('aria-pressed', 'false');
-		});
-	}
-
-	function activateCategory(button) {
-		hideAllForms(); // Clear active states before setting the new one
-		button.classList.add('active'); // Mark the clicked button as active
-		button.setAttribute('aria-pressed', 'true');
-		const category = button.getAttribute('data-category');
-		newFeedLiveRegion.innerHTML =
-			window.translations.newFeedLiveRegion[category];
-
-		const postBody = document.getElementById('post_body');
-		const meetingTitle = document.getElementById('meeting_title');
-		if (category === 'calendar') {
-			meetingForm.classList.add('open');
-			meetingForm.querySelector('.form-error').classList.remove('is-visible');
-			meetingTitle.classList.remove('is-invalid-input');
-			document.getElementById('meeting_title').focus();
-		} else {
-			postForm.classList.add('open');
-			postForm.querySelector('.form-error').classList.remove('is-visible');
-			postBody.classList.remove('is-invalid-input');
-			postBody.focus();
-			document.getElementById('post_category').value = category;
-			if (category === 'survey') surveyDiv.classList.add('open');
-		}
-	}
-
-	categoryButtons.forEach((button) => {
-		button.addEventListener('click', function () {
-			activateCategory(this);
-		});
-	});
-
 	document
 		.querySelectorAll('.feeds__feed_actions_submenu > button')
 		.forEach(function (button) {
@@ -176,15 +81,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	// Select all comments__header h2 elements
 	const commentsHeaders = document.querySelectorAll('.comments__header h2');
-	// Loop over all h2 elements
 	commentsHeaders.forEach((commentsHeader) => {
-		// Find the parent container with "data-decidim-comments"
 		const parentContainer = commentsHeader.closest('[data-decidim-comments]');
-		// Get the ID of the parent container
 		const parentId = parentContainer.getAttribute('id');
-		// Set the aria-controls attribute to the h2 element
 		commentsHeader.setAttribute('aria-controls', `${parentId}-threads`);
-		// Set the aria-expanded attribute to false initially
 		commentsHeader.setAttribute('aria-expanded', 'false');
 	});
 

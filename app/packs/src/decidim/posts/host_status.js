@@ -1,5 +1,5 @@
 export function host_status() {
-  const changeStatusButtons = document.querySelectorAll('.changeStatusButton');
+	const changeStatusButtons = document.querySelectorAll('.changeStatusButton');
 	changeStatusButtons.forEach(function (button) {
 		button.addEventListener('click', function () {
 			const postId = button.dataset.postId;
@@ -22,7 +22,7 @@ export function host_status() {
 
 			confirmButton.addEventListener('click', function () {
 				confirmButtons.style.display = 'none';
-				console.log()
+				console.log();
 				confirmationModalResponse.innerText =
 					window.translations.dialog.dialogBodyResponse;
 				const params = new URLSearchParams({
@@ -40,7 +40,7 @@ export function host_status() {
 							window.translations.dialog.dialogBodyMsg;
 						const postElement = document.getElementById(`feeds_post-${postId}`);
 						postElement.innerHTML = response.new_content;
-            host_status();
+						host_status();
 					},
 					error: function (error) {
 						console.error('Error changing status:', error);

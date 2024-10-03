@@ -130,8 +130,12 @@
 	.feeds__body {
 		@apply flex-grow flex flex-wrap gap-4 items-start;
 		.feeds__feed {
-			@apply p-2 gap-2 ring-1 hover:cursor-default md:col-start-1 md:col-end-4 lg:col-start-2 lg:col-end-8 xl:col-start-2 xl:col-end-10;
+			@apply gap-4 ring-1 hover:cursor-default md:col-start-1 md:col-end-4 lg:col-start-2 lg:col-end-8 xl:col-start-2 xl:col-end-10;
 			.card__grid-text {
+				@apply py-2 text-pretty;
+				p {
+					@apply text-black;
+				}
 				a {
 					@apply break-words break-all underline motion-safe:transition-colors hover:text-feeds-notification hover:no-underline;
 				}
@@ -155,8 +159,12 @@
 							@apply text-white;
 						}
 					}
-					button.openButton {
-						@apply text-white;
+					.card__grid-metadata{
+						.feeds__feed_actions_submenu{
+							button.openButton, button.openButton span{
+								@apply text-white;
+							}
+						}
 					}
 				}
 				&.feeds__feed_host-handling {
@@ -191,7 +199,7 @@
 				--tw-ring-color: theme('colors.feeds.calendar');
 			}
 			.card__grid-metadata {
-				@apply gap-2 items-center flex-nowrap text-black;
+				@apply gap-2 items-center flex-nowrap text-black px-2 pt-2;
 				.author {
 					@apply mr-auto shrink;
 				}
@@ -216,7 +224,7 @@
 					.feeds__feed_actions_submenu {
 						button.openButton {
 							span {
-								@apply leading-[0] text-2xl;
+								@apply leading-[0] text-3xl text-feeds-sidebar;
 							}
 						}
 					}
@@ -247,7 +255,7 @@
 				}
 			}
 			.feeds__feed_comments {
-				@apply pt-4 pb-2;
+				@apply px-2;
 				#comments {
 					.comments__header {
 						@apply flex-row justify-end h-8 items-center mb-0;
@@ -371,6 +379,11 @@
 // fix bottom menu overlapping content on desktops
 #content {
 	@apply lg:mb-28;
+}
+
+// color hacks
+.content-block__description {
+	@apply text-black;
 }
 
 // long text cut off
