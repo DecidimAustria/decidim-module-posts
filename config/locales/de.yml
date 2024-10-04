@@ -18,6 +18,25 @@ de:
       actions:
         title: Aktionen
         edit_post: Beitrag bearbeiten
+      time:
+        minutes:
+          one: Min.
+          other: Min.
+        hours:
+          one: St.
+          other: St.
+        days:
+          one: Tag
+          other: Tage
+        weeks:
+          one: Woche
+          other: Wochen
+        months:
+          one: Monat
+          other: Monate
+        years:
+          one: Jahr
+          other: Jahre
       post_comment:
         comment: Kommentieren
       posts:

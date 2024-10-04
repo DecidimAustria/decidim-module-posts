@@ -18,6 +18,25 @@ hr:
       actions:
         title: Akcije
         edit_post: Uredi post
+      vrijeme:
+        minute:
+          jedan: Min.
+          ostali: Min.
+        sati:
+          jedan: Sat.
+          ostali: Sati.
+        dani:
+          jedan: Dan
+          ostali: Dani
+        tjedni:
+          jedan: Tjedan
+          ostali: Tjedni
+        mjeseci:
+          jedan: Mjesec
+          ostali: Mjeseci
+        godine:
+          jedan: Godina
+          ostali: Godine
       post_comment:
         comment: Komentar
       posts:

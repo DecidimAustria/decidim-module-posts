@@ -26,15 +26,15 @@ module Decidim
         years = (time_difference / 31536000).to_i
 
         if minutes < 60
-          "#{minutes} Min."
+          minutes.to_s + ' ' + t("decidim.posts.time.minutes", count: minutes)
         elsif hours < 24
-          "#{hours} St."
+          hours.to_s + ' ' + t("decidim.posts.time.hours", count: hours)
         elsif days < 30
-          "#{days} Tag"
+          days.to_s + ' ' + t("decidim.posts.time.days", count: days)
         elsif months < 12
-          "#{months} Monat"
+          months.to_s + ' ' + t("decidim.posts.time.months", count: months)
         else
-          "#{years} Jahr"
+          years.to_s + ' ' + t("decidim.posts.time.years", count: years)
         end
       end
 

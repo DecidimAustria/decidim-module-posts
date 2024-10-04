@@ -1,5 +1,5 @@
 <article class="card__grid feeds__feed" data-content="calendar">
-  <%= cell("decidim/posts/post_meta", meeting) %>
+  <%= cell("decidim/posts/post_header", meeting) %>
   <div class="flex gap-4 py-2 px-2">
     <div class="card__grid-text--meta flex flex-col gap-2">
       <time class="card__calendar" datetime="<%= meeting.start_time.iso8601 %>">

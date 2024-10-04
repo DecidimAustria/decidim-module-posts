@@ -2,7 +2,7 @@
 
 module Decidim
   module Posts
-    class PostMetaCell < Decidim::ViewModel
+    class PostHeaderCell < Decidim::ViewModel
       include Cell::ViewModel::Partial
       include Decidim::EndorsableHelper
       def show

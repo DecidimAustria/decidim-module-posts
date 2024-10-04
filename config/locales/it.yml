@@ -18,6 +18,25 @@ it:
       actions:
         title: Azioni
         edit_post: Modifica post
+      time:
+        minutes:
+          one: Minuto
+          other: Minuti
+        hours:
+          one: Ora
+          other: Ore
+        days:
+          one: Giorno
+          other: Giorni
+        weeks:
+          one: Settimana
+          other: Settimane
+        months:
+          one: Mese
+          other: Mesi
+        years:
+          one: Anno
+          other: Anni
       post_comment:
         comment: Commento
       posts:

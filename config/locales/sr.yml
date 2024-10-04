@@ -18,6 +18,26 @@ sr:
       actions:
         title: Akcije
         edit_post: Uredi post
+
+      time:
+        minutes:
+          one: Minut
+          other: Minuta
+        hours:
+          one: Sat
+          other: Sati
+        days:
+          one: Dan
+          other: Dana
+        weeks:
+          one: Nedelja
+          other: Nedelje
+        months:
+          one: Mesec
+          other: Meseci
+        years:
+          one: Godina
+          other: Godine
       post_comment:
         comment: Komentar
       posts:

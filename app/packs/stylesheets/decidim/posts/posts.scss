@@ -159,10 +159,14 @@
 							@apply text-white;
 						}
 					}
-					.card__grid-metadata{
-						.feeds__feed_actions_submenu{
-							button.openButton, button.openButton span{
+					.card__grid-metadata {
+						.feeds__feed_actions_submenu {
+							button.openButton,
+							button.openButton span {
 								@apply text-white;
+							}
+							&:has(ul:empty) {
+								@apply hidden;
 							}
 						}
 					}
@@ -180,7 +184,7 @@
 			&[data-content='survey'] {
 				--tw-ring-color: theme('colors.feeds.survey');
 				.feeds__feed_survey {
-					@apply flex flex-col gap-2 text-sm font-bold;
+					@apply flex flex-col gap-2 text-sm font-bold px-2;
 					.feeds__feed_survey-question {
 						@apply flex flex-col p-2 gap-2 rounded bg-feeds-bg;
 						.feeds__feed_survey-question-answer {
@@ -206,7 +210,7 @@
 				.feeds__feed_actions {
 					@apply flex gap-4;
 					span {
-						@apply flex items-center gap-1 text-xs;
+						@apply flex items-center gap-1;
 					}
 					.endorsers-list__trigger {
 						@apply hidden;

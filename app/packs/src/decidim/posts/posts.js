@@ -2,6 +2,7 @@ import { initSurvey } from './survey.js';
 import carousel from './carousel.js';
 import { host_status } from './host_status.js';
 import { closeDialog, activateCategory, hideAllForms } from './newFeeds.js';
+import Submenu from './reactions.js';
 
 document.addEventListener('DOMContentLoaded', function () {
 	const spinner = "<span class='loading-spinner'></span>";
@@ -75,6 +76,16 @@ document.addEventListener('DOMContentLoaded', function () {
 				submenu.classList.toggle('hidden', !isHidden);
 				this.setAttribute('aria-expanded', !isHidden);
 			});
+		});
+
+	document
+		.querySelectorAll('.feeds__feed_reactions_submenu > button')
+		.forEach((button) => {
+			const submenuId = button.getAttribute('aria-controls');
+			const submenu = document.getElementById(submenuId);
+			if (submenu) {
+				new Submenu(button, submenu);
+			}
 		});
 
 	// comments

@@ -1,4 +1,4 @@
-<%= cell("decidim/posts/post_meta", post) %>
+<%= cell("decidim/posts/post_header", post) %>
 
 <% unless post_highlighted %>
   <% if official_post %>
@@ -63,6 +63,6 @@
     </div>
   <% end %>
 <% end %>
-<% unless post_highlighted || status_class %>
+<% unless post_highlighted %>
   <%= cell("decidim/posts/post_metadata", post) %>
 <% end %>

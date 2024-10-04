@@ -1,7 +1,5 @@
 <div class="feeds__feed_metadata px-2 py-1 bg-feeds-<%=category%> bg-opacity-25 rounded-t-md text-sm divide-y divide-feeds-<%=category%>">
-  <div class="pb-1">
-    haben gefallen dran!
-  </div>
+  <%= cell("decidim/posts/reactions", post).(:meta) %>
   <div class="flex justify-between items-center pt-1">
     <time><%= @time_since_update %></time>
     <div class="text-lg">

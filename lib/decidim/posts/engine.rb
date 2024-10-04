@@ -75,6 +75,7 @@ module Decidim
         Decidim.icons.register(name: "translate", icon: "translate", category: "editor", description: "", engine: :posts)
         Decidim.icons.register(name: "file-2-line", icon: "file-2-line", category: "editor", description: "", engine: :posts)
         Decidim.icons.register(name: "dislike", icon: "heart-fill", description: "Dislike", category: "action", engine: :posts)
+        Decidim.icons.register(name: "heart-add-line", icon: "heart-add-line", description: "Like", category: "action", engine: :posts)
       end
 
     end

@@ -18,6 +18,25 @@ tr:
       actions:
         title: Eylemler
         edit_post: Gönderiyi düzenle
+      time:
+        minutes:
+          one: Dak.
+          other: Dak.
+        hours:
+          one: Saat
+          other: Saat
+        days:
+          one: Gün
+          other: Günler
+        weeks:
+          one: Hafta
+          other: Haftalar
+        months:
+          one: Ay
+          other: Aylar
+        years:
+          one: Yıl
+          other: Yıllar
       post_comment:
         comment: Yorum
       posts:

@@ -18,6 +18,25 @@ en:
       actions:
         title: Actions
         edit_post: Edit post
+      time:
+        minutes:
+          one: Minute
+          other: Minutes
+        hours:
+          one: Hour
+          other: Hours
+        days:
+          one: Day
+          other: Days
+        weeks:
+          one: Week
+          other: Weeks
+        months:
+          one: Month
+          other: Months
+        years:
+          one: Year
+          other: Years
       post_comment:
         comment: Comment
       posts:
