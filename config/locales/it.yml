@@ -108,6 +108,20 @@ it:
           translate: Traduci
           delete: Elimina
           deleteConfirmation: Sei sicuro di voler eliminare questo post?
+        reactions:
+          title: Scegli la tua reazione
+          like: Mi piace
+          unlike: Non mi piace più
+          love: Adoro
+          unlike_love: Non adoro più
+          laugh: Risata
+          unlike_laugh: Non rido più
+          wow: Wow
+          unlike_wow: Non wow più
+          sad: Triste
+          unlike_sad: Non triste più
+          angry: Arrabbiato
+          unlike_angry: Non arrabbiato più
         newFeed:
           title: Crea un nuovo post
           text: Post

@@ -108,6 +108,20 @@ tr:
           translate: Çevir
           delete: Sil
           deleteConfirmation: Bu gönderiyi silmek istediğinizden emin misiniz?
+        reactions:
+          title: Tepkinizi seçin
+          like: Beğen
+          unlike: Beğenmekten vazgeç
+          love: Bayıldım
+          unlike_love: Bayılmaktan vazgeç
+          laugh: Gül
+          unlike_laugh: Gülmekten vazgeç
+          wow: Vay
+          unlike_wow: Vay demekten vazgeç
+          sad: Üzgün
+          unlike_sad: Üzgün olmaktan vazgeç
+          angry: Kızgın
+          unlike_angry: Kızgın olmaktan vazgeç
         newFeed:
           title: Yeni bir gönderi oluştur
           text: Gönderi

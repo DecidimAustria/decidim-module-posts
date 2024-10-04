@@ -3,13 +3,43 @@
     <%= t("decidim.endorsement_buttons_cell.already_endorsed") %>
     <span class="text-xl"><%= icon('heart-add-line', class: 'text-black') %></span>
   </button>
-  <ul id="<%= dom_id(post) %>#feeds__feed_reactions_submenu" role="menu" aria-orientation="vertical" aria-labelledby="<%= dom_id(post) %>#feeds__feed_reactions_submenuButton" class="absolute mt-2 right-0 p-2 flex gap-2 bg-white rounded-md shadow-feedMenu overflow-hidden hidden" aria-label="Choose Your reaction">
-    <li role="menuitem"><a href="#" class="block text-xl w-[24px] h-[24px]" data-reaction="love">❤️</a></li>
-    <li role="menuitem"><a href="#" class="block text-xl w-[24px] h-[24px]" data-reaction="funny">😂</a></li>
-    <li role="menuitem"><a href="#" class="block text-xl w-[24px] h-[24px]" data-reaction="surprised">😮</a></li>
-    <li role="menuitem"><a href="#" class="block text-xl w-[24px] h-[24px]" data-reaction="sad">😢</a></li>
-    <li role="menuitem"><a href="#" class="block text-xl w-[24px] h-[24px]" data-reaction="angry">😡</a></li>
-    <li role="menuitem"><a href="#" class="block text-xl w-[24px] h-[24px]" data-reaction="like">👍</a></li>
+  <ul id="<%= dom_id(post) %>#feeds__feed_reactions_submenu" role="menu" aria-orientation="vertical" aria-labelledby="<%= dom_id(post) %>#feeds__feed_reactions_submenuButton" class="absolute mt-2 right-0 p-2 flex gap-2 bg-white rounded-md shadow-feedMenu overflow-hidden hidden" aria-label="<%= t("decidim.components.posts.reactions.title") %>">
+    <li role="menuitem">
+      <a href="#" class="block text-xl w-[24px] h-[24px]" data-reaction="love">
+      ❤️
+      <span class="sr-only"><%= t("decidim.components.posts.reactions.love") %></span>
+      </a>
+    </li>
+    <li role="menuitem">
+      <a href="#" class="block text-xl w-[24px] h-[24px]" data-reaction="laugh">
+      😂
+      <span class="sr-only"><%= t("decidim.components.posts.reactions.laugh") %></span>
+      </a>
+    </li>
+    <li role="menuitem">
+      <a href="#" class="block text-xl w-[24px] h-[24px]" data-reaction="wow">
+      😮
+      <span class="sr-only"><%= t("decidim.components.posts.reactions.wow") %></span>
+      </a>
+    </li>
+    <li role="menuitem">
+      <a href="#" class="block text-xl w-[24px] h-[24px]" data-reaction="sad">
+      😢
+      <span class="sr-only"><%= t("decidim.components.posts.reactions.sad") %></span>
+      </a>
+    </li>
+    <li role="menuitem">
+      <a href="#" class="block text-xl w-[24px] h-[24px]" data-reaction="angry">
+      😡
+      <span class="sr-only"><%= t("decidim.components.posts.reactions.angry") %></span>
+      </a>
+    </li>
+    <li role="menuitem">
+      <a href="#" class="block text-xl w-[24px] h-[24px]" data-reaction="like">
+      👍
+      <span class="sr-only"><%= t("decidim.components.posts.reactions.like") %></span>
+      </a>
+    </li>
   </ul>
 </div>
 

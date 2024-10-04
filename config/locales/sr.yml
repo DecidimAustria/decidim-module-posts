@@ -109,6 +109,20 @@ sr:
           translate: Prevedi
           delete: Obriši
           deleteConfirmation: Da li ste sigurni da želite da obrišete ovaj post?
+        reactions:
+          title: Izaberite svoju reakciju
+          like: Sviđa mi se
+          unlike: Više mi se ne sviđa
+          love: Volim
+          unlike_love: Više ne volim
+          laugh: Smejem se
+          unlike_laugh: Više se ne smejem
+          wow: Vau
+          unlike_wow: Više nije vau
+          sad: Tužan
+          unlike_sad: Više nisam tužan
+          angry: Besan
+          unlike_angry: Više nisam besan
         newFeed:
           title: Kreiraj novu objavu
           text: Post

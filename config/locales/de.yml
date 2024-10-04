@@ -108,6 +108,20 @@ de:
           translate: Übersetzen
           delete: Löschen
           deleteConfirmation: Möchten Sie diesen Beitrag wirklich löschen?
+        reactions:
+          title: Wählen Sie Ihre Reaktion
+          like: Gefällt mir
+          unlike: Gefällt mir nicht mehr
+          love: Liebe es
+          unlike_love: Liebe es nicht mehr
+          laugh: Lachen
+          unlike_laugh: Lachen nicht mehr
+          wow: Wow
+          unlike_wow: Wow nicht mehr
+          sad: Traurig
+          unlike_sad: Traurig nicht mehr
+          angry: Wütend
+          unlike_angry: Wütend nicht mehr
         newFeed:
           title: Neuen Beitrag erstellen
           text: Beitrag
