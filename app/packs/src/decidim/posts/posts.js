@@ -5,6 +5,59 @@ import { closeDialog, activateCategory, hideAllForms } from './newFeeds.js';
 import Submenu from './reactions.js';
 
 document.addEventListener('DOMContentLoaded', function () {
+	function addEventListeners(rootElement) {
+		const loadMoreBtn = rootElement.querySelector('#loadMoreBtn');
+		if (loadMoreBtn) {
+			loadMoreBtn.addEventListener('click', loadMoreButtonClicked);
+			observer.observe(loadMoreBtn);
+		}
+
+		rootElement
+			.querySelectorAll('.feeds__feed_actions_submenu > button')
+			.forEach((button) => {
+				button.addEventListener('click', function () {
+					var submenuId = this.getAttribute('aria-controls');
+					var submenu = document.getElementById(submenuId);
+					var isHidden = submenu.classList.contains('hidden');
+					submenu.classList.toggle('hidden', !isHidden);
+					this.setAttribute('aria-expanded', !isHidden);
+					// if (submenu) {
+					// 	new Submenu(button, submenu);
+					// }
+				});
+			});
+
+		rootElement
+			.querySelectorAll('.feeds__feed_reactions_submenu > button')
+			.forEach((button) => {
+				const submenuId = button.getAttribute('aria-controls');
+				const submenu = rootElement.querySelector(`#${submenuId}`);
+				if (submenu) {
+					new Submenu(button, submenu);
+				}
+			});
+
+		// Select all comments__header h2 elements
+		const commentsHeaders = rootElement.querySelectorAll('.comments__header h2');
+		commentsHeaders.forEach((commentsHeader) => {
+			const parentContainer = commentsHeader.closest('[data-decidim-comments]');
+			const parentId = parentContainer.getAttribute('id');
+			commentsHeader.setAttribute('aria-controls', `${parentId}-threads`);
+			commentsHeader.setAttribute('aria-expanded', 'false');
+		});
+
+		const newCommentBtns = rootElement.querySelectorAll('.newCommentBtn');
+		const showCommentsBtns = rootElement.querySelectorAll('.comments__header h2');
+
+		newCommentBtns.forEach((newCommentBtn) => {
+			addActionToNewCommentBtn(newCommentBtn);
+		});
+
+		showCommentsBtns.forEach((showCommentsBtn) => {
+			addActionToShowCommentsBtn(showCommentsBtn);
+		});
+	}
+	
 	const spinner = "<span class='loading-spinner'></span>";
 
 	// Implement infinite scroll
@@ -42,8 +95,21 @@ document.addEventListener('DOMContentLoaded', function () {
 				return response.text();
 			})
 			.then((html) => {
+				// activate all buttons in the new html
+				const tempContainer = document.createElement('div');
+				tempContainer.innerHTML = html;
+				const fragment = document.createDocumentFragment();
+				addEventListeners(tempContainer);
+				Array.from(tempContainer.children).forEach((element) => {
+					fragment.appendChild(element);
+				});
+
 				// replace the button with the new html
-				button.outerHTML = html;
+				button.parentNode.replaceChild(fragment, button);
+				// alternative:
+				// button.parentNode.insertAfter(fragment, button);
+				// button.remove();
+
 				// add event listener to new button
 				const newButton = document.getElementById('loadMoreBtn');
 				if (newButton) {
@@ -60,49 +126,10 @@ document.addEventListener('DOMContentLoaded', function () {
 			});
 	}
 
-	const loadMoreBtn = document.getElementById('loadMoreBtn');
-	if (loadMoreBtn) {
-		loadMoreBtn.addEventListener('click', loadMoreButtonClicked);
-		observer.observe(loadMoreBtn);
-	}
+	// add event listeners to all the buttons found in the document
+	addEventListeners(document);
 
-	document
-		.querySelectorAll('.feeds__feed_actions_submenu > button')
-		.forEach(function (button) {
-			button.addEventListener('click', function () {
-				var submenuId = this.getAttribute('aria-controls');
-				var submenu = document.getElementById(submenuId);
-				var isHidden = submenu.classList.contains('hidden');
-				submenu.classList.toggle('hidden', !isHidden);
-				this.setAttribute('aria-expanded', !isHidden);
-			});
-		});
-
-	document
-		.querySelectorAll('.feeds__feed_reactions_submenu > button')
-		.forEach((button) => {
-			const submenuId = button.getAttribute('aria-controls');
-			const submenu = document.getElementById(submenuId);
-			if (submenu) {
-				new Submenu(button, submenu);
-			}
-		});
-
-	// comments
-
-	// Select all comments__header h2 elements
-	const commentsHeaders = document.querySelectorAll('.comments__header h2');
-	commentsHeaders.forEach((commentsHeader) => {
-		const parentContainer = commentsHeader.closest('[data-decidim-comments]');
-		const parentId = parentContainer.getAttribute('id');
-		commentsHeader.setAttribute('aria-controls', `${parentId}-threads`);
-		commentsHeader.setAttribute('aria-expanded', 'false');
-	});
-
-	const newCommentBtns = document.querySelectorAll('.newCommentBtn');
-	const showCommentsBtns = document.querySelectorAll('.comments__header h2');
-
-	newCommentBtns.forEach((newCommentBtn) => {
+	function addActionToNewCommentBtn(newCommentBtn) {
 		newCommentBtn.addEventListener('click', function () {
 			const postId = newCommentBtn.getAttribute('data-post-id');
 			const modelType = newCommentBtn.getAttribute('data-model-type');
@@ -132,9 +159,9 @@ document.addEventListener('DOMContentLoaded', function () {
 				hideDiv(commentsDivId);
 			}
 		});
-	});
+	}
 
-	showCommentsBtns.forEach((showCommentsBtn) => {
+	function addActionToShowCommentsBtn(showCommentsBtn) {
 		showCommentsBtn.addEventListener('click', function () {
 			const controlledDivIds = showCommentsBtn
 				.getAttribute('aria-controls')
@@ -146,7 +173,7 @@ document.addEventListener('DOMContentLoaded', function () {
 				toggleCommentsVisibility(controlledDivId);
 			});
 		});
-	});
+	}
 
 	function toggleCommentsVisibility(controlledDivId) {
 		const controlledDiv = document.getElementById(controlledDivId);

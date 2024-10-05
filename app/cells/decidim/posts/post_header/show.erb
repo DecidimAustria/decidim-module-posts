@@ -20,11 +20,11 @@
       <%= cell("decidim/posts/reactions", post) %>
     <% end %>
     <div class="feeds__feed_actions_submenu relative self-start">
-      <button type="button" aria-expanded="false" aria-haspopup="true" aria-controls="<%= dom_id(post) %>#feeds__feed_actions_submenu" id="<%= dom_id(post) %>#feeds__feed_actions_submenuButton" class="flex justify-center items-start min-w-[24px] min-h-[24px] openButton">
+      <button type="button" aria-expanded="false" aria-haspopup="true" aria-controls="<%= dom_id(post) %>_feeds__feed_actions_submenu" id="<%= dom_id(post) %>_feeds__feed_actions_submenuButton" class="flex justify-center items-start min-w-[24px] min-h-[24px] openButton">
         <span class="sr-only"><%= t('decidim.components.posts.actions.openMenu') %></span>
         <span aria-hidden="true">...</span>
       </button>
-      <ul id="<%= dom_id(post) %>#feeds__feed_actions_submenu" role="menu" aria-orientation="vertical" aria-labelledby="<%= dom_id(post) %>#feeds__feed_actions_submenuButton" class="absolute right-0 mt-2 px-4 py-2 bg-white divide-y divide-dashed divide-gray-100 rounded-md shadow-feedMenu overflow-hidden hidden z-10">
+      <ul id="<%= dom_id(post) %>_feeds__feed_actions_submenu" role="menu" aria-orientation="vertical" aria-labelledby="<%= dom_id(post) %>_feeds__feed_actions_submenuButton" class="absolute right-0 mt-2 px-4 py-2 bg-white divide-y divide-dashed divide-gray-100 rounded-md shadow-feedMenu overflow-hidden hidden z-10">
         <% if post.author != current_user && post.class == Decidim::Posts::Post %>
         <li class="text-right py-1 text-feeds-sidebar" role="menuitem">
           <%= cell("decidim/report_button", post, button_classes: "hover:text-black dropdown__item flex-row-reverse min-h-[24px]", modal_id: "flagModalPost#{post.id}") %>
