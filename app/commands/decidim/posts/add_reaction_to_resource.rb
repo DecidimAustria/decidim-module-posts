@@ -26,13 +26,29 @@ module Decidim
       def call
         return broadcast(:invalid) if existing_group_reaction?
 
-        reaction = try_updating_reaction
-        reaction = build_resource_reaction unless reaction
-        if reaction.save
-          notify_reactor_followers
-          broadcast(:ok, reaction)
+        reaction = @resource.reactions.find_by(author: @current_user)
+        if reaction.present?
+          if reaction.reaction_type == @reaction_type
+            if delete_reaction(reaction)
+              broadcast(:ok, nil)
+            else
+              broadcast(:invalid)
+            end
+          else
+            if reaction.update(reaction_type: @reaction_type)
+              broadcast(:ok, reaction)
+            else
+              broadcast(:invalid)
+            end
+          end
         else
-          broadcast(:invalid)
+          reaction = build_resource_reaction unless reaction
+          if reaction.save
+            notify_reactor_followers
+            broadcast(:ok, reaction)
+          else
+            broadcast(:invalid)
+          end
         end
       rescue ActiveRecord::RecordNotUnique
         broadcast(:invalid)
@@ -44,16 +60,14 @@ module Decidim
         @current_group_id.present? && @resource.reactions.exists?(decidim_user_group_id: @current_group_id)
       end
 
-      def try_updating_reaction
-        reaction = @resource.reactions.find_by(author: @current_user)
-        reaction.reaction_type = @reaction_type if reaction
-        reaction
-      end
-
       def build_resource_reaction
         reaction = @resource.reactions.build(author: @current_user, reaction_type: @reaction_type)
         reaction.user_group = user_groups.find(@current_group_id) if @current_group_id.present?
         reaction
+      end
+
+      def delete_reaction(reaction)
+        reaction.destroy
       end
 
       def user_groups
