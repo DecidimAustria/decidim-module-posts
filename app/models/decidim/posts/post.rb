@@ -95,9 +95,21 @@ module Decidim
         @survey_responses_count ||= UserAnswer.where(decidim_posts_answer_id: answer_ids).distinct.count(:decidim_user_id)
       end
 
+      # Public: Overrides the `comments_have_alignment?` Commentable concern method.
+      # Whether the object's comments can have alignment or not. It enables the
+      # alignment selector in the add new comment form.
+      def comments_have_alignment?
+        false
+      end
+
+      # Public: Overrides the `comments_have_votes?` Commentable concern method.
+      def comments_have_votes?
+        true
+      end
+
       def users_to_notify_on_comment_created
         [author]
-      end
+      end      
     end
   end
 end
