@@ -8,7 +8,7 @@ class ReplacePostEndorsementsWithReactions < ActiveRecord::Migration[6.1]
     Decidim::Posts::Post.all.each do |post|
       post.endorsements.each do |endorsement|
         post.reactions.create!(
-          decidim_author: endorsement.decidim_author,
+          author: endorsement.author,
           decidim_user_group_id: endorsement.decidim_user_group_id,
           reaction_type: like
         )
@@ -28,7 +28,7 @@ class ReplacePostEndorsementsWithReactions < ActiveRecord::Migration[6.1]
     Decidim::Posts::Post.all.each do |post|
       post.reactions.where(reaction_type: like).each do |reaction|
         post.endorsements.create!(
-          decidim_author: reaction.decidim_author,
+          author: reaction.author,
           decidim_user_group_id: reaction.decidim_user_group_id
         )
         reaction.destroy
