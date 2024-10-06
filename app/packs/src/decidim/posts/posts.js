@@ -67,9 +67,16 @@ document.addEventListener('DOMContentLoaded', function () {
 						.then((response) => {
 							var resourceId = reactionableGlobalId.split("/").pop();
 							var reactionsBlock = document.getElementById(`feeds_post-${resourceId}_reactions`);
+							var submenuId = `post_${resourceId}_feeds__feed_reactions_submenu`;
+							var submenu = rootElement.querySelector(`#${submenuId}`);
+							var submenuButtonId = `post_${resourceId}_feeds__feed_reactions_submenuButton`;
+							var submenuButton = rootElement.querySelector(`#${submenuButtonId}`);
 
 							// replace the reactions block with the new one
 							reactionsBlock.outerHTML = response;
+
+							submenuButton.setAttribute('aria-expanded', false);
+							submenu.classList.toggle('hidden', true);
 						})
 						.catch((error) => {
 							console.error('There was a problem while updating the reactions:', error);
