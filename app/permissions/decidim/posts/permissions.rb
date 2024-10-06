@@ -9,26 +9,33 @@ module Decidim
         case permission_action.subject
         when :post
           case permission_action.action
-            when :create
-              allow! if can_create_posts?
-            when :edit
-              allow! if can_update_post?
-            when :delete
-              allow! if can_delete_post?
-            when :read
-              allow! if can_access?
-            when :change_post_status
-              allow! if change_post_status?
-            end
+          when :create
+            allow! if can_create_posts?
+          when :edit
+            allow! if can_update_post?
+          when :delete
+            allow! if can_delete_post?
+          when :read
+            allow! if can_access?
+          when :change_post_status
+            allow! if change_post_status?
+          end
         when :meeting
           case permission_action.action
-            when :create
-              allow! if can_create_posts?
-            when :update
-              allow! if can_update_meeting?
-            when :withdraw
-              allow! if can_withdraw_meeting?
-            end
+          when :create
+            allow! if can_create_posts?
+          when :update
+            allow! if can_update_meeting?
+          when :withdraw
+            allow! if can_withdraw_meeting?
+          end
+        when :reaction
+          case permission_action.action
+          when :create
+            allow! if can_access?
+          when :withdraw
+            allow! if can_access?
+          end
         end
 
         permission_action

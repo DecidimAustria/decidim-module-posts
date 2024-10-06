@@ -31,6 +31,7 @@ module Decidim
             put :withdraw
           end
         end
+        resources :reactions, only: [:create, :destroy]
         
         # get "/test" => "posts#test"
         get 'change_status', to: 'posts#change_status', as: 'change_post_status'

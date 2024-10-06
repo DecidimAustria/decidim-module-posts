@@ -1,6 +1,6 @@
 module Decidim
   module Posts
-    class ReactionsCell < Decidim::ViewModel
+    class ReactionMenuCell < Decidim::ViewModel
       include PostCellsHelper
       include ReactionHelper
       include Cell::ViewModel::Partial
@@ -13,8 +13,8 @@ module Decidim
         model
       end
 
-      def grouped_reactions_for(resource)
-        resource.reactions.group_by(&:reaction_type)
+      def reaction_types
+        ReactionType.order(:position)
       end
 
     end

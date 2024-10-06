@@ -36,6 +36,47 @@ document.addEventListener('DOMContentLoaded', function () {
 					new Submenu(button, submenu);
 				}
 			});
+		
+		rootElement
+			.querySelectorAll('.reaction_btn')
+			.forEach((button) => {
+				const reactionTypeId = button.getAttribute('data-reaction-id');
+				const reactionableGlobalId = button.getAttribute('data-reactionable-id');
+				const url = button.getAttribute('data-reaction-url');
+				if (reactionTypeId && url) {
+					button.addEventListener('click', function (event) {
+						event.preventDefault();
+						fetch(url, {
+							method: 'POST',
+							headers: {
+								'Content-Type': 'application/json',
+								'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content,
+								'Accept': 'text/html'
+							},
+							body: JSON.stringify({
+								reaction_type_id: reactionTypeId,
+								resource_id: reactionableGlobalId
+							})
+						})
+						.then((response) => {
+							if (!response.ok) {
+								throw new Error('Network response was not ok');
+							}
+							return response.text();
+						})
+						.then((response) => {
+							var resourceId = reactionableGlobalId.split("/").pop();
+							var reactionsBlock = document.getElementById(`feeds_post-${resourceId}_reactions`);
+
+							// replace the reactions block with the new one
+							reactionsBlock.outerHTML = response;
+						})
+						.catch((error) => {
+							console.error('There was a problem while updating the reactions:', error);
+						});
+					});
+				}
+			});
 
 		// Select all comments__header h2 elements
 		const commentsHeaders = rootElement.querySelectorAll('.comments__header h2');

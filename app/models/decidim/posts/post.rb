@@ -7,12 +7,13 @@ module Decidim
       include Decidim::HasAttachments
       include Decidim::Comments::Commentable
       include Decidim::Searchable
-      include Decidim::Endorsable
+      # include Decidim::Endorsable
       include Decidim::TranslatableResource
       include Decidim::TranslatableAttributes
       include Decidim::Fingerprintable
       include Decidim::HasComponent
       include Decidim::FilterableResource
+      include Decidim::Posts::Reactionable
       # include Decidim::Loggable
       # include Decidim::DownloadYourData
       # include Decidim::Randomable

@@ -1,0 +1,16 @@
+<div class="relative feeds__feed_reactions_submenu">
+  <button type="button" aria-expanded="false" aria-haspopup="true" aria-controls="<%= dom_id(post) %>_feeds__feed_reactions_submenu" id="<%= dom_id(post) %>_feeds__feed_reactions_submenuButton" class="openButton flex gap-2 items-center">
+    <%= t("decidim.endorsement_buttons_cell.already_endorsed") %>
+    <span class="text-xl"><%= icon('heart-add-line', class: 'text-black') %></span>
+  </button>
+  <ul id="<%= dom_id(post) %>_feeds__feed_reactions_submenu" role="menu" aria-orientation="vertical" aria-labelledby="<%= dom_id(post) %>_feeds__feed_reactions_submenuButton" class="absolute mt-2 right-0 p-2 flex gap-2 bg-white rounded-md shadow-feedMenu overflow-hidden hidden" aria-label="<%= t("decidim.components.posts.reactions.title") %>">
+    <% reaction_types.each do |reaction_type| %>
+      <li role="menuitem">
+        <a href="#" class="reaction_btn block text-xl w-[24px] h-[24px]" data-reaction="<%= reaction_type.name %>" data-reaction-id="<%= reaction_type.id %>" data-reaction-url="<%= reactions_path %>" data-reactionable-id="<%= post.to_global_id.to_s %>">
+          <%= reaction_icon(reaction_type.icon_name) %>
+          <span class="sr-only"><%= t("decidim.components.posts.reactions.#{reaction_type.name}") %></span>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+</div>

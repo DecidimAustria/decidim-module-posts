@@ -1,48 +1,8 @@
-<div class="relative feeds__feed_reactions_submenu">
-  <button type="button" aria-expanded="false" aria-haspopup="true" aria-controls="<%= dom_id(post) %>_feeds__feed_reactions_submenu" id="<%= dom_id(post) %>_feeds__feed_reactions_submenuButton" class="openButton flex gap-2 items-center">
-    <%= t("decidim.endorsement_buttons_cell.already_endorsed") %>
-    <span class="text-xl"><%= icon('heart-add-line', class: 'text-black') %></span>
-  </button>
-  <ul id="<%= dom_id(post) %>_feeds__feed_reactions_submenu" role="menu" aria-orientation="vertical" aria-labelledby="<%= dom_id(post) %>_feeds__feed_reactions_submenuButton" class="absolute mt-2 right-0 p-2 flex gap-2 bg-white rounded-md shadow-feedMenu overflow-hidden hidden" aria-label="<%= t("decidim.components.posts.reactions.title") %>">
-    <li role="menuitem">
-      <a href="#" class="block text-xl w-[24px] h-[24px]" data-reaction="love">
-      ❤️
-      <span class="sr-only"><%= t("decidim.components.posts.reactions.love") %></span>
-      </a>
-    </li>
-    <li role="menuitem">
-      <a href="#" class="block text-xl w-[24px] h-[24px]" data-reaction="laugh">
-      😂
-      <span class="sr-only"><%= t("decidim.components.posts.reactions.laugh") %></span>
-      </a>
-    </li>
-    <li role="menuitem">
-      <a href="#" class="block text-xl w-[24px] h-[24px]" data-reaction="wow">
-      😮
-      <span class="sr-only"><%= t("decidim.components.posts.reactions.wow") %></span>
-      </a>
-    </li>
-    <li role="menuitem">
-      <a href="#" class="block text-xl w-[24px] h-[24px]" data-reaction="sad">
-      😢
-      <span class="sr-only"><%= t("decidim.components.posts.reactions.sad") %></span>
-      </a>
-    </li>
-    <li role="menuitem">
-      <a href="#" class="block text-xl w-[24px] h-[24px]" data-reaction="angry">
-      😡
-      <span class="sr-only"><%= t("decidim.components.posts.reactions.angry") %></span>
-      </a>
-    </li>
-    <li role="menuitem">
-      <a href="#" class="block text-xl w-[24px] h-[24px]" data-reaction="like">
-      👍
-      <span class="sr-only"><%= t("decidim.components.posts.reactions.like") %></span>
-      </a>
-    </li>
-  </ul>
+<div id="feeds_post-<%= post.id %>_reactions" class="pb-1">
+  <% grouped_reactions_for(post).each do |reaction_type, reactions| %>
+    <div class="flex gap-2 items-center">
+      <span class="text-xl"><%= reaction_icon(reaction_type.icon_name) %></span>
+      <span class="text-sm"><%= reactions.count %></span>
+    </div>
+  <% end %>
 </div>
-
-
-
-
