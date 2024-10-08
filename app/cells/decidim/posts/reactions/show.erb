@@ -1,8 +1,10 @@
-<div id="feeds_post-<%= post.id %>_reactions" class="pb-1">
+<% total_reactions = 0 %>
+<div class="flex pl-1">
   <% grouped_reactions_for(post).each do |reaction_type, reactions| %>
-    <div class="flex gap-2 items-center">
-      <span class="text-xl"><%= reaction_icon(reaction_type.icon_name) %></span>
-      <span class="text-sm"><%= reactions.count %></span>
-    </div>
+      <span class="text-sm ml-[-0.25rem]"><%= reaction_icon(reaction_type.icon_name) %></span>
+      <% total_reactions += reactions.count %>
   <% end %>
 </div>
+<span class="total-reactions">
+  <%= total_reactions if total_reactions > 0 %>
+</span>

@@ -1,10 +1,6 @@
-<div class="feeds__feed_metadata px-2 py-1 bg-feeds-<%=category%> bg-opacity-25 rounded-t-md text-sm divide-y divide-feeds-<%=category%>">
-  <%= cell("decidim/posts/reactions", post) if post.is_a?(Decidim::Posts::Post) %>
-  <div class="flex justify-between items-center pt-1">
-    <time><%= @time_since_update %></time>
-    <div class="text-lg">
-      <%= icon @category_info[:icon] %>
-      <span class="sr-only bg-feeds-calendar divide-feeds-calendar bg-feeds-sharecare divide-feeds-sharecare bg-feeds-survey divide-feeds-survey bg-feeds-host divide-feeds-host bg-feeds-post divide-feeds-post"><%= @category_info[:label] %></span>
-    </div>
+<div class="feeds__feed_metadata px-2 py-1 text-sm border-t-[1px] border-feeds-<%=category%> flex justify-between items-center ">
+  <div id="feeds_post-<%= post.id %>_reactions" class="flex gap-2 items-center" aria-live="polite">
+    <%= cell("decidim/posts/reactions", post) if post.is_a?(Decidim::Posts::Post) %>
   </div>
+  <time><%= @time_since_update %></time>
 </div>

@@ -2,7 +2,7 @@ import { initSurvey } from './survey.js';
 import carousel from './carousel.js';
 import { host_status } from './host_status.js';
 import { closeDialog, activateCategory, hideAllForms } from './newFeeds.js';
-import Submenu from './reactions.js';
+import Submenu from './submenu.js';
 
 document.addEventListener('DOMContentLoaded', function () {
 	function addEventListeners(rootElement) {
@@ -15,16 +15,11 @@ document.addEventListener('DOMContentLoaded', function () {
 		rootElement
 			.querySelectorAll('.feeds__feed_actions_submenu > button')
 			.forEach((button) => {
-				button.addEventListener('click', function () {
-					var submenuId = this.getAttribute('aria-controls');
-					var submenu = document.getElementById(submenuId);
-					var isHidden = submenu.classList.contains('hidden');
-					submenu.classList.toggle('hidden', !isHidden);
-					this.setAttribute('aria-expanded', !isHidden);
-					// if (submenu) {
-					// 	new Submenu(button, submenu);
-					// }
-				});
+				const submenuId = button.getAttribute('aria-controls');
+				const submenu = rootElement.querySelector(`#${submenuId}`);
+				if (submenu) {
+					new Submenu(button, submenu);
+				}
 			});
 
 		rootElement
@@ -36,28 +31,27 @@ document.addEventListener('DOMContentLoaded', function () {
 					new Submenu(button, submenu);
 				}
 			});
-		
-		rootElement
-			.querySelectorAll('.reaction_btn')
-			.forEach((button) => {
-				const reactionTypeId = button.getAttribute('data-reaction-id');
-				const reactionableGlobalId = button.getAttribute('data-reactionable-id');
-				const url = button.getAttribute('data-reaction-url');
-				if (reactionTypeId && url) {
-					button.addEventListener('click', function (event) {
-						event.preventDefault();
-						fetch(url, {
-							method: 'POST',
-							headers: {
-								'Content-Type': 'application/json',
-								'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content,
-								'Accept': 'text/html'
-							},
-							body: JSON.stringify({
-								reaction_type_id: reactionTypeId,
-								resource_id: reactionableGlobalId
-							})
-						})
+
+		rootElement.querySelectorAll('.reaction_btn').forEach((button) => {
+			const reactionTypeId = button.getAttribute('data-reaction-id');
+			const reactionableGlobalId = button.getAttribute('data-reactionable-id');
+			const url = button.getAttribute('data-reaction-url');
+			if (reactionTypeId && url) {
+				button.addEventListener('click', function (event) {
+					event.preventDefault();
+					fetch(url, {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+							'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]')
+								.content,
+							Accept: 'text/html',
+						},
+						body: JSON.stringify({
+							reaction_type_id: reactionTypeId,
+							resource_id: reactionableGlobalId,
+						}),
+					})
 						.then((response) => {
 							if (!response.ok) {
 								throw new Error('Network response was not ok');
@@ -65,28 +59,37 @@ document.addEventListener('DOMContentLoaded', function () {
 							return response.text();
 						})
 						.then((response) => {
-							var resourceId = reactionableGlobalId.split("/").pop();
-							var reactionsBlock = document.getElementById(`feeds_post-${resourceId}_reactions`);
+							var resourceId = reactionableGlobalId.split('/').pop();
+							var reactionsBlock = document.getElementById(
+								`feeds_post-${resourceId}_reactions`
+							);
 							var submenuId = `post_${resourceId}_feeds__feed_reactions_submenu`;
 							var submenu = rootElement.querySelector(`#${submenuId}`);
 							var submenuButtonId = `post_${resourceId}_feeds__feed_reactions_submenuButton`;
-							var submenuButton = rootElement.querySelector(`#${submenuButtonId}`);
+							var submenuButton = rootElement.querySelector(
+								`#${submenuButtonId}`
+							);
 
 							// replace the reactions block with the new one
-							reactionsBlock.outerHTML = response;
+							reactionsBlock.innerHTML = response;
 
 							submenuButton.setAttribute('aria-expanded', false);
 							submenu.classList.toggle('hidden', true);
 						})
 						.catch((error) => {
-							console.error('There was a problem while updating the reactions:', error);
+							console.error(
+								'There was a problem while updating the reactions:',
+								error
+							);
 						});
-					});
-				}
-			});
+				});
+			}
+		});
 
 		// Select all comments__header h2 elements
-		const commentsHeaders = rootElement.querySelectorAll('.comments__header h2');
+		const commentsHeaders = rootElement.querySelectorAll(
+			'.comments__header h2'
+		);
 		commentsHeaders.forEach((commentsHeader) => {
 			const parentContainer = commentsHeader.closest('[data-decidim-comments]');
 			const parentId = parentContainer.getAttribute('id');
@@ -95,7 +98,9 @@ document.addEventListener('DOMContentLoaded', function () {
 		});
 
 		const newCommentBtns = rootElement.querySelectorAll('.newCommentBtn');
-		const showCommentsBtns = rootElement.querySelectorAll('.comments__header h2');
+		const showCommentsBtns = rootElement.querySelectorAll(
+			'.comments__header h2'
+		);
 
 		newCommentBtns.forEach((newCommentBtn) => {
 			addActionToNewCommentBtn(newCommentBtn);
@@ -105,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			addActionToShowCommentsBtn(showCommentsBtn);
 		});
 	}
-	
+
 	const spinner = "<span class='loading-spinner'></span>";
 
 	// Implement infinite scroll
