@@ -30,8 +30,11 @@ const carousel = (() => {
 		});
 
 		navDots.forEach((dot, idx) => {
-			dot.classList.toggle('shadow-feedNotification', idx === activeIndex);
-			dot.classList.toggle('shadow-feedNotificationInset', idx !== activeIndex);
+			const innerSpan = dot.querySelector('span');
+			if (innerSpan) {
+				innerSpan.classList.toggle('shadow-navDotInset', idx === activeIndex);
+				innerSpan.classList.toggle('shadow-navDot', idx !== activeIndex);
+			}
 		});
 	};
 

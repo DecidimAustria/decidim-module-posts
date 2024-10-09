@@ -176,6 +176,8 @@ bs:
           date_separator: do
           start_time: U
           end_time: Do
+        gallery:
+          navigation: Idi na sliku %{number} od %{total}
     shared:
       flag_modal:
         report: Prijavi

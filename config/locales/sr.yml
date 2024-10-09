@@ -177,6 +177,8 @@ sr:
           date_separator: do
           start_time: U
           end_time: Do
+        gallery:
+          navigation: Idi na sliku %{number} od %{total}
       add_comment_form:
         form:
           submit_root_comment: Pošalji komentar

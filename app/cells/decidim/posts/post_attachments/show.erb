@@ -16,9 +16,12 @@
         <% end %>
       </ul>
       <% if post.attachments.select { |a| a.url.match(/\.(jpg|jpeg|png|svg|webp|mp4|webm)$/i) }.count > 1 %>
-        <div id="navDots_<%= post.id %>" class="nav-dots flex gap-2 p-2">
+        <div id="navDots_<%= post.id %>" class="nav-dots flex p-2">
+          <% total = post.attachments.select { |a| a.url.match(/\.(jpg|jpeg|png|svg|webp|mp4|webm)$/i) }.count %>
           <% post.attachments.select { |a| a.url.match(/\.(jpg|jpeg|png|svg|webp|mp4|webm)$/i) }.each_with_index do |_, index| %>
-            <div class="feeds__feed_gallery_nav_dot cursor-pointer h-2 w-2 rounded-full shadow-<%= index.zero? ? 'feedNotification' : 'feedNotificationInset' %>" role="button" aria-label="Navigate to item <%= index + 1 %>" data-target="galleryItems_<%= post.id %>" data-index="<%= index %>"></div>
+            <div class="feeds__feed_gallery_nav_dot flex justify-center items-center cursor-pointer h-6 w-6" role="button" aria-label="<%= t('decidim.components.posts.gallery.navigation', number: index + 1, total: total) %>" data-target="galleryItems_<%= post.id %>" data-index="<%= index %>">
+              <span class="h-2 w-2 rounded-full shadow-<%= index.zero? ? 'navDotInset' : 'navDot' %>"></span>
+            </div>
           <% end %>
         </div>
       <% end %>

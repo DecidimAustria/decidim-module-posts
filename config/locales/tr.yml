@@ -176,6 +176,8 @@ tr:
           date_separator: 'arası'
           start_time: Saat
           end_time: Bitiş
+        gallery:
+          navigation: '%{total} resminin %{number} resmine git'
       add_comment_form:
         form:
           submit_root_comment: Yorumu gönder

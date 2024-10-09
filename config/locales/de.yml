@@ -176,6 +176,8 @@ de:
           date_separator: bis
           start_time: Von
           end_time: bis
+        gallery:
+          navigation: Gehe zum Bild %{number} von %{total}
     shared:
       flag_modal:
         report: Melden

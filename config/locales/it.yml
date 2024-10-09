@@ -176,6 +176,8 @@ it:
           date_separator: fino al
           start_time: Alle
           end_time: Fino a
+        gallery:
+          navigation: Vai all'immagine %{number} di %{total}
     shared:
       flag_modal:
         report: Segnala
