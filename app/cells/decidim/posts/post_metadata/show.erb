@@ -1,6 +1,9 @@
-<div class="feeds__feed_metadata px-2 py-1 text-sm border-t-[1px] border-feeds-<%=category%> flex justify-between items-center ">
-  <div id="feeds_post-<%= post.id %>_reactions" class="flex gap-2 items-center" aria-live="polite">
-    <%= cell("decidim/posts/reactions", post) if post.is_a?(Decidim::Posts::Post) %>
+<div class="feeds__feed_metadata px-2 py-1 text-sm border-t-[1px] border-feeds-<%=category%> flex justify-between items-end ">
+  <div class="flex flex-col gap-1">
+    <div id="feeds_post-<%= post.id %>_reactions" class="flex gap-2 items-center" aria-live="polite">
+      <%= cell("decidim/posts/reactions", post) if post.is_a?(Decidim::Posts::Post) %>
+    </div>
+    <%= cell("decidim/posts/reaction_menu", post) if post.is_a?(Decidim::Posts::Post) %>
   </div>
   <time><%= @time_since_update %></time>
 </div>

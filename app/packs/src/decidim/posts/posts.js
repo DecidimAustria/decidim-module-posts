@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			});
 
 		rootElement.querySelectorAll('.reaction_btn').forEach((button) => {
+			let reaction = button.getAttribute('data-reaction');
 			const reactionTypeId = button.getAttribute('data-reaction-id');
 			const reactionableGlobalId = button.getAttribute('data-reactionable-id');
 			const url = button.getAttribute('data-reaction-url');
@@ -69,6 +70,12 @@ document.addEventListener('DOMContentLoaded', function () {
 							var submenuButton = rootElement.querySelector(
 								`#${submenuButtonId}`
 							);
+
+							if (submenuButton.getAttribute('data-reaction') === reaction) {
+								reaction = '';
+							}
+
+							submenuButton.setAttribute('data-reaction', reaction);
 
 							// replace the reactions block with the new one
 							reactionsBlock.innerHTML = response;

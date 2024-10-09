@@ -9,16 +9,6 @@
     <% end %>
   <% end %>
   <div class="feeds__feed_actions">
-    <% if post.is_a?(Decidim::Posts::Post) && !post.highlighted %>
-      <%# <span> %>
-        <%#= endorsement_buttons_cell(post) %>
-        <%#= cell "decidim/endorsers_list", post, layout: :full %>
-        <% if post.reactions_count > 0 && false # disabled %>
-          (<%= post.reactions_count %>)
-        <% end %>
-      <%# </span> %>
-      <%= cell("decidim/posts/reaction_menu", post) %>
-    <% end %>
     <div class="feeds__feed_actions_submenu relative self-start">
       <button type="button" aria-expanded="false" aria-haspopup="true" aria-controls="<%= dom_id(post) %>_feeds__feed_actions_submenu" id="<%= dom_id(post) %>_feeds__feed_actions_submenuButton" class="flex justify-center items-start min-w-[24px] min-h-[24px] openButton">
         <span class="sr-only"><%= t('decidim.components.posts.actions.openMenu') %></span>

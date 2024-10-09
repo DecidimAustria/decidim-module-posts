@@ -126,7 +126,7 @@
 }
 
 .feeds__container {
-	@apply pr-[91px] md:pr-[101px] lg:pr-0 order-1;
+	@apply pr-[91px] md:pr-[101px] lg:pr-0 order-1 grow;
 	.feeds__body {
 		@apply flex-grow flex flex-wrap gap-4 items-start;
 		.feeds__feed {
@@ -400,4 +400,46 @@
 
 .content-block__description[data-component='accordion'] button {
 	margin-block-start: 1rem;
+}
+
+// reactions icons
+
+.feeds__feed_reactions_submenu {
+	button {
+		&[data-reaction]:not([data-reaction='']) {
+			.reaction_icon {
+				@apply hidden;
+			}
+		}
+		&[data-reaction='love'] {
+			&::after {
+				content: '❤️';
+			}
+		}
+		&[data-reaction='like'] {
+			&::after {
+				content: '👍';
+			}
+		}
+		&[data-reaction='laugh'] {
+			&::after {
+				content: '😂';
+			}
+		}
+		&[data-reaction='wow'] {
+			&::after {
+				content: '😲';
+			}
+		}
+		&[data-reaction='sad'] {
+			&::after {
+				content: '😢';
+			}
+		}
+		&[data-reaction='angry'] {
+			&::after {
+				content: '😡';
+			}
+		}
+	}
 }

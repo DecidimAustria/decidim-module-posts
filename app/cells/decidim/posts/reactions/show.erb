@@ -1,10 +1,8 @@
-<% total_reactions = 0 %>
 <div class="flex pl-1">
   <% grouped_reactions_for(post).each do |reaction_type, reactions| %>
       <span class="text-sm ml-[-0.25rem]"><%= reaction_icon(reaction_type.icon_name) %></span>
-      <% total_reactions += reactions.count %>
   <% end %>
+  <span class="total-reactions ml-1">
+    <%= post.reactions_count if post.reactions_count > 0 %>
+  </span>
 </div>
-<span class="total-reactions">
-  <%= total_reactions if total_reactions > 0 %>
-</span>
