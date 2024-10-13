@@ -315,7 +315,7 @@
 	}
 }
 
-.feeds__aside {
+.posts__aside {
 	@apply shrink-0 max-lg:right-[16px] max-lg:top-[88px] max-lg:fixed order-2;
 	ul {
 		@apply flex flex-col space-y-4;
