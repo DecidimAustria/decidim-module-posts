@@ -33,12 +33,12 @@ document.addEventListener('DOMContentLoaded', function () {
 			});
 
 		rootElement.querySelectorAll('.reaction_btn').forEach((button) => {
-			let reaction = button.getAttribute('data-reaction');
 			const reactionTypeId = button.getAttribute('data-reaction-id');
 			const reactionableGlobalId = button.getAttribute('data-reactionable-id');
 			const url = button.getAttribute('data-reaction-url');
 			if (reactionTypeId && url) {
 				button.addEventListener('click', function (event) {
+					let reaction = button.getAttribute('data-reaction');
 					event.preventDefault();
 					fetch(url, {
 						method: 'POST',
@@ -70,16 +70,12 @@ document.addEventListener('DOMContentLoaded', function () {
 							var submenuButton = rootElement.querySelector(
 								`#${submenuButtonId}`
 							);
-
 							if (submenuButton.getAttribute('data-reaction') === reaction) {
 								reaction = '';
 							}
-
 							submenuButton.setAttribute('data-reaction', reaction);
-
 							// replace the reactions block with the new one
 							reactionsBlock.innerHTML = response;
-
 							submenuButton.setAttribute('aria-expanded', false);
 							submenu.classList.toggle('hidden', true);
 						})

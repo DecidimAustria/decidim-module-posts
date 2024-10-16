@@ -1,7 +1,7 @@
 <div class="relative feeds__feed_reactions_submenu">
   <% user_reaction = post.reactions.find_by(author: current_user) %>
   <% data_icon = user_reaction ? "data-reaction=\"#{user_reaction.reaction_type.name}\"" : 'data-reaction=""' %>
-  <button type="button" aria-expanded="false" aria-haspopup="true" aria-controls="<%= dom_id(post) %>_feeds__feed_reactions_submenu" id="<%= dom_id(post) %>_feeds__feed_reactions_submenuButton" class="openButton flex gap-1 items-center text-xl" <%=data_icon%>>
+  <button type="button" aria-expanded="false" aria-haspopup="true" aria-controls="<%= dom_id(post) %>_feeds__feed_reactions_submenu" id="<%= dom_id(post) %>_feeds__feed_reactions_submenuButton" class="openButton flex gap-1 items-center text-xl" <%=data_icon%> aria-live="polite">
     <span class="text-sm"><%= t("decidim.endorsement_buttons_cell.already_endorsed") %></span>
     <span class="reaction_icon text-black"><%= icon('heart-add-line', class: 'text-black') %></span>
   </button>

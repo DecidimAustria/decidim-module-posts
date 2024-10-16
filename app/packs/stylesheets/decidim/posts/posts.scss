@@ -126,7 +126,7 @@
 }
 
 .feeds__container {
-	@apply pr-[91px] md:pr-[101px] lg:pr-0 order-1 grow;
+	@apply pr-[91px] md:pr-[101px] lg:pr-0 order-1 grow min-h-[calc(100vh-72px)];
 	.feeds__body {
 		@apply flex-grow flex flex-wrap gap-4 items-start;
 		.feeds__feed {
@@ -316,11 +316,11 @@
 }
 
 .posts__aside {
-	@apply shrink-0 max-lg:right-[16px] max-lg:top-[88px] max-lg:fixed order-2;
+	@apply shrink-0 max-lg:right-[16px] max-lg:top-[88px] max-lg:bottom-[80px] max-lg:fixed max-w-[72px] order-2 flex flex-col justify-between;
 	ul {
 		@apply flex flex-col space-y-4;
 		a {
-			@apply flex flex-col items-center font-medium text-sm md:text-md text-feeds-sidebar;
+			@apply flex flex-col items-center font-medium text-sm md:text-md text-feeds-sidebar text-center;
 			svg {
 				@apply w-[24px] h-auto fill-feeds-sidebar;
 			}
@@ -409,36 +409,6 @@
 		&[data-reaction]:not([data-reaction='']) {
 			.reaction_icon {
 				@apply hidden;
-			}
-		}
-		&[data-reaction='love'] {
-			&::after {
-				content: '❤️';
-			}
-		}
-		&[data-reaction='like'] {
-			&::after {
-				content: '👍';
-			}
-		}
-		&[data-reaction='laugh'] {
-			&::after {
-				content: '😂';
-			}
-		}
-		&[data-reaction='wow'] {
-			&::after {
-				content: '😲';
-			}
-		}
-		&[data-reaction='sad'] {
-			&::after {
-				content: '😢';
-			}
-		}
-		&[data-reaction='angry'] {
-			&::after {
-				content: '😡';
 			}
 		}
 	}

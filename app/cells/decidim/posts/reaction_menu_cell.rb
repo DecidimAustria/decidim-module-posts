@@ -9,6 +9,10 @@ module Decidim
         render :show
       end
 
+      def styles
+        render :styles
+      end
+      
       def post
         model
       end

@@ -12,13 +12,14 @@
             </button>
           </div>
         <% end %>
-
+        <%= cell("decidim/posts/reaction_menu", @post).(:styles) %>
         <%= render partial: "decidim/posts/posts/feed", locals: { objects: @fixed_posts } %>
         <%= render partial: "decidim/posts/posts/feed", locals: { objects: @non_fixed_objects } %>
 
-        <span class="border-success border-warning bg-success bg-warning hidden"></span>
       </div>
     </div>
+    
+
     <dialog id="confirmationModal" class="p-4 shadow-md rounded-md ring-1 ring-feeds-host" aria-labelledby="confirmationModal__Label">
       <div class="flex flex-col gap-4">
         <h2 id="confirmationModal__Label" class="text-center text-lg font-bold">Meldungsstatus ändern</h2>
