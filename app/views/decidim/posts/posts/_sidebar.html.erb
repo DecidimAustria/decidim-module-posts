@@ -22,7 +22,7 @@
     </ul>
   </nav>
   <div class="posts__aside__footer mb-auto mt-auto">
-    <div class="w-[72px] bg-white flex justify-center">
+    <div class="w-[72px] bg-white flex flex-col items-center justify-center gap-2">
       <% current_component.participatory_space.attachments.each do |sponsor_logo| %>
         <%= image_tag sponsor_logo.url, class: "max-w-full max-h-full object-contain", alt: translated_attribute(sponsor_logo.title) %>
       <% end %>
