@@ -12,7 +12,6 @@ const carousel = (() => {
 			const currentIndex = Array.from(galleryItems).findIndex((item) =>
 				item.classList.contains('active')
 			);
-			console.log(currentIndex);
 
 			if (direction === 'left' && currentIndex < galleryItems.length - 1) {
 				activeIndex = currentIndex + 1;
@@ -32,8 +31,32 @@ const carousel = (() => {
 		navDots.forEach((dot, idx) => {
 			const innerSpan = dot.querySelector('span');
 			if (innerSpan) {
-				innerSpan.classList.toggle('shadow-navDotInset', idx === activeIndex);
-				innerSpan.classList.toggle('shadow-navDot', idx !== activeIndex);
+				if (idx === activeIndex) {
+					innerSpan.classList.add('bg-feeds-notification');
+				} else {
+					innerSpan.classList.remove('bg-feeds-notification');
+				}
+			}
+		});
+
+		// Show only the first 8 dots and update the visible range as the user navigates
+		const visibleRange = 8;
+		let start = 0;
+		let end = visibleRange;
+
+		if (activeIndex >= end - 1) {
+			start = activeIndex - visibleRange + 2;
+			end = activeIndex + 2;
+		}
+
+		start = Math.max(0, start);
+		end = Math.min(navDots.length, end);
+
+		navDots.forEach((dot, idx) => {
+			if (idx >= start && idx < end) {
+				dot.style.display = 'flex';
+			} else {
+				dot.style.display = 'none';
 			}
 		});
 	};
@@ -75,6 +98,11 @@ const carousel = (() => {
 		// Initialize swipe listeners for each gallery
 		document.querySelectorAll('.feeds__feed_gallery').forEach((gallery) => {
 			attachSwipeListeners(gallery.id);
+		});
+		// Initialize the visible dots for each gallery
+		document.querySelectorAll('.feeds__feed_gallery_nav_dot').forEach((dot) => {
+			const targetGalleryId = dot.getAttribute('data-target');
+			setActiveItem(targetGalleryId, 0);
 		});
 	};
 

@@ -16,17 +16,16 @@
         <% end %>
       </ul>
       <% if post.attachments.select { |a| a.url.match(/\.(jpg|jpeg|png|svg|webp|mp4|webm)$/i) }.count > 1 %>
-        <div id="navDots_<%= post.id %>" class="nav-dots flex p-2">
+        <div id="navDots_<%= post.id %>" class="nav-dots p-1 flex flex-wrap justify-center">
           <% total = post.attachments.select { |a| a.url.match(/\.(jpg|jpeg|png|svg|webp|mp4|webm)$/i) }.count %>
           <% post.attachments.select { |a| a.url.match(/\.(jpg|jpeg|png|svg|webp|mp4|webm)$/i) }.each_with_index do |_, index| %>
             <div class="feeds__feed_gallery_nav_dot flex justify-center items-center cursor-pointer h-6 w-6" role="button" aria-label="<%= t('decidim.components.posts.gallery.navigation', number: index + 1, total: total) %>" data-target="galleryItems_<%= post.id %>" data-index="<%= index %>">
-              <span class="h-2 w-2 rounded-full shadow-<%= index.zero? ? 'navDotInset' : 'navDot' %>"></span>
+              <span class="h-2 w-2 rounded-full ring-1 ring-offset-1 ring-feeds-notification <%= index.zero? ? 'bg-feeds-notification' : '' %>"></span>
             </div>
           <% end %>
         </div>
       <% end %>
     </div>
-
     <% non_media_attachments = post.attachments.reject { |a| a.url.match(/\.(jpg|jpeg|png|svg|webp|mp4|webm)$/i) } %>
     <% if non_media_attachments.any? %>
       <ul class="document-list space-y-2 mt-4">

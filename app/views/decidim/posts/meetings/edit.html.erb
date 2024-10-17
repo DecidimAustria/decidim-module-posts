@@ -1,7 +1,10 @@
-<main class="feeds__container mb-8">
-  <div class="feeds__body">
-    <div class="card__grid-home w-full lg:grid-cols-8 xl:grid-cols-12">
-      <div class="card__grid feeds__feed" data-content="calendar">
+<main class="feeds__main home">
+  <!-- This is the sidebar that appears on the right side of the page -->
+  <%= render partial: "decidim/posts/posts/sidebar" %>
+  <div class="feeds__container">
+    <div class="feeds__body">
+      <div class="card__grid-home w-full lg:grid-cols-8 xl:grid-cols-12 gap-6">
+      <div class="card__grid feeds__feed p-2" data-content="calendar">
         <%= decidim_form_for(@form, url: Decidim::EngineRouter.main_proxy(posts_component_for_meeting(@meeting)).meeting_path(@meeting), html: { class: "meetings_form new_meeting" }) do |form| %>
             <div class="form__wrapper p-0 gap-4">
               <%= render partial: "decidim/posts/posts/meeting_form", locals: { form: form } %>
@@ -13,6 +16,9 @@
           <% end %>
       </div>
     </div>
+    <!-- In case the Module Decidim FeedsUi is present, the form will be installed in the footer of the application -->
+    <% unless defined?(Decidim::FeedsUi) %>
+      <%= append_javascript_pack_tag "decidim_feeds" %>
+    <% end %>
   </div>
-  <%= render partial: "decidim/posts/posts/sidebar.html" %>
 </main>
