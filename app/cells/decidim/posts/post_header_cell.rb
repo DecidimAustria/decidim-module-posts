@@ -39,9 +39,9 @@ module Decidim
         end
       end
 
-      def post_editable_by?(user)
+      def post_editable?
         if post.component.manifest_name == "meetings"
-          post.authored_by?(user)
+          post.authored_by?(current_user)
         else
           # Don't allow editing of survey posts
           return false if post.category == "survey"
@@ -49,12 +49,24 @@ module Decidim
         end
       end
 
-      def post_deleteable_by?(user)
+      def post_deleteable?
         if post.component.manifest_name == "meetings"
-          post.withdrawable_by?(user)
+          post.withdrawable_by?(current_user)
         else
           post.deleteable_by?(current_user)
         end
+      end
+
+      def show_report_button?
+        post.author != current_user && post.class == Decidim::Posts::Post
+      end
+
+      def show_translate_button?
+        false # disbled for now
+      end
+
+      def show_menu?
+        show_report_button? || post_editable? || post_deleteable? || show_translate_button?
       end
 
       private

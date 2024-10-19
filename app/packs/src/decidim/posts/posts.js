@@ -65,9 +65,9 @@ document.addEventListener('DOMContentLoaded', function () {
 								`feeds_post-${resourceId}_reactions`
 							);
 							var submenuId = `post_${resourceId}_feeds__feed_reactions_submenu`;
-							var submenu = rootElement.querySelector(`#${submenuId}`);
+							var submenu = document.querySelector(`#${submenuId}`);
 							var submenuButtonId = `post_${resourceId}_feeds__feed_reactions_submenuButton`;
-							var submenuButton = rootElement.querySelector(
+							var submenuButton = document.querySelector(
 								`#${submenuButtonId}`
 							);
 							if (submenuButton.getAttribute('data-reaction') === reaction) {
