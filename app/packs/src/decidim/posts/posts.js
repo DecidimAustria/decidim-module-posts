@@ -3,9 +3,20 @@ import carousel from './carousel.js';
 import { host_status } from './host_status.js';
 import { closeDialog, activateCategory, hideAllForms } from './newFeeds.js';
 import Submenu from './submenu.js';
+import CommentsComponent from "src/decidim/comments/comments.component"
 
 document.addEventListener('DOMContentLoaded', function () {
 	function addEventListeners(rootElement) {
+		rootElement.querySelectorAll("[data-decidim-posts-comments]").forEach((el) => {
+			const $el = $(el);
+			let comments = $(el).data("comments");
+			if (!comments) {
+				comments = new CommentsComponent($el, $el.data("decidim-posts-comments"));
+			}
+			comments.mountComponent();
+			$(el).data("comments", comments);
+		});
+
 		const loadMoreBtn = rootElement.querySelector('#loadMoreBtn');
 		if (loadMoreBtn) {
 			loadMoreBtn.addEventListener('click', loadMoreButtonClicked);
@@ -94,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			'.comments__header h2'
 		);
 		commentsHeaders.forEach((commentsHeader) => {
-			const parentContainer = commentsHeader.closest('[data-decidim-comments]');
+			const parentContainer = commentsHeader.closest('[data-decidim-posts-comments]');
 			const parentId = parentContainer.getAttribute('id');
 			commentsHeader.setAttribute('aria-controls', `${parentId}-threads`);
 			commentsHeader.setAttribute('aria-expanded', 'false');

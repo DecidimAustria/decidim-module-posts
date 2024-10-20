@@ -60,7 +60,7 @@ module Decidim
         model.highlighted
       end
 
-      def post_commentable
+      def post_commentable?
         model.enable_comments?
       end
 

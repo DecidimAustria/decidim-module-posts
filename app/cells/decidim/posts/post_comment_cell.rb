@@ -24,7 +24,7 @@ module Decidim
         end
       end
 
-      def post_commentable
+      def post_commentable?
         if model.respond_to?(:enable_comments?)
           model.enable_comments?
         elsif model.respond_to?(:comments_enabled?)

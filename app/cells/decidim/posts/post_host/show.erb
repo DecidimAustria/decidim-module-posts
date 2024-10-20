@@ -42,7 +42,7 @@
 <% end %>
 
 <% unless post_highlighted || status_class %>
-  <% if post_commentable %>
+  <% if post_commentable? %>
     <%= cell("decidim/posts/post_comment", post) %>
   <% end %>
 <% end %>
