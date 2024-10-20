@@ -4,7 +4,7 @@
   <div class="feeds__container">
     <div class="feeds__body">
       <div class="card__grid-home w-full lg:grid-cols-8 xl:grid-cols-12 gap-6">
-      <div class="card__grid feeds__feed p-2" data-content="calendar">
+      <div class="card__grid posts__post p-2" data-content="calendar">
         <%= decidim_form_for(@form, url: Decidim::EngineRouter.main_proxy(posts_component_for_meeting(@meeting)).meeting_path(@meeting), html: { class: "meetings_form new_meeting" }) do |form| %>
             <div class="form__wrapper p-0 gap-4">
               <%= render partial: "decidim/posts/posts/meeting_form", locals: { form: form } %>

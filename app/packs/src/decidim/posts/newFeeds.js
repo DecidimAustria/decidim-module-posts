@@ -1,8 +1,8 @@
-const newFeed = document.getElementById('feeds__feed_newElement');
+const newFeed = document.getElementById('posts__post_newElement');
 const newFeedOpener = document.querySelectorAll(
-	'.feeds__feed_newElement-opener'
+	'.posts__post_newElement-opener'
 );
-const newFeedCloser = newFeed.querySelector('.feeds__feed_newElement-closer');
+const newFeedCloser = newFeed.querySelector('.posts__post_newElement-closer');
 let lastFocusedButton = null;
 
 newFeedOpener.forEach(function (opener) {
@@ -42,7 +42,7 @@ const meetingForm = document.querySelector('.meetings_form');
 const postForm = document.querySelector('.posts_form');
 const surveyDiv = document.getElementById('extraFieldsForSurvey');
 const newFeedLiveRegion = document.getElementById(
-	'feeds__feed_newElement_Form-LiveRegion'
+	'posts__post_newElement_Form-LiveRegion'
 );
 
 categoryButtons.forEach((button) => {

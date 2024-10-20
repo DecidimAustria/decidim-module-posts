@@ -4,5 +4,5 @@
 
 <% if objects.respond_to?(:next_page) && @non_fixed_objects.next_page %>
   <div id="page_<%= @non_fixed_objects.next_page %>"></div>
-  <%= link_to t("decidim.posts.posts.load_more"), "#page_#{@non_fixed_objects.next_page}", id: "loadMoreBtn", class: "card__grid feeds__feed feeds__feed_newElement flex-row justify-between", data: { page: @non_fixed_objects.next_page, url: load_more_posts_path(page: @non_fixed_objects.next_page) } %>
+  <%= link_to t("decidim.posts.posts.load_more"), "#page_#{@non_fixed_objects.next_page}", id: "loadMoreBtn", class: "card__grid posts__post posts__post_newElement flex-row justify-between", data: { page: @non_fixed_objects.next_page, url: load_more_posts_path(page: @non_fixed_objects.next_page) } %>
 <% end %>

@@ -1,9 +1,9 @@
 <% if(posts_component = ((defined?(current_component) && current_component.manifest_name == "posts") ? current_component : Decidim::Component.where(manifest_name: "posts").select {|c| c.organization == current_organization }.first)) %>
-  <div id="feeds__feed_newElement" class="feeds__feed_newElement_modal" role="dialog" aria-modal="true" aria-label="<%= t("decidim.components.posts.newFeed.title") %>" data-active-feed="" data-active-filter="<%= params[:filter_post_category] %>">
-    <div class="feeds__feed_newElement_modal_frame">
-      <div class="feeds__feed_newElement_modal_content">
+  <div id="posts__post_newElement" class="posts__post_newElement_modal" role="dialog" aria-modal="true" aria-label="<%= t("decidim.components.posts.newFeed.title") %>" data-active-feed="" data-active-filter="<%= params[:filter_post_category] %>">
+    <div class="posts__post_newElement_modal_frame">
+      <div class="posts__post_newElement_modal_content">
         <div class="close-button flex justify-end pb-2">
-          <button class="btn circle feeds__feed_newElement-closer" type="button">
+          <button class="btn circle posts__post_newElement-closer" type="button">
             <%= icon "close-circle-line" %>
             <span class="sr-only"><%= t("decidim.components.posts.newFeed.close") %></span>
           </button>
@@ -31,8 +31,8 @@
               current_participatory_space: @controller.try(:current_participatory_space)
             }
           %>
-          <div id="feeds__feed_newElement_Form-LiveRegion" class="sr-only" aria-live="polite"></div>
-          <div id="feeds__feed_newElement_Meeting" aria-live="polite">
+          <div id="posts__post_newElement_Form-LiveRegion" class="sr-only" aria-live="polite"></div>
+          <div id="posts__post_newElement_Meeting" aria-live="polite">
             <%= decidim_form_for(Decidim::Meetings::MeetingForm.from_params(params).with_context(context), url: Decidim::EngineRouter.main_proxy(posts_component).meetings_path, html: { class: "meetings_form new_meeting" }) do |form| %>
               <div class="form__wrapper p-0 gap-4">
                 <%= render partial: "decidim/posts/posts/meeting_form", locals: { form: form } %>
@@ -43,12 +43,12 @@
             <% end %>
           </div>
 
-          <div id="feeds__feed_newElement_Post" aria-live="polite">
+          <div id="posts__post_newElement_Post" aria-live="polite">
             <%= decidim_form_for(Decidim::Posts::PostForm.from_params(params).with_context(context), url: Decidim::EngineRouter.main_proxy(posts_component).posts_path, html: { class: "posts_form new_post" }) do |form| %>
               <div class="form__wrapper p-0">
                 <%= render partial: "decidim/posts/posts/post_form", locals: { form: form } %>
               </div>
-              <div id="extraFieldsForSurvey" class="feeds__feed_newElement_Xtra feeds__feed_newSurvey" aria-live="polite">
+              <div id="extraFieldsForSurvey" class="posts__post_newElement_Xtra posts__post_newSurvey" aria-live="polite">
                 <%= render partial: 'decidim/posts/posts/new_survey.html', locals: { form: form } %>
               </div>
               <%= render partial: "decidim/posts/posts/attachment.html", locals: { form: form } %>

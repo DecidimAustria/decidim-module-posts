@@ -1,6 +1,6 @@
 <form id="newElementForm">
   <label for="body" class="sr-only"><%= t("decidim.components.posts.newFeed.text") %></label>
-  <textarea id="body" name="body" rows="4" aria-required="true" class="feeds__feed_newElement_Body"></textarea>
+  <textarea id="body" name="body" rows="4" aria-required="true" class="posts__post_newElement_Body"></textarea>
   <fieldset>
     <legend class="sr-only"><%= t("decidim.components.posts.newFeed.category") %></legend>
     <div class="postType">
@@ -17,10 +17,10 @@
     </div>
   </fieldset>
 
-  <div id="extraFieldsForCalendar" class="feeds__feed_newElement_Xtra feeds__feed_newCalender">
+  <div id="extraFieldsForCalendar" class="posts__post_newElement_Xtra posts__post_newCalender">
     <%= render partial: 'decidim/posts/posts/new_calendar.html' %>
   </div>
-  <div id="extraFieldsForSurvey" class="feeds__feed_newElement_Xtra feeds__feed_newSurvey">
+  <div id="extraFieldsForSurvey" class="posts__post_newElement_Xtra posts__post_newSurvey">
     <%= render partial: 'decidim/posts/posts/new_survey.html' %>
   </div>
 

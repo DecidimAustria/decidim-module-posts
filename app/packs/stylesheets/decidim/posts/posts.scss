@@ -2,7 +2,7 @@
 
 @import '_variables.scss';
 
-#feeds__feed_newElement {
+#posts__post_newElement {
 	@apply fixed left-0 top-0 right-0 bottom-0 w-full h-full bg-white bg-opacity-60 z-50 justify-center items-start pt-[72px] hidden;
 	&.open {
 		--tw-ring-color: theme('colors.feeds.sidebar');
@@ -19,11 +19,11 @@
 			@apply w-[36px] h-[36px] fill-feeds-sidebar rotate-45 motion-safe:transition-transform;
 		}
 	}
-	.feeds__feed_newElement_modal_frame {
+	.posts__post_newElement_modal_frame {
 		--tw-ring-color: theme('colors.white');
 		@apply p-4 gap-2 w-full shadow-feedBox rounded lg:max-w-screen-md bg-white w-[calc(100%-2rem)] max-h-[80vh] overflow-auto motion-safe:transition-all;
 	}
-	.feeds__feed_newElement_modal_content {
+	.posts__post_newElement_modal_content {
 		@apply flex flex-col gap-2;
 	}
 	.category-selection {
@@ -82,7 +82,7 @@
 		textarea {
 			margin-block-start: 0;
 		}
-		.feeds__feed_newElement_Body {
+		.posts__post_newElement_Body {
 			@apply border-0 bg-feeds-formBody;
 		}
 		.postType {
@@ -92,13 +92,13 @@
 				@apply bg-primary text-white focus:outline-primary;
 			}
 		}
-		.feeds__feed_newElement_Xtra {
+		.posts__post_newElement_Xtra {
 			@apply relative hidden opacity-0 scale-0 motion-safe:transition-transform motion-safe:transition-opacity;
 			&.open {
 				@apply block opacity-100 scale-100 motion-safe:transition-transform motion-safe:transition-opacity;
 			}
-			&.feeds__feed_newSurvey {
-				.feeds__feed_newSurvey-btn {
+			&.posts__post_newSurvey {
+				.posts__post_newSurvey-btn {
 					@apply flex justify-center items-center gap-2 text-black font-medium p-4 bg-feeds-bg w-full rounded;
 				}
 				#newQuestion {
@@ -107,7 +107,7 @@
 				}
 			}
 		}
-		.feeds__feed_newElement_Media {
+		.posts__post_newElement_Media {
 			@apply px-2 pb-2 pt-0;
 			svg {
 				@apply w-[24px] h-auto;
@@ -129,7 +129,7 @@
 	@apply pr-[91px] md:pr-[101px] lg:pr-0 order-1 grow min-h-[calc(100vh-72px)];
 	.feeds__body {
 		@apply flex-grow flex flex-wrap gap-4 items-start;
-		.feeds__feed {
+		.posts__post {
 			@apply gap-4 ring-1 hover:cursor-default md:col-start-1 md:col-end-4 lg:col-start-2 lg:col-end-8 xl:col-start-2 xl:col-end-10;
 			.card__grid-text {
 				@apply py-2 text-pretty;
@@ -160,7 +160,7 @@
 						}
 					}
 					.card__grid-metadata {
-						.feeds__feed_actions_submenu {
+						.posts__post_actions_submenu {
 							button.openButton,
 							button.openButton span {
 								@apply text-white;
@@ -171,10 +171,10 @@
 						}
 					}
 				}
-				&.feeds__feed_host-handling {
+				&.posts__post_host-handling {
 					@apply border-t-8 border-warning;
 				}
-				&.feeds__feed_host-complete {
+				&.posts__post_host-complete {
 					@apply border-t-8 border-success;
 				}
 				.host-icon {
@@ -183,13 +183,13 @@
 			}
 			&[data-content='survey'] {
 				--tw-ring-color: theme('colors.feeds.survey');
-				.feeds__feed_survey {
+				.posts__post_survey {
 					@apply flex flex-col gap-2 text-sm font-bold px-2;
-					.feeds__feed_survey-question {
+					.posts__post_survey-question {
 						@apply flex flex-col p-2 gap-2 rounded bg-feeds-bg;
-						.feeds__feed_survey-question-answer {
+						.posts__post_survey-question-answer {
 							@apply font-medium flex flex-col px-2;
-							.feeds__feed_survey-question-answerInput {
+							.posts__post_survey-question-answerInput {
 								@apply flex py-1 gap-2;
 								span {
 									@apply text-sm shrink-0;
@@ -207,7 +207,7 @@
 				.author {
 					@apply mr-auto shrink;
 				}
-				.feeds__feed_actions {
+				.posts__post_actions {
 					@apply flex gap-4;
 					span {
 						@apply flex items-center gap-1;
@@ -225,7 +225,7 @@
 							@apply fill-black;
 						}
 					}
-					.feeds__feed_actions_submenu {
+					.posts__post_actions_submenu {
 						button.openButton {
 							span {
 								@apply leading-[0] text-3xl text-feeds-sidebar;
@@ -234,7 +234,7 @@
 					}
 				}
 			}
-			.feeds__feed_gallery {
+			.posts__post_gallery {
 				li {
 					transition: opacity 0.5s ease;
 					opacity: 0;
@@ -258,7 +258,7 @@
 					}
 				}
 			}
-			.feeds__feed_comments {
+			.posts__post_comments {
 				@apply px-2;
 				#comments {
 					.comments__header {
@@ -301,7 +301,7 @@
 					}
 				}
 			}
-			&.feeds__feed_newElement {
+			&.posts__post_newElement {
 				--tw-ring-color: theme('colors.white');
 				@apply gap-4;
 				.circle {
@@ -404,7 +404,7 @@
 
 // reactions icons
 
-.feeds__feed_reactions_submenu {
+.posts__post_reactions_submenu {
 	button {
 		&[data-reaction]:not([data-reaction='']) {
 			.reaction_icon {

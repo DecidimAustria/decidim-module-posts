@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 
 		rootElement
-			.querySelectorAll('.feeds__feed_actions_submenu > button')
+			.querySelectorAll('.posts__post_actions_submenu > button')
 			.forEach((button) => {
 				const submenuId = button.getAttribute('aria-controls');
 				const submenu = rootElement.querySelector(`#${submenuId}`);
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			});
 
 		rootElement
-			.querySelectorAll('.feeds__feed_reactions_submenu > button')
+			.querySelectorAll('.posts__post_reactions_submenu > button')
 			.forEach((button) => {
 				const submenuId = button.getAttribute('aria-controls');
 				const submenu = rootElement.querySelector(`#${submenuId}`);
@@ -75,9 +75,9 @@ document.addEventListener('DOMContentLoaded', function () {
 							var reactionsBlock = document.getElementById(
 								`feeds_post-${resourceId}_reactions`
 							);
-							var submenuId = `post_${resourceId}_feeds__feed_reactions_submenu`;
+							var submenuId = `post_${resourceId}_posts__post_reactions_submenu`;
 							var submenu = document.querySelector(`#${submenuId}`);
-							var submenuButtonId = `post_${resourceId}_feeds__feed_reactions_submenuButton`;
+							var submenuButtonId = `post_${resourceId}_posts__post_reactions_submenuButton`;
 							var submenuButton = document.querySelector(
 								`#${submenuButtonId}`
 							);

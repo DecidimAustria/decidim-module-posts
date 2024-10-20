@@ -4,7 +4,7 @@ const carousel = (() => {
 	const setActiveItem = (galleryId, index, direction = null) => {
 		const galleryItems = document.querySelectorAll(`#${galleryId} li`);
 		const navDots = document.querySelectorAll(
-			`.feeds__feed_gallery_nav_dot[data-target="${galleryId}"]`
+			`.posts__post_gallery_nav_dot[data-target="${galleryId}"]`
 		);
 		let activeIndex = index;
 
@@ -84,7 +84,7 @@ const carousel = (() => {
 	};
 
 	const attachEventListenersToDots = () => {
-		document.querySelectorAll('.feeds__feed_gallery_nav_dot').forEach((dot) => {
+		document.querySelectorAll('.posts__post_gallery_nav_dot').forEach((dot) => {
 			dot.addEventListener('click', function () {
 				const targetGalleryId = this.getAttribute('data-target');
 				const targetIndex = parseInt(this.getAttribute('data-index'), 10);
@@ -96,11 +96,11 @@ const carousel = (() => {
 	const init = () => {
 		attachEventListenersToDots();
 		// Initialize swipe listeners for each gallery
-		document.querySelectorAll('.feeds__feed_gallery').forEach((gallery) => {
+		document.querySelectorAll('.posts__post_gallery').forEach((gallery) => {
 			attachSwipeListeners(gallery.id);
 		});
 		// Initialize the visible dots for each gallery
-		document.querySelectorAll('.feeds__feed_gallery_nav_dot').forEach((dot) => {
+		document.querySelectorAll('.posts__post_gallery_nav_dot').forEach((dot) => {
 			const targetGalleryId = dot.getAttribute('data-target');
 			setActiveItem(targetGalleryId, 0);
 		});

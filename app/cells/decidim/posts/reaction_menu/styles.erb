@@ -1,6 +1,6 @@
 <style>
   <% reaction_types.each do |reaction_type| %>
-    .feeds__feed_reactions_submenu button[data-reaction=<%= reaction_type.name %>]::after{
+    .posts__post_reactions_submenu button[data-reaction=<%= reaction_type.name %>]::after{
       content: '<%= reaction_icon(reaction_type.icon_name) %>';
     }
   <% end %>

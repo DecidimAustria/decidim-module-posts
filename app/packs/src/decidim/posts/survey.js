@@ -1,13 +1,13 @@
 export function initSurvey() {
 	// Add event listener to the new survey button
 	const liveRegion = document.getElementById(
-		'feeds__feed_newSurvey_liveRegion'
+		'posts__post_newSurvey_liveRegion'
 	);
-	const newSurveyButton = document.querySelector('.feeds__feed_newSurvey-btn');
+	const newSurveyButton = document.querySelector('.posts__post_newSurvey-btn');
 	if (newSurveyButton)
 		newSurveyButton.addEventListener('click', () => {
 			const questionContainer = document.getElementById(
-				'feeds__feed_newSurvey_questionsContainer'
+				'posts__post_newSurvey_questionsContainer'
 			);
 
 			// copy content from question_template to questionContainer
@@ -23,11 +23,11 @@ export function initSurvey() {
 
 	// TODO: this does not work as the button does not exist yet and there will be multiple buttons
 	document.addEventListener('click', (event) => {
-		if (event.target.classList.contains('feeds__feed_newAnswer-btn')) {
+		if (event.target.classList.contains('posts__post_newAnswer-btn')) {
 			const questionId = event.target.dataset.questionId;
-			// get div with class feeds__feed_newSurvey_answersContainer inside the same container as the clicked button
+			// get div with class posts__post_newSurvey_answersContainer inside the same container as the clicked button
 			const answerContainer = document.getElementById(
-				`feeds__feed_newSurvey_answersContainer-${questionId}`
+				`posts__post_newSurvey_answersContainer-${questionId}`
 			);
 
 			const questionAnswers = answerContainer.children.length + 1;

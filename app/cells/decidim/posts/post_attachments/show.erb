@@ -2,7 +2,7 @@
   <div class="feeds__attachments py-4 px-2">
 
     <div class="flex flex-col items-center">
-      <ul id="galleryItems_<%= post.id %>" class="feeds__feed_gallery flex overflow-hidden">
+      <ul id="galleryItems_<%= post.id %>" class="posts__post_gallery flex overflow-hidden">
         <% post.attachments.select { |a| a.url.match(/\.(jpg|jpeg|png|svg|webp|mp4|webm)$/i) }.each_with_index do |attachment, index| %>
           <li class="<%= attachment.url.match(/\.(mp4|webm)$/i) ? 'video' : 'image' %> <%= index.zero? ? 'active' : '' %> aspect-4/3 overflow-hidden flex justify-center items-center" data-src="<%= attachment.url %>">
             <% if attachment.url.match(/\.(mp4|webm)$/i) %>
@@ -19,7 +19,7 @@
         <div id="navDots_<%= post.id %>" class="nav-dots p-1 flex flex-wrap justify-center">
           <% total = post.attachments.select { |a| a.url.match(/\.(jpg|jpeg|png|svg|webp|mp4|webm)$/i) }.count %>
           <% post.attachments.select { |a| a.url.match(/\.(jpg|jpeg|png|svg|webp|mp4|webm)$/i) }.each_with_index do |_, index| %>
-            <div class="feeds__feed_gallery_nav_dot flex justify-center items-center cursor-pointer h-6 w-6" role="button" aria-label="<%= t('decidim.components.posts.gallery.navigation', number: index + 1, total: total) %>" data-target="galleryItems_<%= post.id %>" data-index="<%= index %>">
+            <div class="posts__post_gallery_nav_dot flex justify-center items-center cursor-pointer h-6 w-6" role="button" aria-label="<%= t('decidim.components.posts.gallery.navigation', number: index + 1, total: total) %>" data-target="galleryItems_<%= post.id %>" data-index="<%= index %>">
               <span class="h-2 w-2 rounded-full ring-1 ring-offset-1 ring-feeds-notification <%= index.zero? ? 'bg-feeds-notification' : '' %>"></span>
             </div>
           <% end %>
