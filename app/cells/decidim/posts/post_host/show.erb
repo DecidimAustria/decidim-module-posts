@@ -33,7 +33,7 @@
 <% if status_class %>
   <div class="bg-white rounded-2xl border-4 border-<%= status_class %> flex-col justify-between items-center inline-flex mx-2">
     <div class="self-stretch px-2 py-1 justify-start items-center gap-2 inline-flex">
-      <time class="p-2 font-bold text-lg"><%= post.updated_at.strftime("%B %d, %Y") %></time>
+      <time class="p-2 font-bold text-lg"><%= I18n.l(post.updated_at, format: :long) %></time>
     </div>
     <div class="self-stretch grow shrink basis-0 bg-<%= status_class %> rounded-lg justify-center items-center gap-2 inline-flex">
       <div class="p-2 text-xl font-bold uppercase text-black"><%= post_status_text %></div>
