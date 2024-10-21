@@ -316,7 +316,7 @@
 }
 
 .posts__aside {
-	@apply shrink-0 max-lg:right-[16px] max-lg:top-[88px] max-lg:bottom-[80px] max-lg:fixed max-w-[72px] order-2 flex flex-col justify-between;
+	@apply shrink-0 max-lg:right-[16px] max-lg:top-[88px] max-lg:bottom-[80px] max-lg:fixed max-w-[72px] order-2 flex flex-col justify-between lg:justify-start;
 	ul {
 		@apply flex flex-col space-y-4;
 		a {

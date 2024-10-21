@@ -1,5 +1,10 @@
 <% if(posts_component = ((defined?(current_component) && current_component.manifest_name == "posts") ? current_component : Decidim::Component.where(manifest_name: "posts").select {|c| c.organization == current_organization }.first)) %>
-  <div id="posts__post_newElement" class="posts__post_newElement_modal" role="dialog" aria-modal="true" aria-label="<%= t("decidim.components.posts.newFeed.title") %>" data-active-feed="" data-active-filter="<%= params[:filter_post_category] %>">
+  <% activefilter = if current_user.admin? && params[:filter_post_category].blank?
+    'host'
+  else
+    params[:filter_post_category]
+  end %>
+  <div id="posts__post_newElement" class="posts__post_newElement_modal" role="dialog" aria-modal="true" aria-label="<%= t("decidim.components.posts.newFeed.title") %>" data-active-feed="" data-active-filter="<%= activefilter %>">
     <div class="posts__post_newElement_modal_frame">
       <div class="posts__post_newElement_modal_content">
         <div class="close-button flex justify-end pb-2">
