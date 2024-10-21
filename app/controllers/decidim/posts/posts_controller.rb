@@ -15,10 +15,10 @@ module Decidim
       def index
         enforce_permission_to :read, :post
 
-        @posts = posts(params[:filter_post_category]).where(fixed: [false, nil])
+        @posts = posts(filter_post_category).where(fixed: [false, nil])
         @fixed_posts = posts.where(fixed: true).order(created_at: :desc)
 
-        @meetings = meetings(params[:filter_post_category])
+        @meetings = meetings(filter_post_category)
 
         @non_fixed_objects = (@posts + @meetings).sort_by(&:created_at).reverse
         @non_fixed_objects = Kaminari.paginate_array(@non_fixed_objects).page(params[:page]).per(20)
@@ -28,8 +28,8 @@ module Decidim
       def load_more
         enforce_permission_to :read, :post
 
-        @posts = posts(params[:filter_post_category]).where(fixed: false)
-        @meetings = meetings(params[:filter_post_category])
+        @posts = posts(filter_post_category).where(fixed: false)
+        @meetings = meetings(filter_post_category)
 
         @non_fixed_objects = (@posts + @meetings).sort_by(&:created_at).reverse
         @non_fixed_objects = Kaminari.paginate_array(@non_fixed_objects).page(params[:page]).per(20)
@@ -128,16 +128,38 @@ module Decidim
 
       private
 
+      def post_categories
+        ["post", "host", "calendar", "survey", "sharecare"]
+      end
+
+      def allowed_post_categories
+        ["all"] + post_categories
+      end
+
+      def default_filter_post_category
+        return "host" if current_user.admin?
+
+        "all"
+      end
+
+      def filter_post_category
+        allowed_post_categories.include?(params[:filter_post_category]) ? params[:filter_post_category] : default_filter_post_category
+      end
+
       def posts(filter_category=nil)
+        category = filter_category == "all" ? nil : filter_category
+
         Decidim::Posts::Post
                  .where(decidim_component_id: current_component.id)
-                 .filter_category(filter_category)
+                 .filter_category(category)
                  .order(created_at: :desc)
                  .includes(:attachments)
       end
 
       def meetings(filter_category=nil)
-        if filter_category.blank? || filter_category == 'calendar'
+        category = filter_category == "all" ? nil : filter_category
+
+        if category.blank? || category == 'calendar'
           meetings_component.blank? ? [] : Decidim::Meetings::Meeting.where(component: meetings_component).published.except_withdrawn
         else
           []

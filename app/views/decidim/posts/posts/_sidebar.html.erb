@@ -2,20 +2,18 @@
   <nav aria-label="<%= t("decidim.components.posts.filter.menuAriaLabel") %>">
     <ul>
       <% filters = [
+        { filter: 'all', icon: 'function-line' },
         { filter: 'post', icon: 'home-5-line' },
         { filter: 'sharecare', icon: 'shake-hands-line' },
         { filter: 'calendar', icon: 'calendar-line' },
         { filter: 'survey', icon: 'draft-line' },
         { filter: 'host', icon: 'home-gear-line' }
       ] %>
-      <% if params[:filter_post_category].present? && !params[:filter_post_category].empty? %>
-        <% filters.unshift({ filter: 'all', icon: 'function-line' }) %>
-      <% end %>
       <% posts_component = current_component.manifest_name == "posts" ? current_component : current_component.participatory_space.components.find_by(manifest_name: "posts") %>
       <% current_posts_path = Decidim::EngineRouter.main_proxy(posts_component).posts_path %>
       <% filters.each do |filter| %>
         <li>
-          <%= link_to filter[:filter] == 'all' ? "#{current_posts_path}" : "#{current_posts_path}?filter_post_category=#{filter[:filter]}", class: (params[:filter_post_category] == filter[:filter] ? 'active' : ''), data: { filter: filter[:filter] }, aria: { current: (params[:filter_post_category] == filter[:filter] ? 'page' : nil) } do %>
+          <%= link_to "#{current_posts_path}?filter_post_category=#{filter[:filter]}", class: (params[:filter_post_category] == filter[:filter] ? 'active' : ''), data: { filter: filter[:filter] }, aria: { current: (params[:filter_post_category] == filter[:filter] ? 'page' : nil) } do %>
             <%= icon "#{filter[:icon]}" %>
             <span><%= t("decidim.components.posts.filter.#{filter[:filter]}") %></span>
           <% end %>
