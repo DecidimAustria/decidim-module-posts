@@ -115,9 +115,7 @@ module Decidim
 
       def change_status
         @post = Decidim::Posts::Post.find(params[:id])
-
-        #enforce_permission_to :change_post_status, post: @post
-
+        # enable_comments: params[:status] ? true : false
         if @post.update(status: params[:status], enable_comments: false)
           render json: { message: 'Status updated successfully', new_content: cell("decidim/posts/post_host", @post).call(:show) }, status: :ok
         else

@@ -47,7 +47,10 @@ sr:
             cancel: Otkaži
             processing: Obrada
             done: Gotovo
-            dialogBodyMsg: Status poruke je promenjen i funkcija komentara je zatvorena
+            undone: Nepročitano
+            dialogTitle: Promeni status poruke
+            dialogBodyMsg: Status poruke će biti promenjen
+            dialogBodyMsgComments: Funkcija komentara će biti zatvorena
             dialogBodyResponse: Molimo sač
         create:
           success: Post uspešno kreiran

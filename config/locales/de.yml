@@ -44,9 +44,12 @@ de:
           status:
             confirm: JA
             cancel: Abbrechen
+            undone: Ungelesen
             processing: In Bearbeitung
             done: Erledigt
-            dialogBodyMsg: Der Status der Meldung wird geändert und die Kommentarfunktion geschlossen
+            dialogTitle: Meldungsstatus ändern
+            dialogBodyMsg: Der Status der Meldung wird geändert
+            dialogBodyMsgComments: Die Kommentarfunktion wird geschlossen
             dialogBodyResponse: Bitte warten, der Beitragsstatus wird geändert...
         create:
           success: Beitrag erfolgreich erstellt

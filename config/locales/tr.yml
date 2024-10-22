@@ -46,7 +46,10 @@ tr:
             cancel: İptal
             processing: İşleniyor
             done: Tamamlandı
-            dialogBodyMsg: Mesajın durumu değiştirildi ve yorum işlevi kapatıldı
+            undone: Okunmamış
+            dialogTitle: Mesaj durumunu değiştir
+            dialogBodyMsg: Mesajın durumu değiştirilecek
+            dialogBodyMsgComments: Yorum işlevi kapatılacak
             dialogBodyResponse: Lütfen bekleyin, mesajın durumu değiştiriliyor
         create:
           success: Gönderi başarıyla oluşturuldu

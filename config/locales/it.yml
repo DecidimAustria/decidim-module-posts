@@ -46,7 +46,10 @@ it:
             cancel: Annulla
             processing: In elaborazione
             done: Fatto
-            dialogBodyMsg: Lo stato del messaggio è stato modificato e la funzione di commento è chiusa
+            undone: Non letto
+            dialogTitle: Cambia stato del messaggio
+            dialogBodyMsg: Lo stato del messaggio verrà modificato
+            dialogBodyMsgComments: La funzione di commento verrà chiusa
             dialogBodyResponse: Attendere, lo stato del messaggio viene modificato
         create:
           success: Post creato con successo

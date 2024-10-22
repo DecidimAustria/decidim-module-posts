@@ -53,7 +53,7 @@ module Decidim
             I18n.t('decidim.posts.posts.host.status.processing')
           when 2
             I18n.t('decidim.posts.posts.host.status.done')
-          end
+        end
       end
 
       def post_highlighted

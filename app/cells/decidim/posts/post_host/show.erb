@@ -46,22 +46,28 @@
     <%= cell("decidim/posts/post_comment", post) %>
   <% end %>
 <% end %>
-
 <% if participatory_space.admins.exists?(id:current_user.id) && !official_post %>
-  <% if post_status != 2 %>
-    <div class="flex flex-col py-4 px-2 justify-center items-center gap-4">
-      <% if post_status != 1 %>
-        <button class="button button__sm button__transparent-primary changeStatusButton" data-post-status="1" data-post-id="<%= post.id %>" aria-controls="confirmationModal" aria-haspopup="dialog">
-          <%= t('decidim.posts.posts.host.status.processing') %>
-          <%= icon('arrow-right-line') %>
+    <div class="flex flex-col flex-wrap py-4 px-2 justify-center items-center gap-4">
+      <% if post_status && post_status != 0 %>
+        <% modalDialog = t('decidim.posts.posts.host.status.dialogBodyMsg') %>
+      <% else %>
+        <% modalDialog = t('decidim.posts.posts.host.status.dialogBodyMsg') + "<br>" + t('decidim.posts.posts.host.status.dialogBodyMsgComments') %>
+      <% end %>
+      <% if post_status && post_status != 0 %>
+        <button class="button button__sm button__transparent-primary changeStatusButton" data-post-status="0" data-post-id="<%= post.id %>" data-dialogmsg="<%=modalDialog%>" aria-controls="confirmationModal" aria-haspopup="dialog">
+          <%= t('decidim.posts.posts.host.status.undone') %>
+          <%= icon('close-line') %>
         </button>
       <% end %>
-      <button class="button button__sm button__transparent-primary changeStatusButton" data-post-status="2" data-post-id="<%= post.id %>" aria-controls="confirmationModal" aria-haspopup="dialog">
+      <button class="button button__sm button__transparent-primary changeStatusButton" data-post-status="1" data-post-id="<%= post.id %>" data-dialogmsg="<%=modalDialog%>" aria-controls="confirmationModal" aria-haspopup="dialog">
+        <%= t('decidim.posts.posts.host.status.processing') %>
+        <%= icon('arrow-right-line') %>
+      </button>
+      <button class="button button__sm button__transparent-primary changeStatusButton" data-post-status="2" data-post-id="<%= post.id %>" data-dialogmsg="<%=modalDialog%>" aria-controls="confirmationModal" aria-haspopup="dialog">
         <%= t('decidim.posts.posts.host.status.done') %>
         <%= icon('arrow-right-line') %>
       </button>
     </div>
-  <% end %>
 <% end %>
 <% unless post_highlighted %>
   <%= cell("decidim/posts/post_metadata", post) %>

@@ -18,7 +18,7 @@ module Decidim
       private
 
       def time_since_update
-        time_difference = Time.now - post.updated_at
+        time_difference = Time.now - post.created_at
         minutes = (time_difference / 60).to_i
         hours = (time_difference / 3600).to_i
         days = (time_difference / 86400).to_i
