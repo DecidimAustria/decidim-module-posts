@@ -14,13 +14,15 @@ Space.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "decidim-posts"
+gem "decidim-posts", git: "https://github.com/DecidimAustria/decidim-module-posts.git", branch: "main"
 ```
 
 And then execute:
 
 ```bash
 bundle
+bundle exec rails decidim_posts:install:migrations
+bundle exec rails db:migrate
 ```
 
 ## Contributing
