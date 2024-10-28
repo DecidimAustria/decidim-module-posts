@@ -1,10 +1,21 @@
 :root {
-	--dg-color-white: 255 255 255;
-	--dg-color-black: 60 57 52;
-	--dg-color-post: 229 57 144;
-	--dg-color-help: 1 114 187;
-	--dg-color-sharecare: 36 166 32;
-	--dg-color-host: 219 15 16;
-	--dg-color-survey: 50 49 143;
-	--dg-color-calendar: 253 182 32;
+	--feeds-post: #1786c2;
+	--feeds-sharecare: #80cc28;
+	--feeds-host: #e81067;
+	--feeds-calendar: #fdb620;
+	--feeds-survey: #19619a;
+
+	--feeds-notification: 151, 71, 255;
+
+	--feeds-black: 60, 57, 52;
+	--feeds-bg: #fafafa;
+	--feeds-formBody: #f9f8f8;
+	--feeds-sidebar: #6d6b67;
+
+	--shadow-feedBox: -1px -1px 4px 0px rgba(0, 0, 0, 0.25),
+		1px 1px 4px 0px rgba(0, 0, 0, 0.25);
+	--shadow-feedMenu: -1px -1px 8px 0px rgba(0, 0, 0, 0.05),
+		1px 1px 8px 0px rgba(0, 0, 0, 0.05);
+	--shadow-feedNotification: -1px -1px 8px 0px rgba(var(--feeds-notification), 0.5),
+		1px 1px 8px 0px rgba(var(--feeds-notification), 0.5);
 }

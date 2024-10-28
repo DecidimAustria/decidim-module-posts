@@ -1,14 +1,14 @@
-<div class="posts__post_survey" id="post_<%= post.id %>_survey">
+<div class="posts__post_survey flex flex-col gap-2 text-sm font-bold px-2" id="post_<%= post.id %>_survey">
   <span class="text-right py-2">
     <%= t("decidim.posts.survey.participated", count: post.survey_responses_count) %>
   </span>
   <% post.questions.each do |question| %>
     <% if question.question_type == "single_choice" %>
-      <fieldset class="posts__post_survey-question">
+      <fieldset class="posts__post_survey-question flex flex-col p-2 gap-2 rounded bg-feeds-bg">
         <legend><%= translated_attribute question.title %></legend>
         <% question.answers.each do |answer| %>
-          <div class="posts__post_survey-question-answer">
-            <div class="posts__post_survey-question-answerInput">
+          <div class="posts__post_survey-question-answer font-medium flex flex-col px-2">
+            <div class="posts__post_survey-question-answerInput flex py-1 gap-2">
               <%= radio_button_tag "post[questions][#{question.id}]", answer.id, answer.user_answers.find_by(decidim_posts_answer_id: answer.id, decidim_user_id: current_user.id).present?, class: "survey-answer-checkbox", data: { question_id: question.id, answer_id: answer.id } %>
               <%= label_tag "post_questions_#{question.id}_#{answer.id}" do %>
                 <%= translated_attribute answer.title %>
@@ -37,8 +37,8 @@
       <fieldset class="posts__post_survey-question">
         <legend><%= translated_attribute question.title %></legend>
         <% question.answers.each do |answer| %>
-          <div class="posts__post_survey-question-answer">
-            <div class="posts__post_survey-question-answerInput">
+          <div class="posts__post_survey-question-answer font-medium flex flex-col px-2">
+            <div class="posts__post_survey-question-answerInput flex py-1 gap-2">
               <%= check_box_tag "post[questions][#{question.id}][#{answer.id}]", answer.id, answer.user_answers.find_by(decidim_posts_answer_id: answer.id, decidim_user_id: current_user.id).present?, class: "survey-answer-checkbox", data: { question_id: question.id, answer_id: answer.id } %>
               <%= label_tag "post_questions_#{question.id}_#{answer.id}" do %>
                 <%= translated_attribute answer.title %>

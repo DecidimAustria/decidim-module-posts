@@ -4,17 +4,17 @@
   else
     params[:filter_post_category]
   end %>
-  <div id="posts__post_newElement" class="posts__post_newElement_modal" role="dialog" aria-modal="true" aria-label="<%= t("decidim.components.posts.newFeed.title") %>" data-active-feed="" data-active-filter="<%= activefilter %>">
-    <div class="posts__post_newElement_modal_frame">
-      <div class="posts__post_newElement_modal_content">
+  <div id="posts__post_newElement" class="posts__post_newElement_modal fixed left-0 top-0 right-0 bottom-0 w-full h-full bg-white bg-opacity-60 z-50 justify-center items-start pt-[72px] hidden" role="dialog" aria-modal="true" aria-label="<%= t("decidim.components.posts.newFeed.title") %>" data-active-feed="" data-active-filter="<%= activefilter %>">
+    <div class="posts__post_newElement_modal_frame p-4 gap-2 shadow shadow-feedBox rounded lg:max-w-screen-md bg-white w-[calc(100%-2rem)] max-h-[80vh] overflow-auto motion-safe:transition-all">
+      <div class="posts__post_newElement_modal_content flex flex-col gap-2">
         <div class="close-button flex justify-end pb-2">
-          <button class="btn circle posts__post_newElement-closer" type="button">
-            <%= icon "close-circle-line" %>
+          <button class="btn circle posts__post_newElement-closer w-[52px] h-[52px] p-2 bg-white rounded-[52px] shadow shadow-feedMenu justify-center items-center inline-flex text-black rotate-45" type="button">
+            <%= icon "close-circle-line", class:'w-[36px] h-[36px] fill-feeds-sidebar rotate-45' %>
             <span class="sr-only"><%= t("decidim.components.posts.newFeed.close") %></span>
           </button>
         </div>
         <% if current_user %>
-          <div class="category-selection">
+          <div class="category-selection flex gap-2 flex-wrap justify-center">
             <% filters = [
               { filter: 'post', icon: 'home-5-line' },
               { filter: 'sharecare', icon: 'shake-hands-line' },
@@ -23,7 +23,7 @@
               { filter: 'calendar', icon: 'calendar-line' }
             ] %>
             <% filters.each do |filter| %>
-              <button type="button" class="button button__sm button__transparent-primary" data-category="<%= filter[:filter] %>" aria-pressed="false"><%= t("decidim.components.posts.filter.#{filter[:filter]}_singular") %></button>
+              <button type="button" class="button button__sm button__transparent-primary border-2 hover:bg-white hover:text-black" data-category="<%= filter[:filter] %>" aria-pressed="false"><%= t("decidim.components.posts.filter.#{filter[:filter]}_singular") %></button>
             <% end %>
           </div>
 
@@ -38,7 +38,7 @@
           %>
           <div id="posts__post_newElement_Form-LiveRegion" class="sr-only" aria-live="polite"></div>
           <div id="posts__post_newElement_Meeting" aria-live="polite">
-            <%= decidim_form_for(Decidim::Meetings::MeetingForm.from_params(params).with_context(context), url: Decidim::EngineRouter.main_proxy(posts_component).meetings_path, html: { class: "meetings_form new_meeting" }) do |form| %>
+            <%= decidim_form_for(Decidim::Meetings::MeetingForm.from_params(params).with_context(context), url: Decidim::EngineRouter.main_proxy(posts_component).meetings_path, html: { class: "meetings_form new_meeting hidden opacity-0 scale-0 motion-safe:transition-transform motion-safe:transition-opacity" }) do |form| %>
               <div class="form__wrapper p-0 gap-4">
                 <%= render partial: "decidim/posts/posts/meeting_form", locals: { form: form } %>
               </div>
@@ -49,17 +49,17 @@
           </div>
 
           <div id="posts__post_newElement_Post" aria-live="polite">
-            <%= decidim_form_for(Decidim::Posts::PostForm.from_params(params).with_context(context), url: Decidim::EngineRouter.main_proxy(posts_component).posts_path, html: { class: "posts_form new_post" }) do |form| %>
+            <%= decidim_form_for(Decidim::Posts::PostForm.from_params(params).with_context(context), url: Decidim::EngineRouter.main_proxy(posts_component).posts_path, html: { class: "posts_form new_post hidden opacity-0 scale-0 motion-safe:transition-transform motion-safe:transition-opacity" }) do |form| %>
               <div class="form__wrapper p-0">
                 <%= render partial: "decidim/posts/posts/post_form", locals: { form: form } %>
               </div>
-              <div id="extraFieldsForSurvey" class="posts__post_newElement_Xtra posts__post_newSurvey" aria-live="polite">
+              <div id="extraFieldsForSurvey" class="posts__post_newElement_Xtra relative hidden opacity-0 scale-0 motion-safe:transition-transform motion-safe:transition-opacity posts__post_newSurvey" aria-live="polite">
                 <%= render partial: 'decidim/posts/posts/new_survey.html', locals: { form: form } %>
               </div>
               <%= render partial: "decidim/posts/posts/attachment.html", locals: { form: form } %>
               <%= render partial: "decidim/posts/posts/admin_options.html", locals: { form: form, participatory_space: target_participatory_space } %>
               <div class="form__wrapper-block flex-col-reverse md:flex-row justify-between">
-                <%= form.submit "#{t("decidim.components.posts.newFeed.action")} #{icon('send-plane-line')}".html_safe, data: { disable: true }, class: "sndBtn button button__sm button__transparent-primary" %>
+                <%= form.submit "#{t("decidim.components.posts.newFeed.action")} #{icon('send-plane-line')}".html_safe, data: { disable: true }, class: "sndBtn button button__sm button__transparent-primary self-end" %>
               </div>
             <% end %>
           </div>

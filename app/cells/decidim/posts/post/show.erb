@@ -1,6 +1,6 @@
 <%= cell("decidim/posts/post_header", post) %>
 <%= cell("decidim/posts/post_attachments", post) %>
-<div class="card__grid-text">
+<div class="card__grid-text py-2 text-pretty">
   <% should_truncate = strip_tags(post_body).length > 300 %>
   <div class="content-block__description editor-content" <%= "data-component='accordion'" if should_truncate %>>
     <% if should_truncate %>

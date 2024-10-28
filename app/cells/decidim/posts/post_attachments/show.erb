@@ -4,7 +4,7 @@
     <div class="flex flex-col items-center">
       <ul id="galleryItems_<%= post.id %>" class="posts__post_gallery flex overflow-hidden">
         <% post.attachments.select { |a| a.url.match(/\.(jpg|jpeg|png|svg|webp|mp4|webm)$/i) }.each_with_index do |attachment, index| %>
-          <li class="<%= attachment.url.match(/\.(mp4|webm)$/i) ? 'video' : 'image' %> <%= index.zero? ? 'active' : '' %> aspect-4/3 overflow-hidden flex justify-center items-center" data-src="<%= attachment.url %>">
+          <li class="<%= attachment.url.match(/\.(mp4|webm)$/i) ? 'video' : 'image' %> <%= index.zero? ? 'active' : '' %> aspect-[4/3] overflow-hidden flex justify-center items-center" data-src="<%= attachment.url %>">
             <% if attachment.url.match(/\.(mp4|webm)$/i) %>
               <%= video_tag(attachment.url, class: "object-cover w-full h-full", controls: true, preload: "auto") %>
             <% else %>

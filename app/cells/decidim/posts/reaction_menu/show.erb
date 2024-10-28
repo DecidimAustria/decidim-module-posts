@@ -5,7 +5,7 @@
     <span class="text-sm"><%= t("decidim.endorsement_buttons_cell.already_endorsed") %></span>
     <span class="reaction_icon text-black"><%= icon('heart-add-line', class: 'text-black') %></span>
   </button>
-  <ul id="<%= dom_id(post) %>_posts__post_reactions_submenu" role="menu" aria-orientation="vertical" aria-labelledby="<%= dom_id(post) %>_posts__post_reactions_submenuButton" class="absolute left-[60px] -top-[40px] p-2 flex gap-2 bg-white rounded-md shadow-feedMenu overflow-hidden hidden" aria-label="<%= t("decidim.components.posts.reactions.title") %>">
+  <ul id="<%= dom_id(post) %>_posts__post_reactions_submenu" role="menu" aria-orientation="vertical" aria-labelledby="<%= dom_id(post) %>_posts__post_reactions_submenuButton" class="absolute left-[60px] -top-[40px] p-2 flex gap-2 bg-white rounded-md shadow shadow-feedMenu overflow-hidden hidden" aria-label="<%= t("decidim.components.posts.reactions.title") %>">
     <% reaction_types.each do |reaction_type| %>
       <li role="menuitem">
         <a href="#" class="reaction_btn block text-xl w-[24px] h-[24px]" data-reaction="<%= reaction_type.name %>" data-reaction-id="<%= reaction_type.id %>" data-reaction-url="<%= reactions_path %>" data-reactionable-id="<%= post.to_global_id.to_s %>">

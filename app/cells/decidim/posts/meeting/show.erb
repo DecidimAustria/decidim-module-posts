@@ -1,4 +1,4 @@
-<article class="card__grid posts__post" data-content="calendar">
+<article class="card__grid posts__post gap-4 ring-1 hover:cursor-default md:col-start-1 md:col-end-4 lg:col-start-2 lg:col-end-8 xl:col-start-2 xl:col-end-10" data-content="calendar">
   <%= cell("decidim/posts/post_header", meeting) %>
   <div class="flex gap-4 py-2 px-2">
     <div class="card__grid-text--meta flex flex-col gap-2">
@@ -16,7 +16,7 @@
         </time>
       <% end %>
     </div>
-    <div class="card__grid-text p-0">
+    <div class="card__grid-text p-0 py-2 text-pretty">
       <h2 class="h3"><%= link_to meeting_title, Decidim::EngineRouter.main_proxy(meeting.component).meeting_path(meeting) %></h2>
       <% should_truncate = strip_tags(meeting_description).length > 300 %>
       <div class="content-block__description editor-content" <%= "data-component='accordion'" if should_truncate %>>

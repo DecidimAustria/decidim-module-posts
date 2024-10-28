@@ -1,6 +1,6 @@
-<aside class="posts__aside">
+<aside class="posts__aside shrink-0 max-lg:right-[16px] max-lg:top-[88px] max-lg:bottom-[80px] max-lg:fixed max-w-[72px] order-2 flex flex-col justify-between lg:justify-start">
   <nav aria-label="<%= t("decidim.components.posts.filter.menuAriaLabel") %>">
-    <ul>
+    <ul class="flex flex-col space-y-4">
       <% filters = [
         { filter: 'all', icon: 'function-line' },
         { filter: 'post', icon: 'home-5-line' },
@@ -18,8 +18,8 @@
       end %>
       <% filters.each do |filter| %>
         <li>
-          <%= link_to "#{current_posts_path}?filter_post_category=#{filter[:filter]}", class: (activefilter == filter[:filter] ? 'active' : ''), data: { filter: filter[:filter] }, aria: { current: (params[:filter_post_category] == filter[:filter] ? 'page' : nil) } do %>
-            <%= icon "#{filter[:icon]}" %>
+          <%= link_to "#{current_posts_path}?filter_post_category=#{filter[:filter]}", class: "flex flex-col items-center font-medium text-sm md:text-md text-feeds-sidebar text-center #{activefilter == filter[:filter] ? 'active' : ''}", data: { filter: filter[:filter] }, aria: { current: (params[:filter_post_category] == filter[:filter] ? 'page' : nil) } do %>
+            <%= icon "#{filter[:icon]}", class:'w-[24px] h-auto fill-feeds-sidebar' %>
             <span><%= t("decidim.components.posts.filter.#{filter[:filter]}") %></span>
           <% end %>
         </li>

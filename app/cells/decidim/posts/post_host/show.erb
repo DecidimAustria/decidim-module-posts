@@ -2,12 +2,12 @@
 
 <% unless post_highlighted %>
   <% if official_post %>
-    <%= icon "home-gear-line", class: 'host-icon' %>
+    <%= icon "home-gear-line", class: 'host-icon absolute -right-2 -top-2 bg-white fill-feeds-host' %>
   <% end %>
 <% end %>
 
 <%= cell("decidim/posts/post_attachments", post) %>
-<div class="card__grid-text">
+<div class="card__grid-text py-2 text-pretty">
   <% should_truncate = strip_tags(post_body).length > 300 %>
   <div class="content-block__description editor-content" <%= "data-component='accordion'" if should_truncate %>>
     <% if should_truncate %>

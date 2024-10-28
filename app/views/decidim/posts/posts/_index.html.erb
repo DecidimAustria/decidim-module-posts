@@ -1,13 +1,13 @@
 <main class="feeds__main home">
   <!-- This is the sidebar that appears on the right side of the page -->
   <%= render partial: "decidim/posts/posts/sidebar" %>
-  <div class="feeds__container">
-    <div class="feeds__body">
+  <div class="feeds__container pr-[91px] md:pr-[101px] lg:pr-0 order-1 grow min-h-[calc(100vh-72px)]">
+    <div class="feeds__body flex-grow flex flex-wrap gap-4 items-start">
       <div class="card__grid-home w-full lg:grid-cols-8 xl:grid-cols-12 gap-6">
         <% if current_user %>
-          <div class="card__grid posts__post posts__post_newElement flex-row justify-between">
-            <button class="btn circle posts__post_newElement-opener" aria-expanded="false" aria-controls="posts__post_newElement" aria-haspopup="posts__post_newElement" type="button">
-              <%= icon "close-circle-line" %>
+          <div class="card__grid posts__post posts__post_newElement flex-row justify-between gap-4 ring-1 hover:cursor-default md:col-start-1 md:col-end-4 lg:col-start-2 lg:col-end-8 xl:col-start-2 xl:col-end-10">
+            <button class="btn circle posts__post_newElement-opener w-[52px] h-[52px] p-2 bg-white rounded-[52px] shadow shadow-feedMenu justify-center items-center inline-flex text-black" aria-expanded="false" aria-controls="posts__post_newElement" aria-haspopup="posts__post_newElement" type="button">
+              <%= icon "close-circle-line", class: "w-[36px] h-[36px] fill-feeds-sidebar rotate-45 motion-safe:transition-transform" %>
               <span class="sr-only"><%= t("decidim.components.posts.newFeed.openButton") %></span>
             </button>
           </div>
