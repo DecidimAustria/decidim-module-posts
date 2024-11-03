@@ -95,6 +95,10 @@ en:
         settings:
           global:
             attachments_allowed?: Attachments allowed
+            host_category_label_plural: Alternative title for the Host category (Plural)
+            sharecare_category_label_plural: Alternative title for the Share & Care category (Plural)
+            host_category_label_singular: Alternative title for the Host category (Singular)
+            sharecare_category_label_singular: Alternative title for the Share & Care category (Singular)
           step:
             endorsements_enabled: Enable endorsements
             endorsements_blocked: Endorsements blocked

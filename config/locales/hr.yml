@@ -95,6 +95,10 @@ hr:
         settings:
           global:
             attachments_allowed?: Prilozi dopušteni
+            host_category_label_plural: Alternativni naslov za kategoriju Domaćin (Množina)
+            sharecare_category_label_plural: Alternativni naslov za kategoriju Podijeli & Brini (Množina)
+            host_category_label_singular: Alternativni naslov za kategoriju Domaćin (Jednina)
+            sharecare_category_label_singular: Alternativni naslov za kategoriju Podijeli & Brini (Jednina)
           step:
             endorsements_enabled: Omogući sviđanja
             endorsements_blocked: Sviđanja blokirana

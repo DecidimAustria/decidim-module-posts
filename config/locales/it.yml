@@ -95,6 +95,10 @@ it:
         settings:
           global:
             attachments_allowed?: Allegati consentiti
+            host_category_label_plural: Titolo alternativo per la categoria Host (Plurale)
+            sharecare_category_label_plural: Titolo alternativo per la categoria Share & Care (Plurale)
+            host_category_label_singular: Titolo alternativo per la categoria Host (Singolare)
+            sharecare_category_label_singular: Titolo alternativo per la categoria Share & Care (Singolare)
           step:
             endorsements_enabled: Abilita le approvazioni
             endorsements_blocked: Approvazioni bloccate

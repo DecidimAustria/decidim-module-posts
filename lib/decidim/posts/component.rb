@@ -27,6 +27,10 @@ Decidim.register_component(:posts) do |component|
   # end
   component.settings(:global) do |settings|
     settings.attribute :attachments_allowed?, type: :boolean, default: true
+    settings.attribute :host_category_label_plural, type: :string, translated: true, required: false, editor: false
+    settings.attribute :host_category_label_singular, type: :string, translated: true, required: false, editor: false
+    settings.attribute :sharecare_category_label_plural, type: :string, translated: true, required: false, editor: false
+    settings.attribute :sharecare_category_label_singular, type: :string, translated: true, required: false, editor: false
   end
 
   component.settings(:step) do |settings|

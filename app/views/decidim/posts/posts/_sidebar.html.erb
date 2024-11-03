@@ -1,14 +1,14 @@
 <aside class="posts__aside shrink-0 max-lg:right-[16px] max-lg:top-[88px] max-lg:bottom-[80px] max-lg:fixed max-w-[72px] order-2 flex flex-col justify-between lg:justify-start">
   <nav aria-label="<%= t("decidim.components.posts.filter.menuAriaLabel") %>">
     <ul class="flex flex-col space-y-4">
-      <% filters = [
-        { filter: 'all', icon: 'function-line' },
-        { filter: 'post', icon: 'home-5-line' },
-        { filter: 'sharecare', icon: 'shake-hands-line' },
-        { filter: 'calendar', icon: 'calendar-line' },
-        { filter: 'survey', icon: 'draft-line' },
-        { filter: 'host', icon: 'home-gear-line' }
-      ] %>
+      <% filters = {
+        all: 'function-line',
+        post: 'home-5-line',
+        sharecare: 'shake-hands-line',
+        calendar: 'calendar-line',
+        survey: 'draft-line',
+        host: 'home-gear-line'
+      } %>
       <% posts_component = current_component.manifest_name == "posts" ? current_component : current_component.participatory_space.components.find_by(manifest_name: "posts") %>
       <% current_posts_path = Decidim::EngineRouter.main_proxy(posts_component).posts_path %>
       <% activefilter = if current_user.admin? && params[:filter_post_category].blank?
@@ -16,11 +16,11 @@
       else
         params[:filter_post_category]
       end %>
-      <% filters.each do |filter| %>
+      <% filters.each do |category, icon| %>
         <li>
-          <%= link_to "#{current_posts_path}?filter_post_category=#{filter[:filter]}", class: "flex flex-col items-center font-medium text-sm md:text-md text-feeds-sidebar text-center #{activefilter == filter[:filter] ? 'active' : ''}", data: { filter: filter[:filter] }, aria: { current: (params[:filter_post_category] == filter[:filter] ? 'page' : nil) } do %>
-            <%= icon "#{filter[:icon]}", class:'w-[24px] h-auto fill-feeds-sidebar' %>
-            <span><%= t("decidim.components.posts.filter.#{filter[:filter]}") %></span>
+          <%= link_to "#{current_posts_path}?filter_post_category=#{category}", class: "flex flex-col items-center font-medium text-sm md:text-md text-feeds-sidebar text-center #{activefilter == category ? 'active' : ''}", data: { filter: category }, aria: { current: (params[:filter_post_category] == category ? 'page' : nil) } do %>
+            <%= icon "#{icon}", class:'w-[24px] h-auto fill-feeds-sidebar' %>
+            <span><%= category_label(category, component_settings) %></span>
           <% end %>
         </li>
       <% end %>
