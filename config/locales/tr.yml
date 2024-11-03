@@ -95,9 +95,9 @@ tr:
         settings:
           global:
             attachments_allowed?: Ekler izin verildi
-            host_category_label_plural: Ev sahibi kategorisi için alternatif başlık (çoğul)
+            host_category_label_plural: Admin kategorisi için alternatif başlık (çoğul)
             sharecare_category_label_plural: Paylaş ve Bakım kategorisi için alternatif başlık (çoğul)
-            host_category_label_singular: Ev sahibi kategorisi için alternatif başlık (tekil)
+            host_category_label_singular: Admin kategorisi için alternatif başlık (tekil)
             sharecare_category_label_singular: Paylaş ve Bakım kategorisi için alternatif başlık (tekil)
           step:
             endorsements_enabled: Beğenileri etkinleştir

@@ -95,9 +95,9 @@ de:
         settings:
           global:
             attachments_allowed?: Anhänge erlaubt
-            host_category_label_plural: Alternativ-Titel für die Host-Kategorie (Plural)
+            host_category_label_plural: Alternativ-Titel für die Admin-Kategorie (Plural)
             sharecare_category_label_plural: Alternativ-Titel für die Share & Care-Kategorie (Plural)
-            host_category_label_singular: Alternativ-Titel für die Host-Kategorie (Singular)
+            host_category_label_singular: Alternativ-Titel für die Admin-Kategorie (Singular)
             sharecare_category_label_singular: Alternativ-Titel für die Share & Care-Kategorie (Singular)
           step:
             endorsements_enabled: Unterstützungen aktivieren
