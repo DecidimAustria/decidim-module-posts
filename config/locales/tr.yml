@@ -172,8 +172,8 @@ tr:
           post_singular: Gönderi
           sharecare: Share & Care
           sharecare_singular: Share & Care
-          host: Ev sahibi
-          host_singular: Ev sahibi
+          host: Admin
+          host_singular: Admin
           calendar: Toplantılar
           calendar_singular: Toplantı
           survey: Anketler

@@ -172,8 +172,8 @@ sr:
           post_singular: Post
           sharecare: Podeli & Brini
           sharecare_singular: Podeli & Brini
-          host: Domaćin
-          host_singular: Domaćin
+          host: Admin
+          host_singular: Admin
           calendar: Sastanci
           calendar_singular: Sastanak
           survey: Ankete

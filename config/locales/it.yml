@@ -172,8 +172,8 @@ it:
           post_singular: Post
           sharecare: Share & Care
           sharecare_singular: Share & Care
-          host: Host
-          host_singular: Host
+          host: Admin
+          host_singular: Admin
           calendar: Incontri
           calendar_singular: Incontro
           survey: Questionario

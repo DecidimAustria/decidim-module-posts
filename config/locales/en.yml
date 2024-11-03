@@ -173,8 +173,8 @@ en:
           post_singular: Post
           sharecare: Share & Care
           sharecare_singular: Share & Care
-          host: Host
-          host_singular: Host
+          host: Admin
+          host_singular: Admin
           calendar: Meetings
           calendar_singular: Meeting
           survey: Surveys
