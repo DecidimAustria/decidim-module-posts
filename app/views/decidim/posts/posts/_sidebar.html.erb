@@ -11,14 +11,14 @@
       } %>
       <% posts_component = current_component.manifest_name == "posts" ? current_component : current_component.participatory_space.components.find_by(manifest_name: "posts") %>
       <% current_posts_path = Decidim::EngineRouter.main_proxy(posts_component).posts_path %>
-      <% activefilter = if current_user.admin? && params[:filter_post_category].blank?
-        'host'
-      else
-        params[:filter_post_category]
-      end %>
+      <% if current_user.admin? %>
+        <% activeFilter = params[:filter_post_category].blank? ? 'host' : params[:filter_post_category] %>
+      <% else %>
+        <% activeFilter = params[:filter_post_category].blank? ? 'all' : params[:filter_post_category] %>
+      <% end %>
       <% filters.each do |category, icon| %>
         <li>
-          <%= link_to "#{current_posts_path}?filter_post_category=#{category}", class: "flex flex-col items-center font-medium text-sm md:text-md text-feeds-sidebar text-center #{activefilter == category ? 'active' : ''}", data: { filter: category }, aria: { current: (params[:filter_post_category] == category ? 'page' : nil) } do %>
+          <%= link_to "#{current_posts_path}?filter_post_category=#{category}", class: "flex flex-col items-center font-medium text-sm md:text-md text-feeds-sidebar text-center #{activeFilter.to_s.strip == category.to_s.strip ? 'active' : ''}", data: { filter: category }, aria: { current: (activeFilter.to_s.strip == category.to_s.strip ? 'page' : nil) } do %>
             <%= icon "#{icon}", class:'w-[24px] h-auto fill-feeds-sidebar' %>
             <span><%= category_label(category, component_settings) %></span>
           <% end %>
