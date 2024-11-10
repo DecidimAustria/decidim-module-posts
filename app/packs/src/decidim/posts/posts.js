@@ -5,8 +5,43 @@ import { closeDialog, activateCategory, hideAllForms } from './newFeeds.js';
 import Submenu from './submenu.js';
 import CommentsComponent from "src/decidim/comments/comments.component"
 
+import RemoteModal from "src/decidim/remote_modal"
+import selectActiveIdentity from "src/decidim/identity_selector_dialog"
+import createTooltip from "src/decidim/tooltips"
+import createToggle from "src/decidim/toggle"
+import {
+  createAccordion,
+  createDialog,
+  createDropdown,
+  Dialogs
+} from "src/decidim/a11y"
+import changeReportFormBehavior from "src/decidim/change_report_form_behavior"
+
 document.addEventListener('DOMContentLoaded', function () {
-	function addEventListeners(rootElement) {
+	function initializeDecidimComponents() {
+		document.querySelectorAll('[data-component="accordion"]').forEach((component) => createAccordion(component))
+		
+		document.querySelectorAll('[data-component="dropdown"]').forEach((component) => createDropdown(component))
+		
+		// initialize a11y dialog-open buttons
+		document.querySelectorAll("[data-dialog]").forEach((component) => createDialog(component))
+
+		// Initialize available remote modals (ajax-fetched contents)
+		document.querySelectorAll("[data-dialog-remote-url]").forEach((elem) => new RemoteModal(elem))
+
+		// Add event listeners to identity modal
+		document.querySelectorAll("[data-user-identity]").forEach((elem) => selectActiveIdentity(elem))
+
+		// Initialize data-tooltips
+		document.querySelectorAll("[data-tooltip]").forEach((elem) => createTooltip(elem))
+
+		// Initialize data-toggles
+		document.querySelectorAll("[data-toggle]").forEach((elem) => createToggle(elem))
+
+		document.querySelectorAll(".new_report").forEach((elem) => changeReportFormBehavior(elem))
+	}
+
+	function addEventListeners(rootElement) {		
 		rootElement.querySelectorAll("[data-decidim-posts-comments]").forEach((el) => {
 			const $el = $(el);
 			let comments = $(el).data("comments");
@@ -183,6 +218,8 @@ document.addEventListener('DOMContentLoaded', function () {
 					newButton.addEventListener('click', loadMoreButtonClicked);
 					observer.observe(newButton);
 				}
+
+				initializeDecidimComponents();
 			})
 			.catch((error) => {
 				// enable the button again
