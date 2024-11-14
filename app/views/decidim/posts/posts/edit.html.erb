@@ -1,11 +1,12 @@
-<main class="feeds__main home">
+<main class="feeds__main home flex w-full xl:max-w-screen-xl 2xl:max-w-screen-2xl mx-auto p-4 lg:p-16 lg:flex-row lg:gap-4 lg:justify-between">
   <!-- This is the sidebar that appears on the right side of the page -->
   <%= render partial: "decidim/posts/posts/sidebar" %>
-  <div class="feeds__container">
-    <div class="feeds__body">
+  <div class="feeds__container order-1 grow min-h-[calc(100vh-72px)]">
+    <div class="feeds__body flex-grow flex flex-wrap gap-4 items-start">
       <div class="card__grid-home w-full lg:grid-cols-8 xl:grid-cols-12 gap-6">
-      <div class="card__grid posts__post p-2" data-content="<%= @post.category %>">
-        <%= render "edit_form" %>
+        <div class="card__grid posts__post p-2 ring-1" data-content="<%= @post.category %>">
+          <%= render "edit_form" %>
+        </div>
       </div>
     </div>
     

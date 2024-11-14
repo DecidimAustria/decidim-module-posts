@@ -121,12 +121,12 @@
 	.feeds__body {
 		.posts__post {
 			.card__grid-text {
+				word-break: break-word;
+				overflow-wrap: break-word;
 				p {
 					color: black;
 				}
 				a {
-					word-break: break-word;
-					overflow-wrap: break-word;
 					text-decoration: underline;
 					transition: color 0.2s;
 					@media (prefers-reduced-motion: no-preference) {
