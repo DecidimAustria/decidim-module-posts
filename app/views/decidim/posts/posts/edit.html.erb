@@ -4,7 +4,7 @@
   <div class="feeds__container order-1 grow min-h-[calc(100vh-72px)]">
     <div class="feeds__body flex-grow flex flex-wrap gap-4 items-start">
       <div class="card__grid-home w-full lg:grid-cols-8 xl:grid-cols-12 gap-6">
-        <div class="card__grid posts__post p-2 ring-1" data-content="<%= @post.category %>">
+        <div class="card__grid posts__post p-2 gap-4 ring-1 hover:cursor-default md:col-start-1 md:col-end-4 lg:col-start-2 lg:col-end-8 xl:col-start-2 xl:col-end-10" data-content="<%= @post.category %>">
           <%= render "edit_form" %>
         </div>
       </div>
