@@ -48,6 +48,8 @@ module Decidim
         ]
 
         current_filter = filters.find { |f| f[:filter] == category }
+        return nil if current_filter.blank?
+
         {
           icon: current_filter[:icon],
           label: t("decidim.components.posts.filter.#{current_filter[:filter]}")
