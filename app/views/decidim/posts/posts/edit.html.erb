@@ -29,7 +29,7 @@
     </dialog>
     <!-- In case the Module Decidim FeedsUi is present, the form will be installed in the footer of the application -->
     <% unless defined?(Decidim::FeedsUi) %>
-      <%= append_javascript_pack_tag "decidim_feeds" %>
+      <%= append_javascript_pack_tag "decidim_posts" %>
     <% end %>
   </div>
 </main>

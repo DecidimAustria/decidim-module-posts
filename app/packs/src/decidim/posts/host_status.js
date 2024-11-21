@@ -1,17 +1,21 @@
 export function host_status() {
 	const changeStatusButtons = document.querySelectorAll('.changeStatusButton');
-
-	changeStatusButtons.forEach(function (button) {
-		button.addEventListener('click', handleStatusChange);
-	});
-
 	const cancelButton = document.getElementById(
 		'confirmationModal__cancelButton'
 	);
-	cancelButton.addEventListener('click', function () {
-		const confirmationModal = document.getElementById('confirmationModal');
-		confirmationModal.close();
-	});
+
+	if (changeStatusButtons) {
+		changeStatusButtons.forEach(function (button) {
+			button.addEventListener('click', handleStatusChange);
+		});
+	}
+
+	if (cancelButton) {
+		cancelButton.addEventListener('click', function () {
+			const confirmationModal = document.getElementById('confirmationModal');
+			confirmationModal.close();
+		});
+	}
 
 	function handleStatusChange(event) {
 		const button = event.currentTarget;

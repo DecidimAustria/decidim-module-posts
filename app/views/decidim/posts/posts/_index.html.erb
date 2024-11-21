@@ -43,7 +43,7 @@
     <!-- In case the Module Decidim FeedsUi is present, the form will be installed in the footer of the application -->
     <% unless defined?(Decidim::FeedsUi) %>
       <%= render partial: "decidim/posts/posts/form.html" %>
-      <%= append_javascript_pack_tag "decidim_feeds" %>
+      <%= append_javascript_pack_tag "decidim_posts" %>
     <% end %>
   </div>
 </main>
