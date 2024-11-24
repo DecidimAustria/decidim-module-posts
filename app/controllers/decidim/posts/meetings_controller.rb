@@ -41,7 +41,12 @@ module Decidim
 
           on(:invalid) do
             flash.now[:alert] = I18n.t("meetings.create.invalid", scope: "decidim.meetings")
-            redirect_to posts_path
+
+            set_meeting_context
+
+            render template: "decidim/posts/meetings/new", status: :unprocessable_entity
+            #render template: "decidim/posts/posts/index", layout: "decidim/application", status: :unprocessable_entity
+            #redirect_to posts_path
           end
         end
       end
@@ -49,14 +54,7 @@ module Decidim
       def edit
         enforce_permission_to(:update, :meeting, meeting:)
 
-        @context = {
-          current_organization: @controller.try(:current_organization),
-          current_component: @controller.try(:current_component),
-          current_user: @controller.try(:current_user),
-          current_participatory_space: @controller.try(:current_participatory_space)
-        }
-        @feeds_component = current_component.participatory_space.components.find_by(manifest_name: "posts")
-        @target_participatory_space = @feeds_component.participatory_space
+        set_meeting_context
         @form = meeting_form.from_model(meeting).with_context(@context)
       end
 
@@ -170,6 +168,17 @@ module Decidim
             args: ["decidim/linked_resources_for", meeting, { type: :results, link_name: "meetings_through_proposals" }]
           }
         ] + attachments_tab_panel_items(@meeting)
+      end
+
+      def set_meeting_context
+        @context = {
+          current_organization: @controller.try(:current_organization),
+          current_component: @controller.try(:current_component),
+          current_user: @controller.try(:current_user),
+          current_participatory_space: @controller.try(:current_participatory_space)
+        }
+        @feeds_component = current_component.participatory_space.components.find_by(manifest_name: "posts")
+        @target_participatory_space = @feeds_component.participatory_space
       end
     end
   end
