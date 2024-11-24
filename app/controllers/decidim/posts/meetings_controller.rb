@@ -28,8 +28,7 @@ module Decidim
       def create
         enforce_permission_to :create, :meeting
 
-        # Duplicate location to address field
-        params[:meeting][:address] = params[:meeting][:location] if params[:meeting][:address].blank?
+        copy_location_to_address
 
         @form = meeting_form.from_params(params, current_component: meetings_component)
 
@@ -60,6 +59,8 @@ module Decidim
 
       def update
         enforce_permission_to(:update, :meeting, meeting:)
+
+        copy_location_to_address
 
         @form = meeting_form.from_params(params)
 
@@ -179,6 +180,10 @@ module Decidim
         }
         @feeds_component = current_component.participatory_space.components.find_by(manifest_name: "posts")
         @target_participatory_space = @feeds_component.participatory_space
+      end
+
+      def copy_location_to_address
+        params[:meeting][:address] = params[:meeting][:location] if params[:meeting][:address].blank?
       end
     end
   end
