@@ -24,7 +24,11 @@ module Decidim
       end
 
       def meeting_description
-        translated_attribute model.description
+        simple_format(meeting_presenter.description(links: true))
+      end
+
+      def meeting_presenter
+        @meeting_presenter ||= present(model)
       end
 
       def meeting_address
