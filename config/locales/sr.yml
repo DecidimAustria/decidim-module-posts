@@ -13,8 +13,12 @@ sr:
         actions:
           preview: Pregled
       content_blocks:
-        feeds:
+        posts_settings_form:
+          component: Feed za prikaz
+        posts:
           name: Feed
+          title: Poslednji postovi
+          seeall: Pogledaj sve postove
       actions:
         title: Akcije
         edit_post: Uredi post

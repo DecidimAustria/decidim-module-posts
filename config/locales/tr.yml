@@ -13,8 +13,12 @@ tr:
         actions:
           preview: Önizleme
       content_blocks:
-        feeds:
+        posts_settings_form:
+          component: Gösterilecek feed
+        posts:
           name: Feed
+          title: Son gönderiler
+          seeall: Tüm gönderileri gör
       actions:
         title: Eylemler
         edit_post: Gönderiyi düzenle

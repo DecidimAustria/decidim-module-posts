@@ -1,3 +1,41 @@
-<section id="feeds" class="home__section feeds">
-  <%= render partial: "decidim/posts/posts/index.html" %>
+<section id="feeds" class="home__section feeds feeds__container">
+  <div class="home__section-header">
+    <h2 class="home__section-title">
+      <%= t('decidim.posts.content_blocks.posts.title')%>
+    </h2>
+    <%= link_to posts_path, class: "button button__sm button__text-secondary" do %>
+      <%= t('decidim.posts.content_blocks.posts.seeall')%>
+      <%= icon "arrow-right-line", class: "fill-current" %>
+    <% end %>
+  </div>
+  <div class="card__grid-home feeds__body items-start auto-rows-auto">
+    <% @posts.each do |post| %>
+      <div class="card__grid posts__post hover:cursor-default ring-1 <%= post.attachments.any? ? '' : '' %>" data-content="<%= post.category %>">
+        <% if post.attachments.any? %>
+          <div class="card__grid-img">
+              <%= image_tag post.attachments.first.url, class: "object-cover w-full h-full" %>
+          </div>
+        <% end %>
+        <div class="card__grid-text">
+          <% if post.title[I18n.locale.to_s].present? %>
+            <h3 class="h4 text-secondary !no-underline">Title if present -> meetings</h3>
+          <% end %>
+          <p><%= post.body[I18n.locale.to_s] %></p>
+          <div class="card__grid-metadata">
+            <% filters = {
+              post: 'home-5-line',
+              sharecare: 'shake-hands-line',
+              calendar: 'calendar-line',
+              survey: 'draft-line',
+              host: 'home-gear-line'
+            } %>
+            <span>
+              <%= icon filters[post.category.to_sym], class:'!text-black' %> von <%= 'post.author' %>
+            </span>
+            <time><%= '@time_since_update' %></time>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </section>

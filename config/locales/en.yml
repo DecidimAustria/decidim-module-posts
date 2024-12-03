@@ -13,8 +13,12 @@ en:
         actions:
           preview: Preview
       content_blocks:
-        feeds:
+        posts_settings_form:
+          component: Feed to display
+        posts:
           name: Feed
+          title: Latest posts
+          seeall: See all posts
       actions:
         title: Actions
         edit_post: Edit post

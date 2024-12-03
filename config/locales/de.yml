@@ -13,8 +13,12 @@ de:
         actions:
           preview: Vorschau
       content_blocks:
-        feeds:
+        posts_settings_form:
+          component: Anzuzeigender Feed
+        posts:
           name: Feed
+          title: Letzte Beiträge
+          seeall: Alle Beiträge anzeigen
       actions:
         title: Aktionen
         edit_post: Beitrag bearbeiten
