@@ -1,6 +1,6 @@
 # Decidim::Posts component
 
-This Feeds component adds social posts functionality to Decidim. It was funded by Digifonds der Arbeiterkammer Wien. 
+This Feeds component adds social posts functionality to Decidim. 
 
 ## Constraints
 
@@ -91,3 +91,6 @@ Security is very important to us. If you have any issue regarding security, plea
 ## License
 
 This engine is distributed under the GNU AFFERO GENERAL PUBLIC LICENSE.
+
+## FUNDING
+The development was funded by digifonds / Arbeiterkammer Wien: https://wien.arbeiterkammer.at/digifonds
