@@ -1,6 +1,6 @@
 # Decidim::Posts component
 
-This Feeds component adds social posts functionality to Decidim.
+This Feeds component adds social posts functionality to Decidim. It was funded by Digifonds der Arbeiterkammer Wien. 
 
 ## Constraints
 
