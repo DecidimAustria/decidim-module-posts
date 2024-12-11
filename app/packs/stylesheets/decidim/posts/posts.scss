@@ -2,6 +2,11 @@
 
 @import '_variables.scss';
 
+*{
+	word-break: break-word;
+	overflow-wrap: break-word;
+}
+
 #posts__post_newElement {
 	&.open {
 		--tw-ring-color: var(--feeds-sidebar);
