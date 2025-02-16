@@ -39,7 +39,9 @@ module Decidim
           end
 
           on(:invalid) do
-            flash.now[:alert] = I18n.t("meetings.create.invalid", scope: "decidim.meetings")
+            error_messages = @form.errors.full_messages.join(", ")
+            general_error_message = I18n.t("meetings.create.invalid", scope: "decidim.meetings")
+            flash.now[:alert] = [general_error_message, error_messages].join(": ")
 
             set_meeting_context
 
