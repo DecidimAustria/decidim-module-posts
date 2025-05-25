@@ -26,13 +26,15 @@ We tried to implement everything as a content block to display the social feed o
 
 ## Categories
 
+Posts can be of different categories/types which have individual features.
+
 ### post
 
 A normal social post. It contains a body text and you can attach images to it that are then displayed with a kind of simple carousel.
 
 ### share&care
 
-This is to have a category for people to offer things or services within their community or ask for favors or borrowing items.
+This is a category for people to offer things or services within their community or ask for favors or borrowing items.
 
 ### survey
 
