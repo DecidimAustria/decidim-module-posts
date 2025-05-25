@@ -69,7 +69,7 @@ Reactions are part of this module and are an alternative to endorsements. The id
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "decidim-posts"
+gem "decidim-posts", "~> 2.0"
 ```
 
 And then execute:
