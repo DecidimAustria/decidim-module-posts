@@ -40,7 +40,7 @@
           <div id="posts__post_newElement_Meeting" aria-live="polite">
             <%= decidim_form_for(Decidim::Meetings::MeetingForm.from_params(params).with_context(context), url: Decidim::EngineRouter.main_proxy(posts_component).meetings_path, html: { class: "meetings_form new_meeting hidden opacity-0 scale-0 motion-safe:transition-transform motion-safe:transition-opacity" }) do |form| %>
               <div class="form__wrapper p-0 gap-4">
-                <%= render partial: "decidim/posts/posts/meeting_form", locals: { form: form } %>
+                <%= render partial: "meeting_form", locals: { form: form } %>
               </div>
               <div class="form__wrapper-block flex-col-reverse md:flex-row justify-between">
                 <%= form.submit "#{t("decidim.components.posts.newFeed.action")} #{icon('send-plane-line')}".html_safe, class: "sndBtn button button__sm button__transparent-primary", data: { disable: true } %>
@@ -51,13 +51,13 @@
           <div id="posts__post_newElement_Post" aria-live="polite">
             <%= decidim_form_for(Decidim::Posts::PostForm.from_params(params).with_context(context), url: Decidim::EngineRouter.main_proxy(posts_component).posts_path, html: { class: "posts_form new_post hidden opacity-0 scale-0 motion-safe:transition-transform motion-safe:transition-opacity" }) do |form| %>
               <div class="form__wrapper p-0">
-                <%= render partial: "decidim/posts/posts/post_form", locals: { form: form } %>
+                <%= render partial: "post_form", locals: { form: form } %>
               </div>
               <div id="extraFieldsForSurvey" class="posts__post_newElement_Xtra relative hidden opacity-0 scale-0 motion-safe:transition-transform motion-safe:transition-opacity posts__post_newSurvey" aria-live="polite">
-                <%= render partial: 'decidim/posts/posts/new_survey.html', locals: { form: form } %>
+                <%= render partial: 'new_survey', locals: { form: form } %>
               </div>
-              <%= render partial: "decidim/posts/posts/attachment.html", locals: { form: form } %>
-              <%= render partial: "decidim/posts/posts/admin_options.html", locals: { form: form, participatory_space: target_participatory_space } %>
+              <%= render partial: "attachment", locals: { form: form } %>
+              <%= render partial: "admin_options", locals: { form: form, participatory_space: target_participatory_space } %>
               <div class="form__wrapper-block flex-col-reverse md:flex-row justify-between">
                 <%= form.submit "#{t("decidim.components.posts.newFeed.action")} #{icon('send-plane-line')}".html_safe, data: { disable: true }, class: "sndBtn button button__sm button__transparent-primary self-end" %>
               </div>
