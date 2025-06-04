@@ -3,9 +3,9 @@
 
     <div class="flex flex-col items-center">
       <ul id="galleryItems_<%= post.id %>" class="posts__post_gallery flex overflow-hidden">
-        <% post.attachments.select { |a| a.file_type.match(/\.(jpg|jpeg|png|svg|webp|mp4|webm)$/i) }.each_with_index do |attachment, index| %>
-          <li class="<%= attachment.url.match(/\.(mp4|webm)$/i) ? 'video' : 'image' %> <%= index.zero? ? 'active' : '' %> aspect-[4/3] overflow-hidden flex justify-center items-center" data-src="<%= attachment.url %>">
-            <% if attachment.url.match(/\.(mp4|webm)$/i) %>
+        <% post.attachments.select { |a| a.file_type.match(/(jpg|jpeg|png|svg|webp|mp4|webm)$/i) }.each_with_index do |attachment, index| %>
+          <li class="<%= attachment.file_type.match(/(mp4|webm)$/i) ? 'video' : 'image' %> <%= index.zero? ? 'active' : '' %> aspect-[4/3] overflow-hidden flex justify-center items-center" data-src="<%= attachment.url %>">
+            <% if attachment.file_type.match(/(mp4|webm)$/i) %>
               <%= video_tag(attachment.url, class: "object-cover w-full h-full", controls: true, preload: "auto") %>
             <% else %>
               <div class="w-full h-full flex justify-center items-center">
@@ -15,10 +15,10 @@
           </li>
         <% end %>
       </ul>
-      <% if post.attachments.select { |a| a.file_type.match(/\.(jpg|jpeg|png|svg|webp|mp4|webm)$/i) }.count > 1 %>
+      <% if post.attachments.select { |a| a.file_type.match(/(jpg|jpeg|png|svg|webp|mp4|webm)$/i) }.count > 1 %>
         <div id="navDots_<%= post.id %>" class="nav-dots p-1 flex flex-wrap justify-center">
-          <% total = post.attachments.select { |a| a.file_type.match(/\.(jpg|jpeg|png|svg|webp|mp4|webm)$/i) }.count %>
-          <% post.attachments.select { |a| a.file_type.match(/\.(jpg|jpeg|png|svg|webp|mp4|webm)$/i) }.each_with_index do |_, index| %>
+          <% total = post.attachments.select { |a| a.file_type.match(/(jpg|jpeg|png|svg|webp|mp4|webm)$/i) }.count %>
+          <% post.attachments.select { |a| a.file_type.match(/(jpg|jpeg|png|svg|webp|mp4|webm)$/i) }.each_with_index do |_, index| %>
             <div class="posts__post_gallery_nav_dot flex justify-center items-center cursor-pointer h-6 w-6" role="button" aria-label="<%= t('decidim.components.posts.gallery.navigation', number: index + 1, total: total) %>" data-target="galleryItems_<%= post.id %>" data-index="<%= index %>">
               <span class="h-2 w-2 rounded-full ring-1 ring-offset-1 ring-feeds-notification <%= index.zero? ? 'bg-feeds-notification' : '' %>"></span>
             </div>
@@ -26,7 +26,7 @@
         </div>
       <% end %>
     </div>
-    <% non_media_attachments = post.attachments.reject { |a| a.file_type.match(/\.(jpg|jpeg|png|svg|webp|mp4|webm)$/i) } %>
+    <% non_media_attachments = post.attachments.reject { |a| a.file_type.match(/(jpg|jpeg|png|svg|webp|mp4|webm)$/i) } %>
     <% if non_media_attachments.any? %>
       <ul class="document-list space-y-2 mt-4">
         <% non_media_attachments.each_with_index do |attachment, index| %>
