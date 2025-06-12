@@ -15,7 +15,10 @@ module Decidim
         end
 
         def available_feeds
-          @available_feeds ||= Decidim::Component.where(manifest_name: "posts").where(participatory_space_id: current_organization.participatory_spaces.pluck(:id))
+          @available_feeds ||= Decidim::Component
+            .where(manifest_name: "posts")
+            .where(participatory_space: current_organization.participatory_spaces)
+
         end
       end
     end
